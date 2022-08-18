@@ -1,0 +1,16 @@
+{
+  "tabWidth": 2,
+  "printWidth": 100,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "importOrder": [
+    "^services/(.*)$",
+    "^utils/(.*)$",
+    "^constants/(.*)$",
+    "^components/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
