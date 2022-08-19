@@ -1,33 +1,36 @@
 import { Portal, Root, Trigger } from "@radix-ui/react-context-menu";
-import { useRecoilState } from "recoil";
-import { notesState } from "recoil/notes.recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { notesState, selectedNoteSelector } from "recoil/notes.recoil";
 
 import { ArrowBack, Close, Pin, Trash } from "components/Icons";
 
 import { ContextContent, ContextItem } from "./style";
 
-type Props = { noteId: string; pinned?: boolean; trash?: boolean; children: React.ReactNode };
+type Props = { noteId: string; children: React.ReactNode };
 
-export const ContextMenu = ({ pinned, trash, noteId, children }: Props) => {
-  const [state, setNotesState] = useRecoilState(notesState);
+export const ContextMenu = ({ noteId, children }: Props) => {
+  const setNotesState = useSetRecoilState(selectedNoteSelector);
+  const selectedNote = useRecoilValue(notesState).notes.find((note) => note.id === noteId);
+
   const toggleNoteTrash = () =>
+    !!selectedNote &&
     setNotesState({
-      ...state,
-      notes: state.notes.map((note) =>
-        note.id === noteId ? { ...note, trash: !note.trash } : note,
-      ),
+      ...selectedNote,
+      trash: !selectedNote.trash,
     });
+
   const toggleNotePin = () =>
+    !!selectedNote &&
     setNotesState({
-      ...state,
-      notes: state.notes.map((note) =>
-        note.id === noteId ? { ...note, pinned: !note.pinned } : note,
-      ),
+      ...selectedNote,
+      pinned: !selectedNote.pinned,
     });
+
   const deleteNote = () =>
+    !!selectedNote &&
     setNotesState({
-      ...state,
-      notes: state.notes.filter((note) => note.id !== noteId),
+      ...selectedNote,
+      deleted: true,
     });
 
   return (
@@ -35,7 +38,7 @@ export const ContextMenu = ({ pinned, trash, noteId, children }: Props) => {
       <Trigger>{children}</Trigger>
       <Portal>
         <ContextContent>
-          {trash ? (
+          {selectedNote?.trash ? (
             <>
               <ContextItem onClick={toggleNoteTrash}>
                 <ArrowBack size={15} /> Restore note
@@ -47,7 +50,7 @@ export const ContextMenu = ({ pinned, trash, noteId, children }: Props) => {
           ) : (
             <>
               <ContextItem onClick={toggleNotePin}>
-                <Pin size={15} /> {pinned ? "Remove Pin" : "Add Pin"}
+                <Pin size={15} /> {selectedNote?.pinned ? "Remove Pin" : "Add Pin"}
               </ContextItem>
               <ContextItem danger="true" onClick={toggleNoteTrash}>
                 <Trash size={15} /> Move to Trash

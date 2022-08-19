@@ -6,14 +6,28 @@ const StyledButton = styled.button<{ variant?: string }>`
   padding: 10px 12px;
   border: none;
   border-radius: ${(props) => props.theme.radius.small};
-  background-color: ${(props) => props.theme.color.darkGray};
-  color: ${(props) => props.theme.color.text};
+  background-color: ${(props) =>
+    props.variant === "primary" ? props.theme.color.primary : props.theme.color.darkGray};
+  color: ${(props) =>
+    props.variant === "primary" ? props.theme.color.white : props.theme.color.text};
   cursor: pointer;
+  opacity: ${(props) => (props.variant === "primary" ? 0.8 : 1)};
 
   &:hover {
     background-color: ${(props) =>
-      props.variant === "danger" ? props.theme.color.danger : props.theme.color.darkerGray};
+      props.variant === "danger"
+        ? props.theme.color.danger
+        : props.variant === "primary"
+        ? props.theme.color.primary
+        : props.theme.color.darkerGray};
     color: ${(props) => props.variant === "danger" && props.theme.color.white};
+    opacity: ${(props) => (props.variant === "primary" ? 0.6 : 1)};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${(props) => props.theme.color.lightestGray};
+    color: ${(props) => props.theme.color.text};
   }
 `;
 

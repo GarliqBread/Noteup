@@ -1,6 +1,6 @@
 import SplitPane from "react-split-pane";
 import { useRecoilValue } from "recoil";
-import { notesState } from "recoil/notes.recoil";
+import { folderState } from "recoil/folder.recoil";
 
 import { Folder } from "utils/enums";
 import { getNoteBarConf } from "utils/helpers";
@@ -9,7 +9,7 @@ import { NoteList } from "./NoteList";
 import { Sidebar } from "./Sidebar";
 
 export const AppContainer = () => {
-  const { activeFolder } = useRecoilValue(notesState);
+  const activeFolder = useRecoilValue(folderState);
 
   return (
     <div className="app-container">
