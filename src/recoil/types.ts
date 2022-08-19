@@ -1,4 +1,4 @@
-import { Folder, NotesSortKey } from "utils/enums";
+import { NotesSortKey } from "utils/enums";
 
 export type Note = {
   id: string;
@@ -10,6 +10,7 @@ export type Note = {
    */
   categoryId?: string;
   scratchpad?: boolean;
+  deleted?: boolean;
   trash?: boolean;
   pinned?: boolean;
 };
@@ -21,10 +22,12 @@ export type Category = {
 
 export type NotesState = {
   notes: Note[];
-  categories: Category[];
+  keyword: string;
   sortBy: keyof NotesSortKey;
-  route: keyof typeof Folder;
   selectedNoteId: string | null;
-  activeFolder: Folder;
+};
+
+export type CategoryState = {
+  categories: Category[];
   selectedCategoryId: string | null;
 };

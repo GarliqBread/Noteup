@@ -4,21 +4,28 @@ type ButtonProps = {
   className?: string;
   title?: string;
   variant?: string;
+  disabled?: boolean;
   onClick: () => void;
   children: string | React.ReactNode;
 };
 
-export const Button = ({ className, title, variant, onClick, children }: ButtonProps) => {
+export const Button = ({ className, title, variant, disabled, onClick, children }: ButtonProps) => {
   return (
-    <StyledButton className={className} title={title} variant={variant} onClick={onClick}>
+    <StyledButton
+      className={className}
+      disabled={disabled}
+      title={title}
+      variant={variant}
+      onClick={onClick}
+    >
       {children}
     </StyledButton>
   );
 };
 
-export const IconButton = ({ className, title, onClick, children }: ButtonProps) => {
+export const IconButton = ({ className, title, disabled, onClick, children }: ButtonProps) => {
   return (
-    <StyledIconButton className={className} onClick={onClick} title={title}>
+    <StyledIconButton className={className} disabled={disabled} onClick={onClick} title={title}>
       {children}
     </StyledIconButton>
   );

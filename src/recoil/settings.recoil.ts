@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 import { NotesSortKey } from "utils/enums";
@@ -12,4 +12,11 @@ export const settingsState = atom({
     notesSortKey: NotesSortKey.LAST_UPDATED,
   },
   effects_UNSTABLE: [persistAtom],
+});
+
+export const notesSortKeySelector = selector({
+  key: "notes-sort-key",
+  get: ({ get }) => {
+    return get(settingsState).notesSortKey;
+  },
 });
