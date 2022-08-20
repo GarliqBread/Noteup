@@ -19,7 +19,7 @@ export const notesState: RecoilState<NotesState> = atom({
     keyword: "",
     notes: [],
     sortBy: NotesSortKey.LAST_UPDATED,
-    selectedNoteId: null,
+    selectedNote: null,
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -49,21 +49,21 @@ export const filteredNotesSelector = selector({
   },
 });
 
-export const selectedNoteIdSelector = selector({
-  key: "selected-note-id",
-  get: ({ get }) => get(notesState).selectedNoteId,
-  set: ({ set, get }, noteId) =>
-    (noteId === null || typeof noteId === "string") &&
+export const selectNoteSelector = selector({
+  key: "select-note",
+  get: ({ get }) => get(notesState).selectedNote,
+  set: ({ set, get }, note) => {
+    if (note instanceof DefaultValue) return;
     set(notesState, {
       ...get(notesState),
-      selectedNoteId: noteId,
-    }),
+      selectedNote: note,
+    });
+  },
 });
 
 export const selectedNoteSelector = selector({
   key: "selected-note",
-  get: ({ get }) =>
-    get(filteredNotesSelector).find((note) => note.id === get(selectedNoteIdSelector)),
+  get: ({ get }) => get(notesState).selectedNote,
   set: ({ set, get }, newNote) => {
     if (!newNote || newNote instanceof DefaultValue) return;
     const prevState = get(notesState);
