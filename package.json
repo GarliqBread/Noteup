@@ -17,6 +17,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "codemirror": "^5.58.1",
     "dayjs": "^1.11.5",
     "jszip": "^3.10.1",
     "mousetrap": "^1.6.5",
@@ -24,6 +25,7 @@
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "react": "^18.2.0",
+    "react-codemirror2": "^7.2.1",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "react-router-dom": "^6.3.0",
@@ -40,6 +42,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/codemirror": "^5.60.5",
     "@types/jest": "^27.5.2",
     "@types/mousetrap": "^1.6.9",
     "@types/node": "^16.11.47",

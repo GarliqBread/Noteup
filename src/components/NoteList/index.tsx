@@ -11,7 +11,7 @@ import { List } from "./style";
 
 export const NoteList = () => {
   const filteredNotes = useRecoilValue(filteredNotesSelector);
-  const [{ selectedNoteId, keyword }] = useRecoilState(notesState);
+  const [{ selectedNote, keyword }] = useRecoilState(notesState);
 
   const regex = useMemo(
     () => new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
@@ -43,7 +43,7 @@ export const NoteList = () => {
 
         return (
           <ContextMenu key={note.id} noteId={note.id}>
-            <NoteItem note={note} selected={selectedNoteId === note.id}>
+            <NoteItem note={note} selected={selectedNote?.id === note.id}>
               {noteTitle}
             </NoteItem>
           </ContextMenu>

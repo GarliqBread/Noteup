@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { categoriesSelector } from "recoil/categories.recoil";
-import { selectedNoteIdSelector } from "recoil/notes.recoil";
+import { selectNoteSelector } from "recoil/notes.recoil";
 import { Note } from "recoil/types";
 import { Ellipsis, Flex } from "styles/layout";
 import { Label } from "styles/typography";
@@ -17,10 +17,13 @@ type Props = {
 
 export const NoteItem = ({ note, children }: Props) => {
   const categories = useRecoilValue(categoriesSelector);
-  const [selectedNote, setSelectedNote] = useRecoilState(selectedNoteIdSelector);
+  const [selectedNote, setSelectedNote] = useRecoilState(selectNoteSelector);
 
   return (
-    <NoteItemContainer onClick={() => setSelectedNote(note.id)} selected={selectedNote === note.id}>
+    <NoteItemContainer
+      onClick={() => setSelectedNote(note)}
+      selected={selectedNote?.id === note.id}
+    >
       <Flex>
         <Flex width="20px" height="20px">
           {note.pinned && <Pin className="pin" size={15} />}
