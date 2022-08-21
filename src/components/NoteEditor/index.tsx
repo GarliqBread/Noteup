@@ -13,18 +13,21 @@ import "codemirror/theme/material.css";
 import "codemirror/theme/monokai.css";
 import "codemirror/theme/neat.css";
 import { useMemo, useRef } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { selectedNoteSelector } from "recoil/notes.recoil";
+import { useRecoilValue } from "recoil";
 import { settingsState } from "recoil/settings.recoil";
+import { Note } from "recoil/types";
 
 import { StyledCodeMirror } from "./styled";
 
-export const NoteEditor = () => {
+type Props = {
+  note: Note;
+  setNote: (value: Note) => void;
+};
+
+export const NoteEditor = ({ note, setNote }: Props) => {
   // type Editor from codemirror throws an error
   const editor = useRef<any>();
   const wrapper = useRef<any>();
-  const selectedNote = useRecoilValue(selectedNoteSelector);
-  const setNoteState = useSetRecoilState(selectedNoteSelector);
   const settings = useRecoilValue(settingsState);
 
   const codeMirrorOptions = useMemo(
@@ -52,18 +55,15 @@ export const NoteEditor = () => {
     wrapper.current ? (wrapper.current.hydrated = false) : null;
   };
 
-  return selectedNote ? (
+  return (
     <StyledCodeMirror
-      data-testid="codemirror-editor"
-      ref={wrapper}
-      className="editor mousetrap"
-      value={selectedNote.text}
+      value={note.text}
       options={codeMirrorOptions}
       editorDidMount={(e) => (editor.current = e)}
       editorWillUnmount={editorWillUnmount}
       onBeforeChange={(_, __, value) => {
-        setNoteState({
-          ...selectedNote,
+        setNote({
+          ...note,
           text: value,
         });
       }}
@@ -85,7 +85,5 @@ export const NoteEditor = () => {
         });
       }}
     />
-  ) : (
-    <div />
   );
 };

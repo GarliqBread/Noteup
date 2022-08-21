@@ -35,7 +35,7 @@ export type NotesState = {
   notes: Note[];
   keyword: string;
   sortBy: keyof NotesSortKey;
-  selectedNote: Note | null;
+  selectedNoteId: string | null;
 };
 
 export type CategoryState = {

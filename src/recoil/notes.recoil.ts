@@ -49,21 +49,24 @@ export const filteredNotesSelector = selector({
   },
 });
 
-export const selectNoteSelector = selector({
-  key: "select-note",
-  get: ({ get }) => get(notesState).selectedNote,
-  set: ({ set, get }, note) => {
-    if (note instanceof DefaultValue) return;
+export const selectNoteIdSelector = selector({
+  key: "select-note-id",
+  get: ({ get }) => get(notesState).selectedNoteId,
+  set: ({ set, get }, noteId) => {
+    if (noteId instanceof DefaultValue) return;
     set(notesState, {
       ...get(notesState),
-      selectedNote: note,
+      selectedNoteId: noteId,
     });
   },
 });
 
 export const selectedNoteSelector = selector({
   key: "selected-note",
-  get: ({ get }) => get(notesState).selectedNote,
+  get: ({ get }) => {
+    const state = get(notesState);
+    return state.notes.find((note) => note.id === state.selectedNoteId);
+  },
   set: ({ set, get }, newNote) => {
     if (!newNote || newNote instanceof DefaultValue) return;
     const prevState = get(notesState);
