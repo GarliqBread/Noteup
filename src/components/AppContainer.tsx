@@ -1,5 +1,5 @@
 import SplitPane from "react-split-pane";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { folderState } from "recoil/folder.recoil";
 import { selectedNoteSelector } from "recoil/notes.recoil";
 
@@ -12,7 +12,7 @@ import { Sidebar } from "./Sidebar";
 
 export const AppContainer = () => {
   const activeFolder = useRecoilValue(folderState);
-  const selectedNote = useRecoilValue(selectedNoteSelector);
+  const [note, setNote] = useRecoilState(selectedNoteSelector);
 
   return (
     <div className="app-container">
@@ -20,7 +20,7 @@ export const AppContainer = () => {
         <Sidebar />
         <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
           {activeFolder !== Folder.SCRATCH && <NoteList />}
-          {selectedNote && <NoteEditor />}
+          {note && <NoteEditor note={note} setNote={setNote} />}
         </SplitPane>
       </SplitPane>
     </div>
