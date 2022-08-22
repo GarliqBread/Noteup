@@ -1,0 +1,214 @@
+import ReactMarkdown from "react-markdown";
+import styled from "styled-components";
+
+const Previewer = styled(ReactMarkdown)`
+position: relative;
+overflow-y: auto;
+background: #fafafa;
+color: ${(props) => props.theme.color.text};
+-webkit-font-smoothing: subpixel-antialiased;
+height: 100vh;
+padding: 15px;
+
+a {
+    color: ${(props) => props.theme.color.primary};
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .error {
+    color: $error;
+  }
+
+  p,
+  ol,
+  ul,
+  dl,
+  table {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+  }
+
+  ul li ul {
+    margin-bottom: 0;
+  }
+
+  ol li ol {
+    margin-bottom: 0;
+  }
+
+  ul li [type='checkbox'] {
+    margin-right: 0.75rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+    line-height: 1.2;
+
+    &:not(:first-child) {
+      margin: 1.5rem 0;
+    }
+  }
+
+  // Increased margin on additional headings
+  h1:not(:first-child),
+  h2:not(:first-child),
+  h3:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  // Heading individual styles
+  h1 {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  // Blockquote
+  blockquote {
+    margin: 0 0 1.5rem 0;
+    border-left: 4px solid $light-font-color;
+    padding: 0.5rem 1.5rem;
+
+    p {
+      font-size: 1.1rem;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      text-align: right;
+    }
+  }
+
+  // Code block styling
+  pre {
+    background: lighten($note-sidebar-color, 8%);
+    padding: 1rem;
+    tab-size: 2;
+    color: #404040;
+    margin: 0 0 1.5rem 0;
+    white-space: pre-wrap;
+    word-spacing: normal;
+    word-break: normal;
+    border-radius: 0.3rem;
+    border: 1px solid darken($note-sidebar-color, 3%);
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+
+    code {
+      padding: 0;
+      background: transparent;
+      line-height: 1.2;
+      border-width: 0;
+    }
+  }
+
+  code {
+    padding: 2px 3px;
+    background: lighten($note-sidebar-color, 8%);
+    border-radius: 0.3rem;
+    border: 1px solid darken($note-sidebar-color, 3%);
+  }
+
+  hr {
+    height: 0;
+    border: 0;
+    border-top: 2px solid lighten($light-font-color, 10%);
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 20rem;
+    object-fit: cover;
+  }
+
+  table {
+    border: 1px solid $note-sidebar-color;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 100%;
+  }
+
+  thead th {
+    border-bottom: 2px solid $note-sidebar-color;
+  }
+
+  tfoot th {
+    border-top: 2px solid $note-sidebar-color;
+  }
+
+  td {
+    border-bottom: 1px solid $note-sidebar-color;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  ul {
+    margin-left: 20px;
+  }
+}
+
+.preview-button {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  color: $font-color;
+  top: 0;
+  right: 1rem;
+  border: none;
+  background-color: $note-sidebar-color;
+  font-weight: 500;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  z-index: 2;
+  box-shadow: $box-shadow;
+
+  &:hover,
+  &:focus {
+    border: none;
+    color: darken($font-color, 10%);
+    background-color: darken($note-sidebar-color, 5%);
+  }
+
+  .invalid-note-uuid {
+    color: green;
+  }
+`;
+
+export { Previewer };

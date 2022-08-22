@@ -1,8 +1,8 @@
 /* eslint-disable */
 import "codemirror/addon/selection/active-line";
-// themes
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/gfm/gfm";
+// themes
 import "codemirror/theme/base16-dark.css";
 import "codemirror/theme/base16-light.css";
 import "codemirror/theme/dracula.css";
@@ -67,7 +67,7 @@ export const NoteEditor = ({ note, setNote }: Props) => {
           text: value,
         });
       }}
-      onChange={(editor, _, value) => {
+      onChange={(editor, data, value) => {
         if (!value || settings.autoFocus) {
           editor.focus();
         }
