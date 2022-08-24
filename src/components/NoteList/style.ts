@@ -35,7 +35,7 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
 
   &:hover {
     cursor: pointer;
-    background-color: ${(props) => !props.selected && props.theme.color.darkGray};
+    background-color: ${(props) => !props.selected && props.theme.color.contrastGray};
   }
 
   .highlighted {
@@ -73,7 +73,7 @@ const ContextItem = styled(Item)<{ danger?: "true" }>`
 
   &:hover {
     background-color: ${(props) =>
-      props.danger ? props.theme.color.danger : props.theme.color.lightGray};
+      props.danger ? props.theme.color.danger : props.theme.color.contrastGray};
     color: ${(props) => props.danger && props.theme.color.white};
   }
 

@@ -11,10 +11,13 @@ export const settingsState: RecoilState<SettingsState> = atom({
   key: "settings-state",
   default: {
     theme: "light",
+    editorTheme: "duotone",
     notesSortKey: NotesSortKey.LAST_UPDATED,
-    autoFocus: true,
+    autoComplete: true,
+    breakLines: true,
+    foldGutter: false,
     lineNumbers: true,
-    editorTheme: "base16-light",
+    indentOnInput: true,
   },
   effects_UNSTABLE: [persistAtom],
 });
