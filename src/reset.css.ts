@@ -50,4 +50,22 @@ export default createGlobalStyle`
   textarea {
     resize: none;
   }
+
+  .code-mirror {
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    display: block !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: ${(props) => props.theme.color.scrollBar};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.color.darkestGray};
+    border-radius: 0;
+  }
 `;

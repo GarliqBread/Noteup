@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Previewer = styled(ReactMarkdown)`
 position: relative;
 overflow-y: auto;
-background: #fafafa;
+background: ${(props) => props.theme.color.firstLayer};
 color: ${(props) => props.theme.color.text};
 -webkit-font-smoothing: subpixel-antialiased;
 height: 100vh;

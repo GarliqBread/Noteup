@@ -1,3 +1,5 @@
+import * as clipboard from "clipboard-polyfill/text";
+
 import { Folder, LabelText } from "./enums";
 
 export const getNoteBarConf = (
@@ -33,4 +35,8 @@ export const getNoteTitle = (text: string): string => {
   // Get the first line of text after any newlines
   // In the future, this should break on a full word
   return noteText ? noteText[0].trim().split(/\r?\n/)[0] : LabelText.NEW_NOTE;
+};
+
+export const copyToClipboard = (text: string) => {
+  clipboard.writeText(text);
 };

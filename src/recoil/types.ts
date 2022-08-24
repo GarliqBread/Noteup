@@ -1,15 +1,6 @@
 import { NotesSortKey } from "utils/enums";
 
-type EditorTheme =
-  | "base16-light"
-  | "base16-dark"
-  | "material"
-  | "monokai"
-  | "eclipse"
-  | "dracula"
-  | "duotone-light"
-  | "duotone-dark"
-  | "neat";
+type EditorTheme = "github" | "xcode" | "duotone";
 
 export type Note = {
   id: string;
@@ -46,7 +37,10 @@ export type CategoryState = {
 export type SettingsState = {
   theme: "light" | "dark";
   notesSortKey: NotesSortKey;
-  autoFocus: boolean;
+  autoComplete: boolean;
+  breakLines: boolean;
+  indentOnInput: boolean;
   lineNumbers: boolean;
+  foldGutter: boolean;
   editorTheme: EditorTheme;
 };
