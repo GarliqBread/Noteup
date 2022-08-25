@@ -1,4 +1,4 @@
-import { Folder, NotesSortKey } from "utils/enums";
+import { EditorThemeKey, Folder, NotesSortKey } from "utils/enums";
 
 export const folderMap: Record<Folder, string> = {
   [Folder.ALL]: "All Notes",
@@ -24,6 +24,12 @@ export const notesSortOptions = [
   { value: NotesSortKey.TITLE, label: "Title" },
   { value: NotesSortKey.CREATED_DATE, label: "Date Created" },
   { value: NotesSortKey.LAST_UPDATED, label: "Last Updated" },
+];
+
+export const themeEditorOptions = [
+  { value: EditorThemeKey.GITHUB, label: "Github" },
+  { value: EditorThemeKey.XCODE, label: "Xcode" },
+  { value: EditorThemeKey.DUOTONE, label: "Duotone" },
 ];
 
 export const routes = {

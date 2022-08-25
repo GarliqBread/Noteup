@@ -39,7 +39,6 @@ export type SettingsState = {
   notesSortKey: NotesSortKey;
   autoComplete: boolean;
   breakLines: boolean;
-  indentOnInput: boolean;
   lineNumbers: boolean;
   foldGutter: boolean;
   editorTheme: EditorTheme;

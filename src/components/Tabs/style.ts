@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const TabContainer = styled.div<{ active?: boolean }>`
+  min-width: 180px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -10,11 +11,11 @@ const TabContainer = styled.div<{ active?: boolean }>`
   border-radius: ${(props) => props.theme.radius.small};
   font-weight: 600;
   font-size: 0.95rem;
-  background-color: ${(props) => props.active && props.theme.color.lighterGray};
-  color: ${(props) => (props.active ? props.theme.color.black : props.theme.color.text)};
+  background-color: ${(props) => props.active && props.theme.color.tab};
+  color: ${(props) => props.theme.color.lightText};
 
   svg {
-    color: ${(props) => (props.active ? props.theme.color.black : props.theme.color.lightText)};
+    color: ${(props) => (props.active ? props.theme.color.primary : props.theme.color.text)};
   }
 
   &:hover {
@@ -62,6 +63,10 @@ const TabContent = styled.div`
   max-height: 500px;
   overflow-y: auto;
   padding-right: 40px;
+
+  p {
+    margin: 10px 0;
+  }
 `;
 
 export { TabContainer, TabsContainer, TabList, TabContent };

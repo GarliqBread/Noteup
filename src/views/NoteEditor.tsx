@@ -4,7 +4,14 @@ import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "codemirror";
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
-import { settingsState } from "recoil/settings.recoil";
+import {
+  autoCompleteSelector,
+  breakLinesSelector,
+  editorThemeSelector,
+  foldGutterSelector,
+  lineNumbersSelector,
+  themeSelector,
+} from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
 import { editorThemes } from "utils/editorThemes";
@@ -15,26 +22,29 @@ type Props = {
 };
 
 export const NoteEditor = ({ note, setNote }: Props) => {
-  const settings = useRecoilValue(settingsState);
+  const breakLines = useRecoilValue(breakLinesSelector);
+  const foldGutter = useRecoilValue(foldGutterSelector);
+  const lineNumbers = useRecoilValue(lineNumbersSelector);
+  const autoComplete = useRecoilValue(autoCompleteSelector);
+  const theme = useRecoilValue(themeSelector);
+  const editorTheme = useRecoilValue(editorThemeSelector);
+
   const codeMirrorOptions = useMemo(
     () => ({
-      lineNumbers: settings.lineNumbers,
+      lineNumbers: lineNumbers,
       history: true,
-      foldGutter: settings.foldGutter,
+      foldGutter: foldGutter,
       allowMultipleSelections: true,
-      indentOnInput: settings.indentOnInput,
-      autocompletion: settings.autoComplete,
+      autocompletion: autoComplete,
     }),
-    [settings],
+    [lineNumbers, foldGutter, autoComplete],
   );
 
   const extensions = useMemo(() => {
     const defaultExtensions = [markdown({ base: markdownLanguage, codeLanguages: languages })];
 
-    return settings.breakLines
-      ? [EditorView.lineWrapping, ...defaultExtensions]
-      : defaultExtensions;
-  }, [settings]);
+    return breakLines ? [EditorView.lineWrapping, ...defaultExtensions] : defaultExtensions;
+  }, [breakLines]);
 
   return (
     <CodeMirror
@@ -50,7 +60,7 @@ export const NoteEditor = ({ note, setNote }: Props) => {
       autoFocus
       indentWithTab
       extensions={extensions}
-      theme={editorThemes[settings.theme][settings.editorTheme]}
+      theme={editorThemes[theme][editorTheme]}
       basicSetup={codeMirrorOptions}
     />
   );

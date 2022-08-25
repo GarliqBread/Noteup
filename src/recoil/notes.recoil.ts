@@ -3,7 +3,7 @@ import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 import { Folder, NotesSortKey } from "utils/enums";
-import { getNoteTitle } from "utils/helpers";
+import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
 import { getNotesSorter } from "utils/sorting";
 
 import { selectedCategorySelector } from "./categories.recoil";
@@ -22,6 +22,19 @@ export const notesState: RecoilState<NotesState> = atom({
     selectedNote: null,
   },
   effects_UNSTABLE: [persistAtom],
+});
+
+export const notesSelector = selector({
+  key: "notes-selector",
+  get: ({ get }) => get(notesState).notes,
+  set: ({ get, set }, notes) => {
+    if (notes instanceof DefaultValue) return;
+    const state = get(notesState);
+    set(notesState, {
+      ...state,
+      notes: removeDuplicateNotes([...state.notes, ...notes]),
+    });
+  },
 });
 
 export const filteredNotesSelector = selector({
@@ -50,19 +63,18 @@ export const filteredNotesSelector = selector({
 });
 
 export const selectNoteIdSelector = selector({
-  key: "select-note-id",
+  key: "select-note-id-selector",
   get: ({ get }) => get(notesState).selectedNoteId,
-  set: ({ set, get }, noteId) => {
-    if (noteId instanceof DefaultValue) return;
+  set: ({ set, get }, noteId) =>
+    !(noteId instanceof DefaultValue) &&
     set(notesState, {
       ...get(notesState),
       selectedNoteId: noteId,
-    });
-  },
+    }),
 });
 
 export const selectedNoteSelector = selector({
-  key: "selected-note",
+  key: "selected-note-selector",
   get: ({ get }) => {
     const state = get(notesState);
     return state.notes.find((note) => note.id === state.selectedNoteId);

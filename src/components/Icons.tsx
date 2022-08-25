@@ -227,3 +227,83 @@ export const Sun = ({ size = 24, className = "" }: IconProps) => (
     />
   </svg>
 );
+
+export const DownloadNote = ({ size = 24, className = "" }: IconProps) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path
+      fill="currentColor"
+      d="M13 12h3l-4 4-4-4h3V8h2v4zm2-8H5v16h14V8h-4V4zM3 2.992C3 2.444 3.447 2 3.999 2H16l5 5v13.993A1 1 0 0 1 20.007 22H3.993A1 1 0 0 1 3 21.008V2.992z"
+    />
+  </svg>
+);
+
+export const HardDrive = ({ size = 24, className = "" }: IconProps) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path
+      fill="currentColor"
+      d="M5 14h14V4H5v10zm0 2v4h14v-4H5zM4 2h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm11 15h2v2h-2v-2z"
+    />
+  </svg>
+);
+
+export const Download = ({ size = 24, className = "" }: IconProps) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path
+      fill="currentColor"
+      d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"
+    />
+  </svg>
+);
+
+export const CloudDownload = ({ size = 24, className = "" }: IconProps) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path
+      fill="currentColor"
+      d="M13 13v5.585l1.828-1.828 1.415 1.415L12 22.414l-4.243-4.242 1.415-1.415L11 18.585V13h2zM12 2a7.001 7.001 0 0 1 6.954 6.194 5.5 5.5 0 0 1-.953 10.784v-2.014a3.5 3.5 0 1 0-1.112-6.91 5 5 0 1 0-9.777 0 3.5 3.5 0 0 0-1.292 6.88l.18.03v2.014a5.5 5.5 0 0 1-.954-10.784A7 7 0 0 1 12 2z"
+    />
+  </svg>
+);
+
+export const CloudUpload = ({ size = 24, className = "" }: IconProps) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path
+      fill="currentColor"
+      d="M12 12.586l4.243 4.242-1.415 1.415L13 16.415V22h-2v-5.587l-1.828 1.83-1.415-1.415L12 12.586zM12 2a7.001 7.001 0 0 1 6.954 6.194 5.5 5.5 0 0 1-.953 10.784v-2.014a3.5 3.5 0 1 0-1.112-6.91 5 5 0 1 0-9.777 0 3.5 3.5 0 0 0-1.292 6.88l.18.03v2.014a5.5 5.5 0 0 1-.954-10.784A7 7 0 0 1 12 2z"
+    />
+  </svg>
+);

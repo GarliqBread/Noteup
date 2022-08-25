@@ -38,6 +38,11 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
     background-color: ${(props) => !props.selected && props.theme.color.contrastGray};
   }
 
+  label {
+    color: ${(props) =>
+      props.selected ? props.theme.color.offWhite : props.theme.color.lightText};
+  }
+
   .highlighted {
     color: ${(props) => (props.selected ? props.theme.color.primary : props.theme.color.white)};
     background-color: ${(props) =>
