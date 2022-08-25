@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
-import { settingsState } from "recoil/settings.recoil";
+import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 import { Flex } from "styles/layout";
 
@@ -21,7 +21,7 @@ type Props = {
 export const SettingsBar = ({ note, editing, setEditing, toggleModal }: Props) => {
   const [uuidCopiedText, setUuidCopiedText] = useState<string>("");
   const setNoteState = useSetRecoilState(selectedNoteSelector);
-  const [settings, setSettings] = useRecoilState(settingsState);
+  const [theme, toggleTheme] = useRecoilState(themeSelector);
   const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
   const successfulCopyMessage = "Note ID copied!";
 
@@ -73,15 +73,8 @@ export const SettingsBar = ({ note, editing, setEditing, toggleModal }: Props) =
         </BottomNavButton>
       </Flex>
       <Flex height="100%" justifyContent="flex-end">
-        <BottomNavButton
-          onClick={() =>
-            setSettings({
-              ...settings,
-              theme: settings.theme === "light" ? "dark" : "light",
-            })
-          }
-        >
-          {settings.theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        <BottomNavButton onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}>
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </BottomNavButton>
         <BottomNavButton onClick={toggleModal}>
           <Gear size={18} />

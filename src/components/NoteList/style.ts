@@ -6,8 +6,8 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: ${(props) => props.theme.color.secondLayer};
-  border-right: 2px solid ${(props) => props.theme.color.border};
+  background-color: ${(props) => props.theme.color.noteList};
+  border-right: 0.5px solid ${(props) => props.theme.color.border};
 `;
 
 const SearchContainer = styled.div`
@@ -28,7 +28,7 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px 8px;
-  min-height: 73px;
+  min-height: 70px;
   background-color: ${(props) => (props.selected ? props.theme.color.primary : "transparent")};
   border-bottom: 1px solid ${(props) => props.theme.color.border};
   color: ${(props) => (props.selected ? props.theme.color.white : props.theme.color.text)};
@@ -53,9 +53,10 @@ const ContextContent = styled(Content)`
   display: flex;
   flex-direction: column;
   gap: 3;
-  background-color: ${(props) => props.theme.color.firstLayer}};
+  background-color: ${(props) => props.theme.color.context}};
   padding: 5px 0;
   border-radius: ${(props) => props.theme.radius.xsmall};
+  border: 1px solid ${(props) => props.theme.color.firstLayer};
   min-width: 250px;
   box-shadow: ${(props) => props.theme.color.shadower};
 `;
@@ -68,7 +69,7 @@ const ContextItem = styled(Item)<{ danger?: "true" }>`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: ${(props) => props.theme.color.text};
+  color: ${(props) => props.theme.color.lightText};
   gap: 5px;
 
   &:hover {

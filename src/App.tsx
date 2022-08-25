@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import { AppContainer } from "components/AppContainer";
+import { AppContainer } from "views/AppContainer";
 
 function App() {
   return (
