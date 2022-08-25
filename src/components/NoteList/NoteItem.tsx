@@ -1,9 +1,10 @@
 import { useRecoilState, useRecoilValue } from "recoil";
+import { Ellipsis, Flex } from "styles/layout";
+import { Label } from "styles/typography";
+
 import { categoriesSelector } from "recoil/categories.recoil";
 import { selectNoteIdSelector } from "recoil/notes.recoil";
 import { Note } from "recoil/types";
-import { Ellipsis, Flex } from "styles/layout";
-import { Label } from "styles/typography";
 
 import { Folder, Notebook, Pin } from "components/Icons";
 

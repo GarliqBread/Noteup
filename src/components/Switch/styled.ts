@@ -32,7 +32,7 @@ const Slider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #d0d0d0;
+  background-color: ${(props) => props.theme.color.slider};
   transition: 0.4s;
   border-radius: 34px;
 
@@ -46,7 +46,7 @@ const Slider = styled.span`
     background: white;
     transition: 0.4s;
     border-radius: 50%;
-    box-shadow: ${(props) => props.theme.color.shadow};
+    box-shadow: ${(props) => props.theme.color.shadower};
   }
 `;
 

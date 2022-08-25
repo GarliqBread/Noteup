@@ -1,10 +1,11 @@
 import dayjs from "dayjs";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { selectedCategorySelector } from "recoil/categories.recoil";
-import { folderState } from "recoil/folder.recoil";
-import { notesState } from "recoil/notes.recoil";
 import { v4 as uuid } from "uuid";
+
+import { selectedCategorySelector } from "recoil/categories.recoil";
+import { activeFolderSelector } from "recoil/folder.recoil";
+import { notesState } from "recoil/notes.recoil";
 
 import { Folder } from "utils/enums";
 
@@ -20,7 +21,7 @@ type Props = {
 
 export const SearchBar = ({ isListEmpty }: Props) => {
   const [{ keyword }, setNotesState] = useRecoilState(notesState);
-  const activeFolder = useRecoilValue(folderState);
+  const activeFolder = useRecoilValue(activeFolderSelector);
   const selectedCategoryId = useRecoilValue(selectedCategorySelector);
   const isTrash = activeFolder === Folder.TRASH;
 

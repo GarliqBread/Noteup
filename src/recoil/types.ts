@@ -7,9 +7,6 @@ export type Note = {
   text: string;
   created: string;
   lastUpdated: string;
-  /**
-   * Refers to the category UUID and not the actual name.
-   */
   categoryId?: string;
   scratchpad?: boolean;
   deleted?: boolean;
@@ -37,9 +34,13 @@ export type CategoryState = {
 export type SettingsState = {
   theme: "light" | "dark";
   notesSortKey: NotesSortKey;
+};
+
+export type EditorState = {
   autoComplete: boolean;
   breakLines: boolean;
   lineNumbers: boolean;
   foldGutter: boolean;
   editorTheme: EditorTheme;
+  editing: boolean;
 };

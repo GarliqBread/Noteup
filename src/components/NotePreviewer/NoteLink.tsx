@@ -1,4 +1,5 @@
 import { ReactNode, SyntheticEvent } from "react";
+
 import { Note } from "recoil/types";
 
 import { Errors } from "utils/enums";

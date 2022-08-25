@@ -1,5 +1,6 @@
 import { Portal, Root, Trigger } from "@radix-ui/react-context-menu";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+
 import { notesState, selectedNoteSelector } from "recoil/notes.recoil";
 
 import { ArrowBack, Close, Pin, Trash } from "components/Icons";

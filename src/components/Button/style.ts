@@ -27,8 +27,8 @@ const StyledButton = styled.button<{ variant?: string }>`
 
   &:disabled {
     cursor: not-allowed;
-    background-color: ${(props) => props.theme.color.lightestGray};
-    color: ${(props) => props.theme.color.text};
+    background-color: ${(props) => props.theme.color.input};
+    color: ${(props) => props.theme.color.lightText};
   }
 `;
 

@@ -1,22 +1,24 @@
 import { useState } from "react";
 import SplitPane from "react-split-pane";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { FlexColumn } from "styles/layout";
+
+import { editingSelector } from "recoil/editor.recoil";
 import { folderState } from "recoil/folder.recoil";
 import { selectedNoteSelector } from "recoil/notes.recoil";
-import { FlexColumn } from "styles/layout";
-import { NoteEditor } from "views/NoteEditor";
-import { NotePreview } from "views/NotePreviwer";
-import { SettingsModal } from "views/SettingsModal";
 
-import { Folder } from "utils/enums";
 import { getNoteBarConf } from "utils/helpers";
+
+import { NoteEditor } from "views/NoteEditor";
+import { NotePreview } from "views/NotePreviewer";
+import { SettingsModal } from "views/SettingsModal";
 
 import { NoteList } from "components/NoteList";
 import { SettingsBar } from "components/SettingsBar";
 import { Sidebar } from "components/Sidebar";
 
 export const AppContainer = () => {
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useRecoilState(editingSelector);
   const [showSettings, setShowSettings] = useState(false);
   const activeFolder = useRecoilValue(folderState);
   const [note, setNote] = useRecoilState(selectedNoteSelector);
@@ -26,7 +28,7 @@ export const AppContainer = () => {
       <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={240}>
         <Sidebar />
         <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
-          {activeFolder !== Folder.SCRATCH && <NoteList />}
+          {<NoteList />}
           <FlexColumn justifyContent="space-between" alignItems="initial" height="100vh">
             {note ? (
               <>

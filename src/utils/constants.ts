@@ -1,3 +1,6 @@
+import dayjs from "dayjs";
+import { v4 as uuid } from "uuid";
+
 import { EditorThemeKey, Folder, NotesSortKey } from "utils/enums";
 
 export const folderMap: Record<Folder, string> = {
@@ -34,4 +37,12 @@ export const themeEditorOptions = [
 
 export const routes = {
   FAVORITES: "/shared/",
+};
+
+export const defaultScratchPaper = {
+  scratchpad: true,
+  id: uuid(),
+  text: "",
+  created: dayjs().format(),
+  lastUpdated: dayjs().format(),
 };

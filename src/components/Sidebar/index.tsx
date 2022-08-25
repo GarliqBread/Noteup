@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
-import { folderState } from "recoil/folder.recoil";
+
+import { activeFolderSelector } from "recoil/folder.recoil";
 
 import { Folder } from "utils/enums";
 
@@ -8,9 +9,11 @@ import { Note, Notebook, Pin, Trash } from "components/Icons";
 import { SidebarButton, StyledSidebar } from "./style";
 
 export const Sidebar = () => {
-  const [activeFolder, setActiveFolder] = useRecoilState(folderState);
+  const [activeFolder, setActiveFolder] = useRecoilState(activeFolderSelector);
 
-  const handleFolderChange = (folder: Folder) => setActiveFolder(folder);
+  const handleFolderChange = (folder: Folder) => {
+    setActiveFolder(folder);
+  };
 
   return (
     <StyledSidebar>
