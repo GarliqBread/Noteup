@@ -1,15 +1,15 @@
 import { useRecoilState } from "recoil";
+
 import { categoriesSelector } from "recoil/categories.recoil";
-import { notesSelector } from "recoil/notes.recoil";
 import {
   autoCompleteSelector,
   breakLinesSelector,
   editorThemeSelector,
   foldGutterSelector,
   lineNumbersSelector,
-  sortKeySelector,
-  themeSelector,
-} from "recoil/settings.recoil";
+} from "recoil/editor.recoil";
+import { notesSelector } from "recoil/notes.recoil";
+import { sortKeySelector, themeSelector } from "recoil/settings.recoil";
 import { Category, Note } from "recoil/types";
 
 import { notesSortOptions, themeEditorOptions } from "utils/constants";

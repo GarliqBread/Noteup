@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { Flex } from "styles/layout";
+
 import { categoriesSelector } from "recoil/categories.recoil";
 import { selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
-import { Flex } from "styles/layout";
 
 import { copyToClipboard, downloadNotes } from "utils/helpers";
 
@@ -82,19 +83,26 @@ export const SettingsBar = ({ note, editing, setEditing, toggleModal }: Props) =
             <BottomNavButton title="Toggle editing" onClick={setEditing}>
               {editing ? <Eye size={18} /> : <Edit size={18} />}
             </BottomNavButton>
-            <BottomNavButton primary={note?.pinned} title="Pin note" onClick={toggleNotePin}>
-              <Pin size={18} />
-            </BottomNavButton>
-            <BottomNavButton trash title="Delete note" onClick={deleteNote}>
-              {note.trash ? <ArrowBack size={18} /> : <Trash size={18} />}
-            </BottomNavButton>
+            {!note.scratchpad && (
+              <>
+                <BottomNavButton primary={note?.pinned} title="Pin note" onClick={toggleNotePin}>
+                  <Pin size={18} />
+                </BottomNavButton>
+
+                <BottomNavButton trash title="Delete note" onClick={deleteNote}>
+                  {note.trash ? <ArrowBack size={18} /> : <Trash size={18} />}
+                </BottomNavButton>
+              </>
+            )}
             <BottomNavButton title="Download note" onClick={downloadNote}>
               <DownloadNote size={18} />
             </BottomNavButton>
-            <BottomNavButton title="Copy note ID" onClick={copyNoteId}>
-              <Clipboard size={18} />
-              <span>{uuidCopiedText}</span>
-            </BottomNavButton>
+            {!note.scratchpad && (
+              <BottomNavButton title="Copy note ID" onClick={copyNoteId}>
+                <Clipboard size={18} />
+                <span>{uuidCopiedText}</span>
+              </BottomNavButton>
+            )}
           </>
         )}
       </Flex>

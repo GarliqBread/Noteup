@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+
 import { filteredNotesSelector, notesState } from "recoil/notes.recoil";
 
 import { getNoteTitle } from "utils/helpers";

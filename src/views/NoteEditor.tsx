@@ -4,14 +4,15 @@ import CodeMirror from "@uiw/react-codemirror";
 import { EditorView } from "codemirror";
 import { useMemo } from "react";
 import { useRecoilValue } from "recoil";
+
 import {
   autoCompleteSelector,
   breakLinesSelector,
   editorThemeSelector,
   foldGutterSelector,
   lineNumbersSelector,
-  themeSelector,
-} from "recoil/settings.recoil";
+} from "recoil/editor.recoil";
+import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
 import { editorThemes } from "utils/editorThemes";

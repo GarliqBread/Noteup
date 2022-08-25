@@ -4,13 +4,7 @@
   "singleQuote": false,
   "trailingComma": "all",
   "bracketSpacing": true,
-  "importOrder": [
-    "^services/(.*)$",
-    "^utils/(.*)$",
-    "^constants/(.*)$",
-    "^components/(.*)$",
-    "^[./]"
-  ],
+  "importOrder": ["^recoil/(.*)$", "^utils/(.*)$", "^views/(.*)$", "^components/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

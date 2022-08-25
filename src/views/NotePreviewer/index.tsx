@@ -2,12 +2,13 @@ import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { folderState } from "recoil/folder.recoil";
+import breaks from "remark-breaks";
+import gfm from "remark-gfm";
+
+import { activeFolderSelector } from "recoil/folder.recoil";
 import { notesState, selectNoteIdSelector } from "recoil/notes.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
-import breaks from "remark-breaks";
-import gfm from "remark-gfm";
 
 import { Folder } from "utils/enums";
 import { uuidPlugin } from "utils/reactMarkdownPlugins";
@@ -23,7 +24,7 @@ export const NotePreview = ({ previewNote }: Props) => {
   const theme = useRecoilValue(themeSelector);
   const { notes } = useRecoilValue(notesState);
   const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
-  const setActiveFolder = useSetRecoilState(folderState);
+  const setActiveFolder = useSetRecoilState(activeFolderSelector);
 
   const handleNoteLinkClick = (e: React.SyntheticEvent, note: Note) => {
     e.preventDefault();

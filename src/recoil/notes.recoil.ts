@@ -2,12 +2,14 @@ import dayjs from "dayjs";
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
+import { defaultScratchPaper } from "utils/constants";
 import { Folder, NotesSortKey } from "utils/enums";
 import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
 import { getNotesSorter } from "utils/sorting";
 
 import { selectedCategorySelector } from "./categories.recoil";
-import { folderState } from "./folder.recoil";
+import { editingSelector } from "./editor.recoil";
+import { activeFolderSelector } from "./folder.recoil";
 import { notesSortKeySelector } from "./settings.recoil";
 import { Note, NotesState } from "./types";
 
@@ -17,7 +19,7 @@ export const notesState: RecoilState<NotesState> = atom({
   key: "notes-state",
   default: {
     keyword: "",
-    notes: [],
+    notes: [defaultScratchPaper],
     sortBy: NotesSortKey.LAST_UPDATED,
     selectedNote: null,
   },
@@ -42,7 +44,7 @@ export const filteredNotesSelector = selector({
   get: ({ get }) => {
     const { notes, keyword } = get(notesState);
     const selectedCategoryId = get(selectedCategorySelector);
-    const activeFolder = get(folderState);
+    const activeFolder = get(activeFolderSelector);
     const notesSortKey = get(notesSortKeySelector);
     const regex = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
 
@@ -65,12 +67,14 @@ export const filteredNotesSelector = selector({
 export const selectNoteIdSelector = selector({
   key: "select-note-id-selector",
   get: ({ get }) => get(notesState).selectedNoteId,
-  set: ({ set, get }, noteId) =>
-    !(noteId instanceof DefaultValue) &&
+  set: ({ set, get }, noteId) => {
+    if (noteId instanceof DefaultValue) return;
+    set(editingSelector, false);
     set(notesState, {
       ...get(notesState),
       selectedNoteId: noteId,
-    }),
+    });
+  },
 });
 
 export const selectedNoteSelector = selector({
