@@ -50,4 +50,32 @@ const SelectOptionContainer = styled.div`
   }
 `;
 
-export { OptionContainer, SelectOptionContainer };
+const ShortcutContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: ${(props) => props.theme.color.lightText};
+
+  .keys {
+    width: 180px;
+  }
+
+  kbd {
+    background-color: ${(props) => props.theme.color.codeBlock};
+    border: 1px solid ${(props) => props.theme.color.border};
+    border-radius: 3px;
+    box-shadow: ${(props) => props.theme.color.insetShadow};
+    color: ${(props) => props.theme.color.lightText};
+    display: inline-block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0 0.1em;
+    padding: 0.1em 0.6em;
+  }
+`;
+
+export { OptionContainer, SelectOptionContainer, ShortcutContainer };

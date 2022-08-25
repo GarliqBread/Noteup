@@ -4,7 +4,14 @@
   "singleQuote": false,
   "trailingComma": "all",
   "bracketSpacing": true,
-  "importOrder": ["^recoil/(.*)$", "^utils/(.*)$", "^views/(.*)$", "^components/(.*)$", "^[./]"],
+  "importOrder": [
+    "^recoil/(.*)$",
+    "^utils/(.*)$",
+    "^views/(.*)$",
+    "^components/(.*)$",
+    "^[./]",
+    "^styles/(.*)$"
+  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

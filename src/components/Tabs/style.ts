@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TabContainer = styled.div<{ active?: boolean }>`
-  min-width: 180px;
+  min-width: 200px;
   display: flex;
   align-items: center;
   gap: 5px;

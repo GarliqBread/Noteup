@@ -1,5 +1,8 @@
 import { useRef } from "react";
 
+import { Shortcuts } from "utils/enums";
+import { useKey } from "utils/hooks";
+
 import { IconButton } from "components/Button";
 import { Close } from "components/Icons";
 
@@ -19,6 +22,8 @@ export const Input = ({ value, onChange, placeholder, clear }: Props) => {
     onChange("");
     inputRef.current?.focus();
   };
+
+  useKey(Shortcuts.SEARCH, () => inputRef.current?.focus());
 
   return (
     <InputContainer>

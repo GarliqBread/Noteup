@@ -2,9 +2,10 @@ import mousetrap from "mousetrap";
 import "mousetrap-global-bind";
 import { useEffect, useRef } from "react";
 
-const noop = () => true;
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
 
-export function useInterval(callback: () => boolean, delay: number | null) {
+export function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(noop);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export function useInterval(callback: () => boolean, delay: number | null) {
   }, [delay]);
 }
 
-export const useKey = (key: string, action: () => boolean) => {
+export const useKey = (key: string, action: () => void) => {
   const actionRef = useRef(noop);
   actionRef.current = action;
 
@@ -33,6 +34,8 @@ export const useKey = (key: string, action: () => boolean) => {
       }
     });
 
-    // return () => mousetrap.unbind(key);
+    return () => {
+      mousetrap.unbind(key);
+    };
   }, [key]);
 };

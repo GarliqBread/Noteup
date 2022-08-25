@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Flex } from "styles/layout";
 
 export const StyledSidebar = styled(Flex)`

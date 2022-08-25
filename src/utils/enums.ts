@@ -10,12 +10,10 @@ export enum Shortcuts {
   NEW_NOTE = "ctrl+alt+n",
   NEW_CATEGORY = "ctrl+alt+c",
   DELETE_NOTE = "ctrl+alt+u",
-  SYNC_NOTES = "ctrl+alt+l",
   DOWNLOAD_NOTES = "ctrl+alt+o",
   PREVIEW = "alt+ctrl+p",
   TOGGLE_THEME = "alt+ctrl+k",
   SEARCH = "alt+ctrl+f",
-  PRETTIFY = "ctrl+alt+i",
 }
 
 export enum ContextMenuEnum {
@@ -46,9 +44,9 @@ export enum LabelText {
   CREATE_NEW_NOTE = "Create new note",
   DELETE_PERMANENTLY = "Delete permanently",
   DOWNLOAD = "Download",
-  FAVORITES = "Favorites",
-  SCRATCHPAD = "Scratchpad",
-  MARK_AS_FAVORITE = "Mark as favorite",
+  PINNED = "Pinned",
+  SCRATCH = "Scratch paper",
+  MARK_AS_PINNED = "Mark as pinned",
   MOVE_TO_TRASH = "Move to trash",
   NEW_CATEGORY = "New category...",
   NEW_NOTE = "New note",
@@ -65,6 +63,6 @@ export enum LabelText {
   DOWNLOAD_ALL_NOTES = "Download all notes",
   BACKUP_ALL_NOTES = "Export backup",
   IMPORT_BACKUP = "Import backup",
-  TOGGLE_FAVORITE = "Toggle favorite",
+  TOGGLE_PINNED = "Toggle pinned",
   COPY_REFERENCE_TO_NOTE = "Copy reference to note",
 }
