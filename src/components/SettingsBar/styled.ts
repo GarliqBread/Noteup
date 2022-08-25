@@ -18,7 +18,7 @@ const BottomNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: ${(props) => (props.primary ? props.theme.color.primary : props.theme.color.text)};
+  color: ${(props) => (props.primary ? props.theme.color.primary : props.theme.color.lightText)};
   &:hover {
     background-color: ${(props) => props.theme.color.hover};
     color: ${(props) => props.trash && props.theme.color.danger};

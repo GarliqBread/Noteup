@@ -1,9 +1,25 @@
 import { useRecoilState } from "recoil";
-import { settingsState } from "recoil/settings.recoil";
+import { categoriesSelector } from "recoil/categories.recoil";
+import { notesSelector } from "recoil/notes.recoil";
+import {
+  autoCompleteSelector,
+  breakLinesSelector,
+  editorThemeSelector,
+  foldGutterSelector,
+  lineNumbersSelector,
+  sortKeySelector,
+  themeSelector,
+} from "recoil/settings.recoil";
+import { Category, Note } from "recoil/types";
 
-import { IconButton } from "components/Button";
-import { Close, Gear } from "components/Icons";
+import { notesSortOptions, themeEditorOptions } from "utils/constants";
+import { EditorThemeKey, LabelText, NotesSortKey } from "utils/enums";
+import { backupNotes, downloadNotes } from "utils/helpers";
+
+import { Button, IconButton, UploadButton } from "components/Button";
+import { Close, CloudDownload, CloudUpload, Download, Gear, HardDrive } from "components/Icons";
 import { Option } from "components/SettingsModal/Option";
+import { SelectOptions } from "components/SettingsModal/SelectOption";
 import { TabPanel } from "components/Tabs/TabPanel";
 import { Tabs } from "components/Tabs/Tabs";
 
@@ -14,43 +30,34 @@ type Props = {
 };
 
 export const SettingsModal = ({ closeModal }: Props) => {
-  const [settings, setSettings] = useRecoilState(settingsState);
+  const [theme, setTheme] = useRecoilState(themeSelector);
+  const [sortKey, setSortKey] = useRecoilState(sortKeySelector);
+  const [autoComplete, setAutoComplete] = useRecoilState(autoCompleteSelector);
+  const [lineNumbers, setLineNumbers] = useRecoilState(lineNumbersSelector);
+  const [breakLines, setBreakLines] = useRecoilState(breakLinesSelector);
+  const [foldGutter, setFoldGutter] = useRecoilState(foldGutterSelector);
+  const [editorTheme, setEditorTheme] = useRecoilState(editorThemeSelector);
+  const [notes, setNotes] = useRecoilState(notesSelector);
+  const [categories, setCategories] = useRecoilState(categoriesSelector);
 
-  const toggleLineNumbers = () =>
-    setSettings({
-      ...settings,
-      lineNumbers: !settings.lineNumbers,
-    });
+  const toggleLineNumbers = () => setLineNumbers(!lineNumbers);
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const toggleAutoComplete = () => setAutoComplete(!autoComplete);
+  const toggleBreakLines = () => setBreakLines(!breakLines);
+  const toggleFoldGutter = () => setFoldGutter(!foldGutter);
 
-  const toggleTheme = () =>
-    setSettings({
-      ...settings,
-      theme: settings.theme === "light" ? "dark" : "light",
-    });
+  const importBackup = async (json: File) => {
+    const content = await json.text();
+    const { notes, categories } = JSON.parse(content) as {
+      notes: Note[];
+      categories: Category[];
+    };
 
-  const toggleAutoComplete = () =>
-    setSettings({
-      ...settings,
-      autoComplete: !settings.autoComplete,
-    });
+    if (!notes || !categories) return;
 
-  const toggleBreakLines = () =>
-    setSettings({
-      ...settings,
-      breakLines: !settings.breakLines,
-    });
-
-  const toggleFoldGutter = () =>
-    setSettings({
-      ...settings,
-      foldGutter: !settings.foldGutter,
-    });
-
-  const toggleInputIndent = () =>
-    setSettings({
-      ...settings,
-      indentOnInput: !settings.indentOnInput,
-    });
+    setNotes(notes);
+    setCategories(categories);
+  };
 
   return (
     <Wrapper>
@@ -68,58 +75,68 @@ export const SettingsModal = ({ closeModal }: Props) => {
               title="Display line numbers"
               description="Controls whether the editor should display line numbers"
               toggle={toggleLineNumbers}
-              checked={settings.lineNumbers}
+              checked={lineNumbers}
             />
             <Option
               title="Auto-complete"
               description="Controls the editor's auto-complete function"
               toggle={toggleAutoComplete}
-              checked={settings.autoComplete}
+              checked={autoComplete}
             />
             <Option
               title="Break lines"
               description="Controls whether the editor should break lines"
               toggle={toggleBreakLines}
-              checked={settings.breakLines}
+              checked={breakLines}
             />
             <Option
               title="Fold gutter"
               description="Controls wether the editor allows gutter folding"
               toggle={toggleFoldGutter}
-              checked={settings.foldGutter}
-            />
-            <Option
-              title="Indent on input"
-              description="Controls wether the editor should indent on input"
-              toggle={toggleInputIndent}
-              checked={settings.indentOnInput}
+              checked={foldGutter}
             />
             <Option
               title="Dark mode"
               description="Controls the theme of the application and editor"
               toggle={toggleTheme}
-              checked={settings.theme === "dark"}
+              checked={theme === "dark"}
             />
-
-            {/* <SelectOptions
-                title="Sort By"
-                description="Controls the sort strategy of the notes"
-                onChange={updateNotesSortStrategyHandler}
-                options={notesSortOptions}
-                selectedValue={notesSortKey}
-                testId={TestID.SORT_BY_DROPDOWN}
-              />
-              <SelectOptions
-                title="Text direction"
-                description="Controls the direction of the text"
-                onChange={updateNotesDirectionHandler}
-                options={directionTextOptions}
-                selectedValue={codeMirrorOptions.direction}
-                testId={TestID.TEXT_DIRECTION_DROPDOWN}
-              /> */}
+            <SelectOptions
+              title="Sort By"
+              description="Controls the sort strategy of the notes"
+              onChange={(key) => setSortKey(key as NotesSortKey)}
+              options={notesSortOptions}
+              value={sortKey}
+            />
+            <SelectOptions
+              title="Editor theme"
+              description="Controls the theme for the markdown editor"
+              onChange={(key) => setEditorTheme(key as EditorThemeKey)}
+              options={themeEditorOptions}
+              value={editorTheme}
+            />
           </TabPanel>
-          <TabPanel label="Nothing" icon={Gear}>
-            <div />
+          <TabPanel label="Data management" icon={HardDrive}>
+            <p>Download all notes as Markdown files in a zip.</p>
+            <Button
+              variant="primary"
+              title="Download notes"
+              onClick={() => downloadNotes(notes, categories)}
+            >
+              <Download size={18} /> {LabelText.DOWNLOAD_ALL_NOTES}
+            </Button>
+            <p>Export Noteup data as JSON.</p>
+            <Button
+              variant="primary"
+              title="Export backup"
+              onClick={() => backupNotes(notes, categories)}
+            >
+              <CloudDownload size={18} /> {LabelText.BACKUP_ALL_NOTES}
+            </Button>
+            <p>Import Noteup JSON file.</p>
+            <UploadButton variant="primary" title="Import backup" onUpload={importBackup}>
+              <CloudUpload size={18} /> {LabelText.IMPORT_BACKUP}
+            </UploadButton>
           </TabPanel>
         </Tabs>
       </Modal>

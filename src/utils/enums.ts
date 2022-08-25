@@ -29,6 +29,12 @@ export enum NotesSortKey {
   CREATED_DATE = "created_date",
 }
 
+export enum EditorThemeKey {
+  GITHUB = "github",
+  XCODE = "xcode",
+  DUOTONE = "duotone",
+}
+
 export enum Errors {
   INVALID_LINKED_NOTE_ID = "<invalid note id provided>",
 }
@@ -53,7 +59,7 @@ export enum LabelText {
   SETTINGS = "Settings",
   SYNC_NOTES = "Sync notes",
   TRASH = "Trash",
-  WELCOME_TO_TAKENOTE = "Welcome to Takenote!",
+  WELCOME_TO_NOTEUP = "Welcome to Noteup!",
   RENAME = "Rename category",
   ADD_CONTENT_NOTE = "Please add content to this new note to access the menu options.",
   DOWNLOAD_ALL_NOTES = "Download all notes",

@@ -1,4 +1,4 @@
-import { RecoilState, atom, selector } from "recoil";
+import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 import { CategoryState } from "./types";
@@ -15,12 +15,18 @@ export const categoryState: RecoilState<CategoryState> = atom({
 });
 
 export const categoriesSelector = selector({
-  key: "categories",
+  key: "categories-selector",
   get: ({ get }) => get(categoryState).categories,
+  set: ({ get, set }, categories) =>
+    !(categories instanceof DefaultValue) &&
+    set(categoryState, {
+      ...get(categoryState),
+      categories,
+    }),
 });
 
 export const selectedCategorySelector = selector({
-  key: "selected-categories",
+  key: "selected-category-selector",
   get: ({ get }) => {
     return get(categoryState).selectedCategoryId;
   },

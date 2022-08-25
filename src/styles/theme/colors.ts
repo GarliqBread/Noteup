@@ -17,6 +17,7 @@ export const lightTheme = {
   lightGray: "#dbdbdb",
   lightText: "#565656",
   noteList: "#e5e5e5",
+  offWhite: "#ffffffb3",
   overlayColor: "rgba(0, 0, 0, 0.15)",
   primary: "#7a1cff",
   red: "#FF0000",
@@ -24,6 +25,7 @@ export const lightTheme = {
   secondLayer: "#ffffff",
   shadow: "rgba(0, 0, 0, 0.1) 0px 1px 4px",
   shadower: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+  tab: "#ededed",
   text: "#404040",
   white: "#ffffff",
 };
@@ -47,6 +49,7 @@ export const darkTheme = {
   lightGray: "#ffffff",
   lightText: "#d0d0d0",
   noteList: "#242424",
+  offWhite: "#ffffffb3",
   overlayColor: "rgba(0, 0, 0, 0.70)",
   primary: "#8738ff",
   red: "#DA3030",
@@ -55,6 +58,7 @@ export const darkTheme = {
   secondLayer: "#303030",
   shadow: "none",
   shadower: "0 10px 20px rgb(0 0 0 / 20%), 0 5px 5px rgb(0 0 0 / 25%)",
+  tab: "#242424",
   text: "#ffffff",
   white: "#ffffff",
 };

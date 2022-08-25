@@ -27,18 +27,22 @@ export const AppContainer = () => {
         <Sidebar />
         <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
           {activeFolder !== Folder.SCRATCH && <NoteList />}
-          {!!note && (
-            <FlexColumn justifyContent="space-between" alignItems="initial" height="100vh">
-              {!editing && <NotePreview previewNote={note} />}
-              {editing && <NoteEditor note={note} setNote={setNote} />}
-              <SettingsBar
-                note={note}
-                editing={editing}
-                setEditing={() => setEditing((prev) => !prev)}
-                toggleModal={() => setShowSettings(true)}
-              />
-            </FlexColumn>
-          )}
+          <FlexColumn justifyContent="space-between" alignItems="initial" height="100vh">
+            {note ? (
+              <>
+                {!editing && <NotePreview previewNote={note} />}
+                {editing && <NoteEditor note={note} setNote={setNote} />}
+              </>
+            ) : (
+              <div />
+            )}
+            <SettingsBar
+              note={note}
+              editing={editing}
+              setEditing={() => setEditing((prev) => !prev)}
+              toggleModal={() => setShowSettings(true)}
+            />
+          </FlexColumn>
         </SplitPane>
       </SplitPane>
       {showSettings && <SettingsModal closeModal={() => setShowSettings(false)} />}
