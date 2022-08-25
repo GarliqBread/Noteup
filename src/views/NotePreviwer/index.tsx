@@ -1,20 +1,26 @@
 import { ReactNode } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { folderState } from "recoil/folder.recoil";
 import { notesState, selectNoteIdSelector } from "recoil/notes.recoil";
+import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
+import breaks from "remark-breaks";
 import gfm from "remark-gfm";
 
 import { Folder } from "utils/enums";
 import { uuidPlugin } from "utils/reactMarkdownPlugins";
 
-import NoteLink from "./NoteLink";
+import { NoteLink } from "components/NotePreviewer/NoteLink";
+
 import { Previewer } from "./style";
 
 type Props = {
   previewNote: Note;
 };
 export const NotePreview = ({ previewNote }: Props) => {
+  const theme = useRecoilValue(themeSelector);
   const { notes } = useRecoilValue(notesState);
   const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
   const setActiveFolder = useSetRecoilState(folderState);
@@ -46,9 +52,27 @@ export const NotePreview = ({ previewNote }: Props) => {
 
   return (
     <Previewer
-      remarkPlugins={[gfm, uuidPlugin]}
+      remarkPlugins={[gfm, uuidPlugin, breaks]}
       components={{
         a: ({ href, children }) => returnNoteLink(href, children),
+        code({ inline, className, children, ...props }) {
+          const match = /language-(\w+)/.exec(className || "");
+          return !inline && match ? (
+            <SyntaxHighlighter
+              children={String(children).replace(/\n$/, "")}
+              // eslint-disable-next-line
+              // @ts-ignore
+              style={theme === "dark" ? oneDark : oneLight}
+              language={match[1]}
+              PreTag="div"
+              {...props}
+            />
+          ) : (
+            <code className={className} {...props}>
+              {children}
+            </code>
+          );
+        },
       }}
       children={previewNote.text.replaceAll("{{", "[](https://uuid:").replaceAll("}}", ")")}
     />

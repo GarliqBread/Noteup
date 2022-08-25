@@ -4,16 +4,16 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { folderState } from "recoil/folder.recoil";
 import { selectedNoteSelector } from "recoil/notes.recoil";
 import { FlexColumn } from "styles/layout";
+import { NoteEditor } from "views/NoteEditor";
+import { NotePreview } from "views/NotePreviwer";
 import { SettingsModal } from "views/SettingsModal";
 
 import { Folder } from "utils/enums";
 import { getNoteBarConf } from "utils/helpers";
 
-import { NoteEditor } from "./NoteEditor";
-import { NoteList } from "./NoteList";
-import { NotePreview } from "./NotePreviewer";
-import { SettingsBar } from "./SettingsBar";
-import { Sidebar } from "./Sidebar";
+import { NoteList } from "components/NoteList";
+import { SettingsBar } from "components/SettingsBar";
+import { Sidebar } from "components/Sidebar";
 
 export const AppContainer = () => {
   const [editing, setEditing] = useState(false);
@@ -23,7 +23,7 @@ export const AppContainer = () => {
 
   return (
     <div className="app-container">
-      <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
+      <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={240}>
         <Sidebar />
         <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
           {activeFolder !== Folder.SCRATCH && <NoteList />}

@@ -12,7 +12,7 @@ const Label = styled.label`
     height: 0;
 
     &:checked + .slider {
-      background: #72ce6e;
+      background: ${(props) => props.theme.color.green};
     }
 
     &:focus + .slider {

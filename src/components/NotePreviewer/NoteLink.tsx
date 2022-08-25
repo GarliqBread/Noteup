@@ -11,7 +11,7 @@ export interface NoteLinkProps {
   handleNoteLinkClick: (e: SyntheticEvent, note: Note) => void;
 }
 
-const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: NoteLinkProps) => {
+export const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: NoteLinkProps) => {
   if (!uuid.includes("https://uuid:")) {
     return (
       <a target="_blank" href={uuid}>
@@ -27,5 +27,3 @@ const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: NoteLinkPr
 
   return <span className="error">{Errors.INVALID_LINKED_NOTE_ID}</span>;
 };
-
-export default NoteLink;
