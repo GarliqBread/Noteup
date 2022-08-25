@@ -27,9 +27,7 @@ export const categoriesSelector = selector({
 
 export const selectedCategorySelector = selector({
   key: "selected-category-selector",
-  get: ({ get }) => {
-    return get(categoryState).selectedCategoryId;
-  },
+  get: ({ get }) => get(categoryState).selectedCategoryId,
   set: ({ set, get }, categoryId) =>
     (categoryId === null || typeof categoryId === "string") &&
     set(categoryState, {

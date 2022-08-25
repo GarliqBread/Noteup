@@ -38,7 +38,7 @@ export const SearchBar = ({ isListEmpty }: Props) => {
           text: "",
           created: dayjs().format(),
           lastUpdated: dayjs().format(),
-          category: selectedCategoryId,
+          categoryId: selectedCategoryId || undefined,
           pinned: activeFolder === Folder.PINNED,
         },
       ],

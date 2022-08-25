@@ -12,14 +12,23 @@ import { notesSelector } from "recoil/notes.recoil";
 import { sortKeySelector, themeSelector } from "recoil/settings.recoil";
 import { Category, Note } from "recoil/types";
 
-import { notesSortOptions, themeEditorOptions } from "utils/constants";
+import { notesSortOptions, shortcutMap, themeEditorOptions } from "utils/constants";
 import { EditorThemeKey, LabelText, NotesSortKey } from "utils/enums";
 import { backupNotes, downloadNotes } from "utils/helpers";
 
 import { Button, IconButton, UploadButton } from "components/Button";
-import { Close, CloudDownload, CloudUpload, Download, Gear, HardDrive } from "components/Icons";
+import {
+  Close,
+  CloudDownload,
+  CloudUpload,
+  Download,
+  Gear,
+  HardDrive,
+  Keyboard,
+} from "components/Icons";
 import { Option } from "components/SettingsModal/Option";
 import { SelectOptions } from "components/SettingsModal/SelectOption";
+import { Shortcut } from "components/SettingsModal/Shortcut";
 import { TabPanel } from "components/Tabs/TabPanel";
 import { Tabs } from "components/Tabs/Tabs";
 
@@ -137,6 +146,11 @@ export const SettingsModal = ({ closeModal }: Props) => {
             <UploadButton variant="primary" title="Import backup" onUpload={importBackup}>
               <CloudUpload size={18} /> {LabelText.IMPORT_BACKUP}
             </UploadButton>
+          </TabPanel>
+          <TabPanel label="Keyboard shortcuts" icon={Keyboard}>
+            {shortcutMap.map((shortcut) => (
+              <Shortcut action={shortcut.action} letter={shortcut.key} key={shortcut.key} />
+            ))}
           </TabPanel>
         </Tabs>
       </Modal>

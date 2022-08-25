@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SplitPane from "react-split-pane";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FlexColumn } from "styles/layout";
 
 import { editingSelector } from "recoil/editor.recoil";
 import { folderState } from "recoil/folder.recoil";
@@ -13,9 +12,12 @@ import { NoteEditor } from "views/NoteEditor";
 import { NotePreview } from "views/NotePreviewer";
 import { SettingsModal } from "views/SettingsModal";
 
+import { KeyboardShortcuts } from "components/KeyboardShortcuts";
 import { NoteList } from "components/NoteList";
 import { SettingsBar } from "components/SettingsBar";
 import { Sidebar } from "components/Sidebar";
+
+import { FlexColumn } from "styles/layout";
 
 export const AppContainer = () => {
   const [editing, setEditing] = useRecoilState(editingSelector);
@@ -48,6 +50,7 @@ export const AppContainer = () => {
         </SplitPane>
       </SplitPane>
       {showSettings && <SettingsModal closeModal={() => setShowSettings(false)} />}
+      <KeyboardShortcuts />
     </div>
   );
 };

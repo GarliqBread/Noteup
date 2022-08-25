@@ -1,10 +1,11 @@
 import { useRecoilValue } from "recoil";
 import GlobalStyles from "reset.css";
 import { ThemeProvider } from "styled-components";
-import { themes } from "styles/theme";
-import { darkTheme, lightTheme } from "styles/theme/colors";
 
 import { settingsState } from "recoil/settings.recoil";
+
+import { themes } from "styles/theme";
+import { darkTheme, lightTheme } from "styles/theme/colors";
 
 interface Props {
   children: JSX.Element;

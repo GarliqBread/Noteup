@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { Flex } from "styles/layout";
 
 import { categoriesSelector } from "recoil/categories.recoil";
 import { selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
@@ -23,6 +22,8 @@ import {
 } from "components/Icons";
 
 import { BottomNav, BottomNavButton } from "./styled";
+
+import { Flex } from "styles/layout";
 
 type Props = {
   note?: Note;
