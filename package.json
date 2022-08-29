@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "vite",
+    "build": "eslint src && vite build",
     "test": "react-scripts test",
     "format": "prettier --write \"./**/*.{json,ts,tsx,js,md,scss,yaml,yml}\"",
     "lint": "eslint . --ext .js,.ts,.tsx --fix",
@@ -61,10 +61,13 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
+    "@vitejs/plugin-react": "^2.0.1",
     "eslint": "^8.21.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
-    "ts-loader": "^9.3.1"
+    "ts-loader": "^9.3.1",
+    "vite": "^3.0.9",
+    "vite-tsconfig-paths": "^3.5.0"
   },
   "eslintConfig": {
     "extends": [
