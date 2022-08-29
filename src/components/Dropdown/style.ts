@@ -24,7 +24,7 @@ z-index: 105;
 
 const TriggerButton = styled.button`
   background-color: transparent;
-  color: ${(props) => props.theme.color.text};
+  color: ${(props) => props.theme.color.lightText};
   border: none;
   padding: 5px;
   display: flex;
@@ -36,6 +36,7 @@ const TriggerButton = styled.button`
 
   .dropdown-icon {
     visibility: hidden;
+    color: ${(props) => props.theme.color.lightText};
   }
 `;
 

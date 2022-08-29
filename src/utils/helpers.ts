@@ -50,7 +50,7 @@ export const getNoteBarConf = (
       return {
         minSize: 200,
         maxSize: 600,
-        defaultSize: 330,
+        defaultSize: 250,
       };
   }
 };
