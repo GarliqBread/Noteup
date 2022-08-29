@@ -1,11 +1,15 @@
+import { save } from "@tauri-apps/api/dialog";
+import { BaseDirectory, writeBinaryFile, writeTextFile } from "@tauri-apps/api/fs";
 import * as clipboard from "clipboard-polyfill/text";
 import dayjs from "dayjs";
-import JSZip from "jszip";
 import { saveAs } from "file-saver";
+import JSZip from "jszip";
 
 import { Category, Note } from "recoil/types";
 
 import { Folder, LabelText } from "./enums";
+
+export const isTauri = "__TAURI_IPC__" in window;
 
 export const removeDuplicateNotes = (arr: Note[]): Note[] => {
   const uniqueIds: string[] = [];
@@ -77,10 +81,26 @@ export const downloadNotes = (notes: Note[], categories: Category[]): void => {
   if (notes.length === 1) {
     const category = categories.find((category: Category) => category.id === notes[0].categoryId);
 
-    const blob = new Blob([noteWithFrontmatter(notes[0], category)], {
-      type: "text/plain;charset=utf-8",
-    });
-    saveAs(blob, "test.md");
+    if (isTauri) {
+      save({
+        filters: [
+          {
+            name: "files",
+            extensions: ["md"],
+          },
+        ],
+      }).then((path) =>
+        writeTextFile(path, noteWithFrontmatter(notes[0], category), {
+          dir: BaseDirectory.App,
+        }),
+      );
+    } else {
+      const blob = new Blob([noteWithFrontmatter(notes[0], category)], {
+        type: "text/plain;charset=utf-8",
+      });
+
+      saveAs(blob, "note.md");
+    }
   } else {
     const zip = new JSZip();
     notes.forEach((note) =>
@@ -93,28 +113,52 @@ export const downloadNotes = (notes: Note[], categories: Category[]): void => {
       ),
     );
 
-    zip.generateAsync({ type: "blob" }).then(
-      (content) => saveAs(content, "notes.zip"),
-      (err) => {
-        console.log(err);
-        // TODO: error generating zip file.
-        // Generate a popup?
-      },
-    );
+    if (isTauri) {
+      zip.generateAsync({ type: "uint8array" }).then((content) => {
+        save({
+          filters: [
+            {
+              name: "files",
+              extensions: ["zip"],
+            },
+          ],
+        }).then((path) =>
+          writeBinaryFile(path, content, {
+            dir: BaseDirectory.App,
+          }),
+        );
+      });
+    } else {
+      zip.generateAsync({ type: "blob" }).then(
+        (content) => saveAs(content, "notes.zip"),
+        (err) => {
+          console.log(err);
+          // TODO: error generating zip file.
+          // Generate a popup?
+        },
+      );
+    }
   }
 };
 
 export const backupNotes = (notes: Note[], categories: Category[]) => {
-  const pom = document.createElement("a");
+  if (isTauri) {
+    save({
+      filters: [
+        {
+          name: "files",
+          extensions: ["json"],
+        },
+      ],
+    }).then((path) =>
+      writeTextFile(path, JSON.stringify({ notes, categories }), {
+        dir: BaseDirectory.App,
+      }),
+    );
+  } else {
+    const json = JSON.stringify({ notes, categories });
+    const blob = new Blob([json], { type: "application/json" });
 
-  const json = JSON.stringify({ notes, categories });
-  const blob = new Blob([json], { type: "application/json" });
-
-  const downloadUrl = window.URL.createObjectURL(blob);
-  pom.href = downloadUrl;
-  pom.download = `noteup-backup-${dayjs().format("YYYY-MM-DD")}.json`;
-  document.body.appendChild(pom);
-
-  pom.click();
-  URL.revokeObjectURL(downloadUrl);
+    saveAs(blob, `noteup-backup-${dayjs().format("YYYY-MM-DD")}.json`);
+  }
 };

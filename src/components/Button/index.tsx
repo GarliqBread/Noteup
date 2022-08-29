@@ -1,4 +1,8 @@
+import { open } from "@tauri-apps/api/dialog";
+import { readBinaryFile } from "@tauri-apps/api/fs";
 import { ChangeEvent, useRef } from "react";
+
+import { isTauri } from "utils/helpers";
 
 import { StyledButton, StyledIconButton } from "./style";
 
@@ -58,7 +62,36 @@ export const UploadButton = ({
     }
   };
 
-  return (
+  const handleTauriClick = () => {
+    open({
+      filters: [
+        {
+          name: "files",
+          extensions: ["json"],
+        },
+      ],
+    }).then((path) => {
+      if (typeof path === "string") {
+        readBinaryFile(path).then((res) => {
+          const blob = new Blob([res], { type: "application/octet-stream" });
+          const file = new File([blob], "test", { type: "application/octet-stream" });
+          onUpload && onUpload(file);
+        });
+      }
+    });
+  };
+
+  return isTauri ? (
+    <StyledButton
+      className={className}
+      disabled={disabled}
+      title={title}
+      variant={variant}
+      onClick={handleTauriClick}
+    >
+      {children}
+    </StyledButton>
+  ) : (
     <div>
       <input
         accept=".json"

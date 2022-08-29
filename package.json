@@ -16,6 +16,7 @@
     "@codemirror/language-data": "^6.1.0",
     "@radix-ui/react-context-menu": "^1.0.0",
     "@radix-ui/react-dropdown-menu": "^1.0.0",
+    "@tauri-apps/api": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
