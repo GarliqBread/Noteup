@@ -4,8 +4,9 @@ import { activeFolderSelector } from "recoil/folder.recoil";
 
 import { Folder } from "utils/enums";
 
-import { Note, Notebook, Pin, Trash } from "components/Icons";
+import { Notes, Pin, PostIt, Trash } from "components/Icons";
 
+import { CategoryList } from "./CategoryList";
 import { SidebarButton, StyledSidebar } from "./style";
 
 export const Sidebar = () => {
@@ -21,13 +22,13 @@ export const Sidebar = () => {
         selected={activeFolder === Folder.SCRATCH}
         onClick={() => handleFolderChange(Folder.SCRATCH)}
       >
-        <Note size={16} /> Scratch paper
+        <PostIt size={16} /> Scratch paper
       </SidebarButton>
       <SidebarButton
         selected={activeFolder === Folder.ALL}
         onClick={() => handleFolderChange(Folder.ALL)}
       >
-        <Notebook size={16} /> Notes
+        <Notes size={16} /> Notes
       </SidebarButton>
       <SidebarButton
         selected={activeFolder === Folder.PINNED}
@@ -41,6 +42,7 @@ export const Sidebar = () => {
       >
         <Trash size={16} /> Trash
       </SidebarButton>
+      <CategoryList />
     </StyledSidebar>
   );
 };

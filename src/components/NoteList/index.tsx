@@ -5,7 +5,7 @@ import { filteredNotesSelector, notesState } from "recoil/notes.recoil";
 
 import { getNoteTitle } from "utils/helpers";
 
-import { ContextMenu } from "./ContextMenu";
+import { NoteContext } from "./NoteContext";
 import { NoteItem } from "./NoteItem";
 import { SearchBar } from "./SearchBar";
 import { List } from "./style";
@@ -43,11 +43,11 @@ export const NoteList = () => {
         }
 
         return (
-          <ContextMenu key={note.id} noteId={note.id}>
+          <NoteContext key={note.id} noteId={note.id}>
             <NoteItem note={note} selected={selectedNoteId === note.id}>
               {noteTitle}
             </NoteItem>
-          </ContextMenu>
+          </NoteContext>
         );
       })}
     </List>

@@ -12,9 +12,9 @@ import { NoteEditor } from "views/NoteEditor";
 import { NotePreview } from "views/NotePreviewer";
 import { SettingsModal } from "views/SettingsModal";
 
+import { EditorBar } from "components/EditorBar";
 import { KeyboardShortcuts } from "components/KeyboardShortcuts";
 import { NoteList } from "components/NoteList";
-import { SettingsBar } from "components/SettingsBar";
 import { Sidebar } from "components/Sidebar";
 
 import { FlexColumn } from "styles/layout";
@@ -40,7 +40,7 @@ export const AppContainer = () => {
             ) : (
               <div />
             )}
-            <SettingsBar
+            <EditorBar
               note={note}
               editing={editing}
               setEditing={() => setEditing((prev) => !prev)}

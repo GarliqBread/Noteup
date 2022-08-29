@@ -29,6 +29,7 @@ export type NotesState = {
 export type CategoryState = {
   categories: Category[];
   selectedCategoryId: string | null;
+  categoryListOpen: boolean;
 };
 
 export type SettingsState = {

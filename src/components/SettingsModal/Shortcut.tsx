@@ -10,7 +10,7 @@ export const Shortcut = ({ action, letter }: Props) => {
     <ShortcutContainer>
       <div>{action}</div>
       <div className="keys">
-        <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>{letter}</kbd>
+        <kbd>CTRL</kbd> <kbd>ALT</kbd> <kbd>{letter}</kbd>
       </div>
     </ShortcutContainer>
   );

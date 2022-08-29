@@ -7,7 +7,7 @@ import { Folder, NotesSortKey } from "utils/enums";
 import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
 import { getNotesSorter } from "utils/sorting";
 
-import { selectedCategorySelector } from "./categories.recoil";
+import { selectedCategoryIdSelector } from "./categories.recoil";
 import { editingSelector } from "./editor.recoil";
 import { activeFolderSelector } from "./folder.recoil";
 import { notesSortKeySelector } from "./settings.recoil";
@@ -43,7 +43,7 @@ export const filteredNotesSelector = selector({
   key: "filtered-notes",
   get: ({ get }) => {
     const { notes, keyword } = get(notesState);
-    const selectedCategoryId = get(selectedCategorySelector);
+    const selectedCategoryId = get(selectedCategoryIdSelector);
     const activeFolder = get(activeFolderSelector);
     const notesSortKey = get(notesSortKeySelector);
     const regex = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");

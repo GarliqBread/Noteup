@@ -5,6 +5,7 @@ import { StyledButton, StyledIconButton } from "./style";
 type ButtonProps = {
   className?: string;
   title?: string;
+  type?: "button" | "submit" | "reset";
   variant?: string;
   disabled?: boolean;
   onClick?: () => void;
@@ -12,11 +13,20 @@ type ButtonProps = {
   children: string | React.ReactNode;
 };
 
-export const Button = ({ className, title, variant, disabled, onClick, children }: ButtonProps) => {
+export const Button = ({
+  className,
+  title,
+  type,
+  variant,
+  disabled,
+  onClick,
+  children,
+}: ButtonProps) => {
   return (
     <StyledButton
       className={className}
       disabled={disabled}
+      type={type}
       title={title}
       variant={variant}
       onClick={onClick}

@@ -6,7 +6,7 @@ import breaks from "remark-breaks";
 import gfm from "remark-gfm";
 
 import { activeFolderSelector } from "recoil/folder.recoil";
-import { notesState, selectNoteIdSelector } from "recoil/notes.recoil";
+import { notesState, selectedNoteSelector } from "recoil/notes.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
@@ -23,14 +23,14 @@ type Props = {
 export const NotePreview = ({ previewNote }: Props) => {
   const theme = useRecoilValue(themeSelector);
   const { notes } = useRecoilValue(notesState);
-  const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
+  const setSelectedNote = useSetRecoilState(selectedNoteSelector);
   const setActiveFolder = useSetRecoilState(activeFolderSelector);
 
   const handleNoteLinkClick = (e: React.SyntheticEvent, note: Note) => {
     e.preventDefault();
 
     if (note) {
-      setSelectedNote(note.id);
+      setSelectedNote(note);
 
       if (note?.pinned) return setActiveFolder(Folder.PINNED);
       if (note?.scratchpad) return setActiveFolder(Folder.SCRATCH);

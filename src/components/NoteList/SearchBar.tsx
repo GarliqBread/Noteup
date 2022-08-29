@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { v4 as uuid } from "uuid";
 
-import { selectedCategorySelector } from "recoil/categories.recoil";
+import { selectedCategoryIdSelector } from "recoil/categories.recoil";
 import { activeFolderSelector } from "recoil/folder.recoil";
 import { notesState } from "recoil/notes.recoil";
 
@@ -22,7 +22,7 @@ type Props = {
 export const SearchBar = ({ isListEmpty }: Props) => {
   const [{ keyword }, setNotesState] = useRecoilState(notesState);
   const activeFolder = useRecoilValue(activeFolderSelector);
-  const selectedCategoryId = useRecoilValue(selectedCategorySelector);
+  const selectedCategoryId = useRecoilValue(selectedCategoryIdSelector);
   const isTrash = activeFolder === Folder.TRASH;
 
   const handleKeywordChange = (value: string) =>

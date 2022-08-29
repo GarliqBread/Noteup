@@ -11,9 +11,10 @@ import { copyToClipboard, downloadNotes } from "utils/helpers";
 import {
   ArrowBack,
   Clipboard,
-  DownloadNote,
+  Download,
   Edit,
   Eye,
+  FilledPin,
   Gear,
   Moon,
   Pin,
@@ -32,7 +33,7 @@ type Props = {
   toggleModal: () => void;
 };
 
-export const SettingsBar = ({ note, editing, setEditing, toggleModal }: Props) => {
+export const EditorBar = ({ note, editing, setEditing, toggleModal }: Props) => {
   const [uuidCopiedText, setUuidCopiedText] = useState<string>("");
   const setNoteState = useSetRecoilState(selectedNoteSelector);
   const [theme, toggleTheme] = useRecoilState(themeSelector);
@@ -87,7 +88,7 @@ export const SettingsBar = ({ note, editing, setEditing, toggleModal }: Props) =
             {!note.scratchpad && (
               <>
                 <BottomNavButton primary={note?.pinned} title="Pin note" onClick={toggleNotePin}>
-                  <Pin size={18} />
+                  {note?.pinned ? <FilledPin size={18} /> : <Pin size={18} />}
                 </BottomNavButton>
 
                 <BottomNavButton trash title="Delete note" onClick={deleteNote}>
@@ -96,7 +97,7 @@ export const SettingsBar = ({ note, editing, setEditing, toggleModal }: Props) =
               </>
             )}
             <BottomNavButton title="Download note" onClick={downloadNote}>
-              <DownloadNote size={18} />
+              <Download size={18} />
             </BottomNavButton>
             {!note.scratchpad && (
               <BottomNavButton title="Copy note ID" onClick={copyNoteId}>
