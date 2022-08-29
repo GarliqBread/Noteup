@@ -27,7 +27,7 @@ export const AppContainer = () => {
 
   return (
     <div className="app-container">
-      <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={240}>
+      <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={200}>
         <Sidebar />
         <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
           {<NoteList />}
