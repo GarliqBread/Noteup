@@ -33,7 +33,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background-color: ${(props) => props.theme.color.firstLayer};
+    background-color: #2d2d2d;
     overscroll-behavior-y: none;
     -webkit-overflow-scrolling: touch;
   }
