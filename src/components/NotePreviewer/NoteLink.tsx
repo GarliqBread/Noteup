@@ -1,4 +1,4 @@
-import { ReactNode, SyntheticEvent } from "react";
+import { ReactNode } from "react";
 
 import { Note } from "recoil/types";
 
@@ -9,7 +9,7 @@ export interface NoteLinkProps {
   uuid: string;
   originalText: ReactNode;
   notes: Note[];
-  handleNoteLinkClick: (e: SyntheticEvent, note: Note) => void;
+  handleNoteLinkClick: (note: Note) => void;
 }
 
 export const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: NoteLinkProps) => {
@@ -21,10 +21,10 @@ export const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: Not
     );
   }
   const id = uuid.split("uuid:")[1];
-  const note = notes.find((note) => note.id.startsWith(id));
+  const note = notes.find((note) => note.id === id);
   const title = note !== undefined ? getNoteTitle(note.text) : null;
 
-  if (note && title) return <a onClick={(e) => handleNoteLinkClick(e, note)}>{title}</a>;
+  if (note && title) return <a onClick={() => handleNoteLinkClick(note)}>{title}</a>;
 
   return <span className="error">{Errors.INVALID_LINKED_NOTE_ID}</span>;
 };
