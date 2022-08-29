@@ -22,9 +22,9 @@ import {
   CloudDownload,
   CloudUpload,
   Download,
-  Gear,
   HardDrive,
   Keyboard,
+  Sliders,
 } from "components/Icons";
 import { Option } from "components/SettingsModal/Option";
 import { SelectOptions } from "components/SettingsModal/SelectOption";
@@ -79,7 +79,7 @@ export const SettingsModal = ({ closeModal }: Props) => {
           </IconButton>
         </ModalHeader>
         <Tabs>
-          <TabPanel label="Preferences" icon={Gear}>
+          <TabPanel label="Preferences" icon={Sliders}>
             <Option
               title="Display line numbers"
               description="Controls whether the editor should display line numbers"

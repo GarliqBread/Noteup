@@ -1,4 +1,3 @@
-import { Content, Item } from "@radix-ui/react-context-menu";
 import styled from "styled-components";
 
 const List = styled.div`
@@ -23,6 +22,7 @@ const SearchContainer = styled.div`
 `;
 
 const NoteItemContainer = styled.div<{ selected?: boolean }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,38 +54,4 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   }
 `;
 
-const ContextContent = styled(Content)`
-  display: flex;
-  flex-direction: column;
-  gap: 3;
-  background-color: ${(props) => props.theme.color.context}};
-  padding: 5px 0;
-  border-radius: ${(props) => props.theme.radius.xsmall};
-  border: 1px solid ${(props) => props.theme.color.firstLayer};
-  min-width: 250px;
-  box-shadow: ${(props) => props.theme.color.shadower};
-`;
-
-const ContextItem = styled(Item)<{ danger?: "true" }>`
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: ${(props) => props.theme.color.lightText};
-  gap: 5px;
-
-  &:hover {
-    background-color: ${(props) =>
-      props.danger ? props.theme.color.danger : props.theme.color.contrastGray};
-    color: ${(props) => props.danger && props.theme.color.white};
-  }
-
-  svg {
-    opacity: 0.8;
-  }
-`;
-
-export { List, SearchContainer, NoteItemContainer, ContextContent, ContextItem };
+export { List, SearchContainer, NoteItemContainer };

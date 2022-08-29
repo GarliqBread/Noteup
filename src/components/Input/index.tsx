@@ -9,13 +9,26 @@ import { Close } from "components/Icons";
 import { InputContainer, StyledInput } from "./style";
 
 type Props = {
+  id?: string;
   value: string;
-  onChange: (value: string) => void;
   placeholder?: string;
+  maxLength?: number;
   clear?: boolean;
+  autoFocus?: boolean;
+  onChange: (value: string) => void;
+  onBlur?: (value: string) => void;
 };
 
-export const Input = ({ value, onChange, placeholder, clear }: Props) => {
+export const Input = ({
+  id,
+  value,
+  placeholder,
+  maxLength,
+  autoFocus,
+  clear,
+  onChange,
+  onBlur,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClear = () => {
@@ -28,9 +41,13 @@ export const Input = ({ value, onChange, placeholder, clear }: Props) => {
   return (
     <InputContainer>
       <StyledInput
+        id={id}
         ref={inputRef}
         value={value}
         placeholder={placeholder}
+        autoFocus={autoFocus}
+        maxLength={maxLength}
+        onBlur={(e) => onBlur && onBlur(e.target.value)}
         onChange={(e) => onChange(e.target.value)}
       />
       {clear && value !== "" && (

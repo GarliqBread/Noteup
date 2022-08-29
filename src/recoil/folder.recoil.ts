@@ -4,7 +4,7 @@ import { recoilPersist } from "recoil-persist";
 import { Folder } from "utils/enums";
 import { getNotesSorter } from "utils/sorting";
 
-import { selectedCategorySelector } from "./categories.recoil";
+import { selectedCategoryIdSelector } from "./categories.recoil";
 import { notesSelector, selectNoteIdSelector } from "./notes.recoil";
 import { sortKeySelector } from "./settings.recoil";
 
@@ -23,7 +23,7 @@ export const activeFolderSelector = selector({
     if (folder instanceof DefaultValue) return;
     const notes = get(notesSelector);
     const sortOrderKey = get(sortKeySelector);
-    const categoryId = get(selectedCategorySelector);
+    const categoryId = get(selectedCategoryIdSelector);
     const availableNotes = !sortOrderKey
       ? notes.filter((note) => !note.trash)
       : notes.filter((note) => !note.trash).sort(getNotesSorter(sortOrderKey));
@@ -35,6 +35,7 @@ export const activeFolderSelector = selector({
       [Folder.SCRATCH]: () => availableNotes.find((note) => note.scratchpad),
       [Folder.TRASH]: () => notes.find((note) => note.trash),
     }[folder]();
+
     set(selectNoteIdSelector, firstNote ? firstNote.id : "");
     set(folderState, folder);
   },
