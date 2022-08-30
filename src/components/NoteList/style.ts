@@ -29,7 +29,8 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   align-items: flex-start;
   padding: 10px 8px;
   min-height: 70px;
-  background-color: ${(props) => (props.selected ? props.theme.color.primary : "transparent")};
+  background-color: ${(props) =>
+    props.selected ? props.theme.color.primary : props.theme.color.noteList};
   border-bottom: 1px solid ${(props) => props.theme.color.border};
   color: ${(props) => (props.selected ? props.theme.color.white : props.theme.color.text)};
 

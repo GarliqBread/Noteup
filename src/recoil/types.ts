@@ -1,4 +1,4 @@
-import { NotesSortKey } from "utils/enums";
+import { NotesSortKey, PreviewThemeKey } from "utils/enums";
 
 type EditorTheme = "github" | "xcode" | "duotone";
 
@@ -43,5 +43,6 @@ export type EditorState = {
   lineNumbers: boolean;
   foldGutter: boolean;
   editorTheme: EditorTheme;
+  previwerTheme: PreviewThemeKey;
   editing: boolean;
 };
