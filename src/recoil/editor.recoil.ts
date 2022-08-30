@@ -1,7 +1,7 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { EditorThemeKey } from "utils/enums";
+import { EditorThemeKey, PreviewThemeKey } from "utils/enums";
 
 import { EditorState } from "./types";
 
@@ -11,6 +11,7 @@ export const editorState: RecoilState<EditorState> = atom({
   key: "editor-state",
   default: {
     editorTheme: EditorThemeKey.DUOTONE,
+    previwerTheme: PreviewThemeKey.DUOTONE,
     autoComplete: true,
     breakLines: true,
     foldGutter: false,
@@ -83,5 +84,16 @@ export const editorThemeSelector = selector({
     set(editorState, {
       ...get(editorState),
       editorTheme,
+    }),
+});
+
+export const previewerThemeSelector = selector({
+  key: "perviewer-theme-selector",
+  get: ({ get }) => get(editorState).previwerTheme,
+  set: ({ set, get }, previwerTheme) =>
+    !(previwerTheme instanceof DefaultValue) &&
+    set(editorState, {
+      ...get(editorState),
+      previwerTheme,
     }),
 });

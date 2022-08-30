@@ -1,15 +1,16 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import breaks from "remark-breaks";
 import gfm from "remark-gfm";
 
+import { previewerThemeSelector } from "recoil/editor.recoil";
 import { folderState } from "recoil/folder.recoil";
 import { notesState, selectNoteIdSelector } from "recoil/notes.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
+import { previewThemes } from "utils/editorThemes";
 import { Folder } from "utils/enums";
 import { uuidPlugin } from "utils/reactMarkdownPlugins";
 
@@ -22,6 +23,7 @@ type Props = {
 };
 export const NotePreview = ({ previewNote }: Props) => {
   const theme = useRecoilValue(themeSelector);
+  const previewerTheme = useRecoilValue(previewerThemeSelector);
   const { notes } = useRecoilValue(notesState);
   const setSelectedNoteId = useSetRecoilState(selectNoteIdSelector);
   const setActiveFolder = useSetRecoilState(folderState);
@@ -61,7 +63,7 @@ export const NotePreview = ({ previewNote }: Props) => {
               children={String(children).replace(/\n$/, "")}
               // eslint-disable-next-line
               // @ts-ignore
-              style={theme === "dark" ? oneDark : oneLight}
+              style={previewThemes[theme][previewerTheme]}
               language={match[1]}
               PreTag="div"
               {...props}

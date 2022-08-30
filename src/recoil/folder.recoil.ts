@@ -5,6 +5,7 @@ import { Folder } from "utils/enums";
 import { getNotesSorter } from "utils/sorting";
 
 import { selectedCategoryIdSelector } from "./categories.recoil";
+import { editingSelector } from "./editor.recoil";
 import { notesSelector, selectNoteIdSelector } from "./notes.recoil";
 import { sortKeySelector } from "./settings.recoil";
 
@@ -38,5 +39,8 @@ export const activeFolderSelector = selector({
 
     set(selectNoteIdSelector, firstNote ? firstNote.id : "");
     set(folderState, folder);
+    if (folder === Folder.SCRATCH) {
+      set(editingSelector, true);
+    }
   },
 });

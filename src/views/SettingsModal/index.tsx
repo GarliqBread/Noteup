@@ -7,13 +7,19 @@ import {
   editorThemeSelector,
   foldGutterSelector,
   lineNumbersSelector,
+  previewerThemeSelector,
 } from "recoil/editor.recoil";
 import { notesSelector } from "recoil/notes.recoil";
 import { sortKeySelector, themeSelector } from "recoil/settings.recoil";
 import { Category, Note } from "recoil/types";
 
-import { notesSortOptions, shortcutMap, themeEditorOptions } from "utils/constants";
-import { EditorThemeKey, LabelText, NotesSortKey } from "utils/enums";
+import {
+  notesSortOptions,
+  shortcutMap,
+  themeEditorOptions,
+  themePreviewOptions,
+} from "utils/constants";
+import { EditorThemeKey, LabelText, NotesSortKey, PreviewThemeKey } from "utils/enums";
 import { backupNotes, downloadNotes } from "utils/helpers";
 
 import { Button, IconButton, UploadButton } from "components/Button";
@@ -46,6 +52,7 @@ export const SettingsModal = ({ closeModal }: Props) => {
   const [breakLines, setBreakLines] = useRecoilState(breakLinesSelector);
   const [foldGutter, setFoldGutter] = useRecoilState(foldGutterSelector);
   const [editorTheme, setEditorTheme] = useRecoilState(editorThemeSelector);
+  const [previewerTheme, setPreviewerTheme] = useRecoilState(previewerThemeSelector);
   const [notes, setNotes] = useRecoilState(notesSelector);
   const [categories, setCategories] = useRecoilState(categoriesSelector);
 
@@ -66,6 +73,7 @@ export const SettingsModal = ({ closeModal }: Props) => {
 
     setNotes(notes);
     setCategories(categories);
+    closeModal();
   };
 
   return (
@@ -123,6 +131,13 @@ export const SettingsModal = ({ closeModal }: Props) => {
               onChange={(key) => setEditorTheme(key as EditorThemeKey)}
               options={themeEditorOptions}
               value={editorTheme}
+            />
+            <SelectOptions
+              title="Previewer theme"
+              description="Controls the theme for the markdown preview"
+              onChange={(key) => setPreviewerTheme(key as PreviewThemeKey)}
+              options={themePreviewOptions}
+              value={previewerTheme}
             />
           </TabPanel>
           <TabPanel label="Data management" icon={HardDrive}>

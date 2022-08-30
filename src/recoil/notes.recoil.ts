@@ -21,7 +21,7 @@ export const notesState: RecoilState<NotesState> = atom({
     keyword: "",
     notes: [defaultScratchPaper],
     sortBy: NotesSortKey.LAST_UPDATED,
-    selectedNote: null,
+    selectedNoteId: null,
   },
   effects_UNSTABLE: [persistAtom],
 });

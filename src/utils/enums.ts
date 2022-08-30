@@ -33,6 +33,13 @@ export enum EditorThemeKey {
   DUOTONE = "duotone",
 }
 
+export enum PreviewThemeKey {
+  COLDDARK = "colddark",
+  ONE = "one",
+  DUOTONE = "duotone",
+  VS = "vs",
+}
+
 export enum Errors {
   INVALID_LINKED_NOTE_ID = "<invalid note id provided>",
 }

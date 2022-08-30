@@ -4,7 +4,7 @@
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
     "devPath": "http://localhost:3000",
-    "distDir": "../dist",
+    "distDir": "../build",
     "withGlobalTauri": true
   },
   "package": {
@@ -65,10 +65,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 800,
+        "height": 1200,
         "resizable": true,
         "title": "Noteup",
-        "width": 900,
+        "width": 1200,
         "minWidth": 800,
         "minHeight": 800,
         "visible": false
