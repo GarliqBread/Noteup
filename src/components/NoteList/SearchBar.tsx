@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 
 import { selectedCategoryIdSelector } from "recoil/categories.recoil";
 import { activeFolderSelector } from "recoil/folder.recoil";
-import { notesState } from "recoil/notes.recoil";
+import { keywordSelector, notesSelector, notesState } from "recoil/notes.recoil";
 
 import { Folder } from "utils/enums";
 
@@ -20,45 +20,40 @@ type Props = {
 };
 
 export const SearchBar = ({ isListEmpty }: Props) => {
-  const [{ keyword }, setNotesState] = useRecoilState(notesState);
+  const [notes, setNotes] = useRecoilState(notesSelector);
+  const [noteState, setNoteState] = useRecoilState(notesState);
+  const [keyword, setKeyword] = useRecoilState(keywordSelector);
   const activeFolder = useRecoilValue(activeFolderSelector);
   const selectedCategoryId = useRecoilValue(selectedCategoryIdSelector);
   const isTrash = activeFolder === Folder.TRASH;
 
-  const handleKeywordChange = (value: string) =>
-    setNotesState((state) => ({ ...state, keyword: value }));
-
   const addNewNote = () =>
-    setNotesState((state) => ({
-      ...state,
-      notes: [
-        ...state.notes,
-        {
-          id: uuid(),
-          text: "",
-          created: dayjs().format(),
-          lastUpdated: dayjs().format(),
-          categoryId: selectedCategoryId || undefined,
-          pinned: activeFolder === Folder.PINNED,
-        },
-      ],
-    }));
+    setNotes([
+      {
+        id: uuid(),
+        text: "",
+        created: dayjs().format(),
+        lastUpdated: dayjs().format(),
+        categoryId: selectedCategoryId || undefined,
+        pinned: activeFolder === Folder.PINNED,
+      },
+    ]);
 
-  useEffect(() => () => setNotesState((state) => ({ ...state, keyword: "" })), [setNotesState]);
+  useEffect(() => () => setKeyword(""), [setKeyword]);
 
   return (
     <SearchContainer>
-      <Input placeholder="Search" clear value={keyword} onChange={handleKeywordChange} />
+      <Input placeholder="Search" clear value={keyword} onChange={setKeyword} />
       {isTrash ? (
         <Button
           disabled={isListEmpty}
           title="Empty trash"
           variant="danger"
           onClick={() =>
-            setNotesState((state) => ({
-              ...state,
-              notes: state.notes.filter((note) => !note.trash),
-            }))
+            setNoteState({
+              ...noteState,
+              notes: notes.filter((note) => !note.trash),
+            })
           }
         >
           Empty

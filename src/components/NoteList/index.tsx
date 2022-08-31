@@ -1,7 +1,8 @@
 import { useMemo } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
+import { folderState } from "recoil/folder.recoil";
 
-import { filteredNotesSelector, notesState } from "recoil/notes.recoil";
+import { filteredNotesSelector, keywordSelector, selectNoteIdSelector } from "recoil/notes.recoil";
 
 import { getNoteTitle } from "utils/helpers";
 
@@ -11,8 +12,10 @@ import { SearchBar } from "./SearchBar";
 import { List } from "./style";
 
 export const NoteList = () => {
+  const activeFolder = useRecoilValue(folderState);
   const filteredNotes = useRecoilValue(filteredNotesSelector);
-  const [{ selectedNoteId, keyword }] = useRecoilState(notesState);
+  const selectedNoteId = useRecoilValue(selectNoteIdSelector);
+  const keyword = useRecoilValue(keywordSelector);
 
   const regex = useMemo(
     () => new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
@@ -31,13 +34,13 @@ export const NoteList = () => {
             const highlightEnd = highlightStart + keyword.length;
 
             noteTitle = (
-              <span>
+              <>
                 {noteTitle.slice(0, highlightStart)}
                 <strong className="highlighted">
                   {noteTitle.slice(highlightStart, highlightEnd)}
                 </strong>
                 {noteTitle.slice(highlightEnd)}
-              </span>
+              </>
             );
           }
         }
