@@ -102,3 +102,14 @@ export const selectedNoteSelector = selector({
     });
   },
 });
+
+export const keywordSelector = selector({
+  key: "keyword-selector",
+  get: ({ get }) => get(notesState).keyword,
+  set: ({ get, set }, keyword) =>
+    !(keyword instanceof DefaultValue) &&
+    set(notesState, {
+      ...get(notesState),
+      keyword,
+    }),
+});
