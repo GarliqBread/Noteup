@@ -34,8 +34,10 @@ const TriggerButton = styled.button`
   cursor: pointer;
   color: ${(props) => props.theme.color.text};
 
-  .dropdown-icon {
-    visibility: hidden;
+  @media (min-width: 500px) {
+    .dropdown-icon {
+      visibility: hidden;
+    }
   }
 `;
 

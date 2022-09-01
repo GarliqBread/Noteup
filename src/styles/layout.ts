@@ -38,6 +38,7 @@ const Ellipsis = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 15px;
+  max-width: 83%;
 `;
 
 export { Container, Flex, FlexColumn, Ellipsis };
