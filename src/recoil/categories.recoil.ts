@@ -34,11 +34,14 @@ export const selectedCategoryIdSelector = selector({
   get: ({ get }) => get(categoryState).selectedCategoryId,
   set: ({ set, get }, categoryId) => {
     if (categoryId === null || typeof categoryId === "string") {
-      set(activeFolderSelector, Folder.CATEGORY);
       set(categoryState, {
         ...get(categoryState),
         selectedCategoryId: categoryId,
       });
+
+      if (categoryId) {
+        set(activeFolderSelector, Folder.CATEGORY);
+      }
     }
   },
 });

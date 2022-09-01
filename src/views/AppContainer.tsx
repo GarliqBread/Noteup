@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { invoke } from "@tauri-apps/api";
 import { useRecoilValue } from "recoil";
 
 import { folderState } from "recoil/folder.recoil";
 
+import { isTauri } from "utils/helpers";
 import { getNoteBarConf } from "utils/helpers";
 
 import { KeyboardShortcuts } from "components/KeyboardShortcuts";
@@ -19,6 +21,13 @@ import { Container } from "styles/layout";
 export const AppContainer = () => {
   const activeFolder = useRecoilValue(folderState);
   const [showSettings, setShowSettings] = useState(false);
+
+  useEffect(() => {
+    if (isTauri) {
+      // On mount open the tauri application
+      invoke("show_main_window");
+    }
+  }, []);
 
   return (
     <Container>
