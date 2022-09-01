@@ -3,9 +3,11 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 import { categoriesSelector } from "recoil/categories.recoil";
 import { selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
+import { sectionsSelector } from "recoil/sections.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
+import { Section } from "utils/enums";
 import { copyToClipboard, downloadNotes } from "utils/helpers";
 
 import {
@@ -38,6 +40,7 @@ export const EditorBar = ({ note, editing, setEditing, toggleModal }: Props) => 
   const setNoteState = useSetRecoilState(selectedNoteSelector);
   const [theme, toggleTheme] = useRecoilState(themeSelector);
   const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
+  const setSection = useSetRecoilState(sectionsSelector);
   const categories = useRecoilValue(categoriesSelector);
   const successfulCopyMessage = "Note ID copied!";
 
@@ -56,6 +59,7 @@ export const EditorBar = ({ note, editing, setEditing, toggleModal }: Props) => 
       });
     editing && setEditing();
     setSelectedNote(null);
+    setSection(Section.LIST);
   };
 
   const copyNoteId = () => {

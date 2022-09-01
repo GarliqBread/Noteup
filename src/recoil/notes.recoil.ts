@@ -35,6 +35,7 @@ export const notesSelector = selector({
     set(notesState, {
       ...state,
       notes: removeDuplicateNotes([...state.notes, ...notes]),
+      selectedNoteId: notes.length === 1 ? notes[0].id : state.selectedNoteId,
     });
   },
 });

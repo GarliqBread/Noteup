@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { categoriesSelector } from "recoil/categories.recoil";
-import { notesState, selectedNoteSelector } from "recoil/notes.recoil";
+import { notesState, selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
 
 import { copyToClipboard, downloadNotes } from "utils/helpers";
 
@@ -17,13 +17,16 @@ export const NoteContext = ({ noteId, children }: Props) => {
   const categories = useRecoilValue(categoriesSelector);
   const setNotesState = useSetRecoilState(selectedNoteSelector);
   const selectedNote = useRecoilValue(notesState).notes.find((note) => note.id === noteId);
+  const setSelectedNoteId = useSetRecoilState(selectNoteIdSelector);
 
-  const toggleNoteTrash = () =>
+  const toggleNoteTrash = () => {
     !!selectedNote &&
-    setNotesState({
-      ...selectedNote,
-      trash: !selectedNote.trash,
-    });
+      setNotesState({
+        ...selectedNote,
+        trash: !selectedNote.trash,
+      });
+    setSelectedNoteId(null);
+  };
 
   const toggleNotePin = () =>
     !!selectedNote &&
@@ -32,12 +35,14 @@ export const NoteContext = ({ noteId, children }: Props) => {
       pinned: !selectedNote.pinned,
     });
 
-  const deleteNote = () =>
+  const deleteNote = () => {
     !!selectedNote &&
-    setNotesState({
-      ...selectedNote,
-      deleted: true,
-    });
+      setNotesState({
+        ...selectedNote,
+        deleted: true,
+      });
+    setSelectedNoteId(null);
+  };
 
   const downloadNote = () => !!selectedNote && downloadNotes([selectedNote], categories);
 

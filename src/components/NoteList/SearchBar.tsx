@@ -1,13 +1,14 @@
 import dayjs from "dayjs";
 import { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { v4 as uuid } from "uuid";
 
 import { selectedCategoryIdSelector } from "recoil/categories.recoil";
 import { activeFolderSelector } from "recoil/folder.recoil";
 import { keywordSelector, notesSelector, notesState } from "recoil/notes.recoil";
+import { sectionsSelector } from "recoil/sections.recoil";
 
-import { Folder } from "utils/enums";
+import { Folder, Section } from "utils/enums";
 
 import { Button } from "components/Button";
 import { Plus } from "components/Icons";
@@ -23,11 +24,12 @@ export const SearchBar = ({ isListEmpty }: Props) => {
   const [notes, setNotes] = useRecoilState(notesSelector);
   const [noteState, setNoteState] = useRecoilState(notesState);
   const [keyword, setKeyword] = useRecoilState(keywordSelector);
+  const setSection = useSetRecoilState(sectionsSelector);
   const activeFolder = useRecoilValue(activeFolderSelector);
   const selectedCategoryId = useRecoilValue(selectedCategoryIdSelector);
   const isTrash = activeFolder === Folder.TRASH;
 
-  const addNewNote = () =>
+  const addNewNote = () => {
     setNotes([
       {
         id: uuid(),
@@ -38,6 +40,8 @@ export const SearchBar = ({ isListEmpty }: Props) => {
         pinned: activeFolder === Folder.PINNED,
       },
     ]);
+    setSection(Section.NOTE);
+  };
 
   useEffect(() => () => setKeyword(""), [setKeyword]);
 
