@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
+
 import { ThemeWrapper } from "components/ThemeWrapper";
 
 import App from "./App";

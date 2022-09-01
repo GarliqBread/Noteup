@@ -1,20 +1,50 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { VitePWA } from "vite-plugin-pwa";
-
-import manifest from "./manifest.json";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
     VitePWA({
-      manifest,
+      base: "/",
       includeAssets: ["favicon.ico", "favicon.svg", "robots.txt", "apple-touch-icon.png"],
+      injectRegister: "auto",
       registerType: "autoUpdate",
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+      },
+      manifest: {
+        name: "Notup",
+        short_name: "Noteup",
+        description: "Markup note taking made simple",
+        display: "standalone",
+        theme_color: "#2d2d2d",
+        background_color: "#2d2d2d",
+        icons: [
+          {
+            src: "/favicon.ico",
+            sizes: "64x64 32x32 24x24 16x16",
+            type: "image/x-icon",
+          },
+          {
+            src: "/pwa-192x192.png",
+            type: "image/png",
+            sizes: "192x192",
+          },
+          {
+            src: "/pwa-512x512.png.png",
+            type: "image/png",
+            sizes: "512x512",
+          },
+          {
+            src: "/pwa-512x512.png",
+            type: "image/png",
+            sizes: "512x512",
+            purpose: "maskable",
+          },
+        ],
       },
     }),
   ],
