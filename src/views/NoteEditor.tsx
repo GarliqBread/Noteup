@@ -1,10 +1,8 @@
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-
 import { EditorView } from "codemirror";
-import { useMemo, lazy, Suspense } from "react";
+import { Suspense, lazy, useMemo } from "react";
 import { useRecoilValue } from "recoil";
-const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 
 import {
   autoCompleteSelector,
@@ -17,6 +15,8 @@ import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
 import { editorThemes } from "utils/editorThemes";
+
+const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 
 type Props = {
   note: Note;
