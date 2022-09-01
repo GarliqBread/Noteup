@@ -1,9 +1,10 @@
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-import CodeMirror from "@uiw/react-codemirror";
+
 import { EditorView } from "codemirror";
-import { useMemo } from "react";
+import { useMemo, lazy, Suspense } from "react";
 import { useRecoilValue } from "recoil";
+const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 
 import {
   autoCompleteSelector,
@@ -48,21 +49,23 @@ export const NoteEditor = ({ note, setNote }: Props) => {
   }, [breakLines]);
 
   return (
-    <CodeMirror
-      className="code-mirror"
-      value={note.text}
-      height="100%"
-      onChange={(value) => {
-        setNote({
-          ...note,
-          text: value,
-        });
-      }}
-      autoFocus
-      indentWithTab
-      extensions={extensions}
-      theme={editorThemes[theme][editorTheme]}
-      basicSetup={codeMirrorOptions}
-    />
+    <Suspense>
+      <CodeMirror
+        className="code-mirror"
+        value={note.text}
+        height="100%"
+        onChange={(value) => {
+          setNote({
+            ...note,
+            text: value,
+          });
+        }}
+        autoFocus
+        indentWithTab
+        extensions={extensions}
+        theme={editorThemes[theme][editorTheme]}
+        basicSetup={codeMirrorOptions}
+      />
+    </Suspense>
   );
 };
