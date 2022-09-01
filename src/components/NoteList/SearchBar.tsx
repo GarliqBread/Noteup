@@ -8,8 +8,9 @@ import { activeFolderSelector } from "recoil/folder.recoil";
 import { keywordSelector, notesSelector, notesState } from "recoil/notes.recoil";
 
 import { Folder } from "utils/enums";
+import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
 
-import { Button } from "components/Button";
+import { Button, IconButton } from "components/Button";
 import { Plus } from "components/Icons";
 import { Input } from "components/Input";
 
@@ -20,6 +21,7 @@ type Props = {
 };
 
 export const SearchBar = ({ isListEmpty }: Props) => {
+  const isSmallDevice = useWindowDimensions();
   const [notes, setNotes] = useRecoilState(notesSelector);
   const [noteState, setNoteState] = useRecoilState(notesState);
   const [keyword, setKeyword] = useRecoilState(keywordSelector);
@@ -42,27 +44,36 @@ export const SearchBar = ({ isListEmpty }: Props) => {
   useEffect(() => () => setKeyword(""), [setKeyword]);
 
   return (
-    <SearchContainer>
-      <Input placeholder="Search" clear value={keyword} onChange={setKeyword} />
-      {isTrash ? (
-        <Button
-          disabled={isListEmpty}
-          title="Empty trash"
-          variant="danger"
-          onClick={() =>
-            setNoteState({
-              ...noteState,
-              notes: notes.filter((note) => !note.trash),
-            })
-          }
-        >
-          Empty
-        </Button>
-      ) : (
-        <Button title="Add new note" variant="primary" onClick={addNewNote}>
-          <Plus size={15} />
-        </Button>
-      )}
-    </SearchContainer>
+    <>
+      <SearchContainer>
+        <Input placeholder="Search" clear value={keyword} onChange={setKeyword} />
+        {!isSmallDevice && (
+          <>
+            {isTrash ? (
+              <Button
+                disabled={isListEmpty}
+                title="Empty trash"
+                variant="danger"
+                onClick={() =>
+                  setNoteState({
+                    ...noteState,
+                    notes: notes.filter((note) => !note.trash),
+                  })
+                }
+              >
+                Empty
+              </Button>
+            ) : (
+              <Button title="Add new note" variant="primary" onClick={addNewNote}>
+                <Plus size={15} />
+              </Button>
+            )}
+          </>
+        )}
+      </SearchContainer>
+      <IconButton className="mobile-add-button" onClick={addNewNote}>
+        <Plus size={22} />
+      </IconButton>
+    </>
   );
 };

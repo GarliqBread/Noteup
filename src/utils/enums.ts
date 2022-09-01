@@ -6,6 +6,12 @@ export enum Folder {
   TRASH = "TRASH",
 }
 
+export enum Section {
+  MENU = "MENU",
+  LIST = "LIST",
+  NOTE = "NOTE",
+}
+
 export enum Shortcuts {
   NEW_NOTE = "ctrl+alt+n",
   NEW_CATEGORY = "ctrl+alt+c",

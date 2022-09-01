@@ -1,12 +1,13 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { Folder } from "utils/enums";
+import { Folder, Section } from "utils/enums";
 import { getNotesSorter } from "utils/sorting";
 
 import { selectedCategoryIdSelector } from "./categories.recoil";
 import { editingSelector } from "./editor.recoil";
 import { notesSelector, selectNoteIdSelector } from "./notes.recoil";
+import { sectionsSelector } from "./sections.recoil";
 import { sortKeySelector } from "./settings.recoil";
 
 const { persistAtom } = recoilPersist();
@@ -38,9 +39,13 @@ export const activeFolderSelector = selector({
     }[folder]();
 
     set(selectNoteIdSelector, firstNote ? firstNote.id : "");
+
     set(folderState, folder);
     if (folder === Folder.SCRATCH) {
       set(editingSelector, true);
+      set(sectionsSelector, Section.NOTE);
+    } else {
+      set(sectionsSelector, Section.LIST);
     }
   },
 });

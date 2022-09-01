@@ -8,6 +8,11 @@ const BottomNav = styled.nav`
   jutify-content: space-between;
   background-color: ${(props) => props.theme.color.secondLayer};
   border-top: 0.4px solid ${(props) => props.theme.color.border};
+
+  @media (max-width: 500px) {
+    position: sticky;
+    bottom: -1px;
+  }
 `;
 
 const BottomNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`

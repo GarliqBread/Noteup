@@ -1,56 +1,37 @@
 import { useState } from "react";
-import SplitPane from "react-split-pane";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 
-import { editingSelector } from "recoil/editor.recoil";
 import { folderState } from "recoil/folder.recoil";
-import { selectedNoteSelector } from "recoil/notes.recoil";
 
 import { getNoteBarConf } from "utils/helpers";
 
-import { NoteEditor } from "views/NoteEditor";
-import { NotePreview } from "views/NotePreviewer";
-import { SettingsModal } from "views/SettingsModal";
-
-import { EditorBar } from "components/EditorBar";
 import { KeyboardShortcuts } from "components/KeyboardShortcuts";
+import { MobileNav } from "components/MobileNav";
 import { NoteList } from "components/NoteList";
 import { Sidebar } from "components/Sidebar";
+import { SplitPane } from "components/SplitPanel";
 
-import { FlexColumn } from "styles/layout";
+import { NoteContainer } from "./NoteContainer";
+import { SettingsModal } from "./SettingsModal";
+
+import { Container } from "styles/layout";
 
 export const AppContainer = () => {
-  const [editing, setEditing] = useRecoilState(editingSelector);
-  const [showSettings, setShowSettings] = useState(false);
   const activeFolder = useRecoilValue(folderState);
-  const [note, setNote] = useRecoilState(selectedNoteSelector);
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
-    <div className="app-container">
+    <Container>
+      <MobileNav />
       <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={200}>
         <Sidebar />
         <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
-          {<NoteList />}
-          <FlexColumn justifyContent="space-between" alignItems="initial" height="100vh">
-            {note ? (
-              <>
-                {!editing && <NotePreview previewNote={note} />}
-                {editing && <NoteEditor note={note} setNote={setNote} />}
-              </>
-            ) : (
-              <div />
-            )}
-            <EditorBar
-              note={note}
-              editing={editing}
-              setEditing={() => setEditing((prev) => !prev)}
-              toggleModal={() => setShowSettings(true)}
-            />
-          </FlexColumn>
+          <NoteList />
+          <NoteContainer openSettings={() => setShowSettings(true)} />
         </SplitPane>
       </SplitPane>
-      {showSettings && <SettingsModal closeModal={() => setShowSettings(false)} />}
       <KeyboardShortcuts />
-    </div>
+      {showSettings && <SettingsModal closeModal={() => setShowSettings(false)} />}
+    </Container>
   );
 };
