@@ -47,7 +47,7 @@ export const routes = {
 export const defaultScratchPaper = {
   scratchpad: true,
   id: uuid(),
-  text: "",
+  text: "# Scratch paper\n\nThe easiest and quickest note to find.",
   created: dayjs().format(),
   lastUpdated: dayjs().format(),
 };

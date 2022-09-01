@@ -39,13 +39,17 @@ export const activeFolderSelector = selector({
     }[folder]();
 
     set(selectNoteIdSelector, firstNote ? firstNote.id : "");
-
     set(folderState, folder);
+
     if (folder === Folder.SCRATCH) {
       set(editingSelector, true);
       set(sectionsSelector, Section.NOTE);
     } else {
       set(sectionsSelector, Section.LIST);
+    }
+
+    if (folder !== Folder.CATEGORY) {
+      set(selectedCategoryIdSelector, null);
     }
   },
 });
