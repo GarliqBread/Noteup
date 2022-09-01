@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Flex } from "styles/layout";
 
 const StyledSidebar = styled(Flex)`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
