@@ -30,6 +30,10 @@ const StyledButton = styled.button<{ variant?: string }>`
     background-color: ${(props) => props.theme.color.input};
     color: ${(props) => props.theme.color.lightText};
   }
+
+  @media (max-width: 500px) {
+    padding: 13px;
+  }
 `;
 
 const StyledIconButton = styled.button`

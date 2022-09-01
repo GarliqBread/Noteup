@@ -1,30 +1,12 @@
 import styled from "styled-components";
 
 const List = styled.div`
-  height: calc(100% - 38px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
   background-color: ${(props) => props.theme.color.noteList};
   border-right: 0.5px solid ${(props) => props.theme.color.border};
-
-  .mobile-add-button {
-    position: absolute;
-    padding: 15px;
-    bottom: 20px;
-    right: 20px;
-    border-radius: ${(props) => props.theme.radius.round};
-    background-color: ${(props) => props.theme.color.primary};
-    color: ${(props) => props.theme.color.white};
-  }
-
-  @media (min-width: 500px) {
-    height: 100%;
-
-    .mobile-add-button {
-      display: none;
-    }
-  }
 `;
 
 const SearchContainer = styled.div`

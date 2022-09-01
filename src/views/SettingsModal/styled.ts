@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -16,9 +18,6 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: ${(props) => props.theme.color.overlayColor};
   z-index: 98;
 `;
@@ -36,6 +35,12 @@ const Modal = styled.div`
 
   h2 {
     margin: 0;
+  }
+
+  @media (max-width: 500px) {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
   }
 `;
 

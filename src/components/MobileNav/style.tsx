@@ -9,7 +9,7 @@ const Nav = styled.nav<{ hidden: boolean }>`
   align-items: center;
   padding: 5px 8px;
   color: ${(props) => props.theme.color.text};
-  z-index: 1000;
+  z-index: 90;
 
   svg {
     color: ${(props) => props.theme.color.text};
