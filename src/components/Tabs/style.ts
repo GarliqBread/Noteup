@@ -26,6 +26,15 @@ const TabContainer = styled.div<{ active?: boolean }>`
       color: ${(props) => !props.active && props.theme.color.black};
     }
   }
+
+  @media (max-width: 500px) {
+    min-width: 30%;
+    justify-content: center;
+
+    span {
+      display: none;
+    }
+  }
 `;
 
 const TabsContainer = styled.div`
@@ -44,6 +53,14 @@ const TabsContainer = styled.div`
     font-size: 0.95rem;
     color: ${(props) => props.theme.color.text};
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
 `;
 
 const TabList = styled.nav`
@@ -54,6 +71,17 @@ const TabList = styled.nav`
   padding-left: 40px;
   margin-right: 15px;
   border-right: 1px solid ${(props) => props.theme.color.border};
+
+  @media (max-width: 500px) {
+    flex: initial;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5px 10px;
+    margin: 0;
+  }
 `;
 
 const TabContent = styled.div`
@@ -66,6 +94,12 @@ const TabContent = styled.div`
 
   p {
     margin: 10px 0;
+  }
+
+  @media (max-width: 500px) {
+    padding: 15px 10px;
+    height: 100%;
+    max-height: none;
   }
 `;
 

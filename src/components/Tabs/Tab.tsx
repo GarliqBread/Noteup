@@ -17,7 +17,7 @@ export const Tab = ({ activeTab, label, icon: Icon, onClick }: Props) => {
       active={activeTab === label}
       onClick={() => onClick(label)}
     >
-      <Icon size={18} aria-hidden="true" /> {label}
+      <Icon size={18} aria-hidden="true" /> <span>{label}</span>
     </TabContainer>
   );
 };

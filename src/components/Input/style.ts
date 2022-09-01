@@ -22,6 +22,10 @@ const StyledInput = styled.input`
   border: 0.5px solid ${(props) => props.theme.color.border};
   box-shadow: ${(props) => props.theme.color.shadow};
   font-size: 15px;
+
+  @media (max-width: 500px) {
+    padding: 13px;
+  }
 `;
 
 export { InputContainer, StyledInput };
