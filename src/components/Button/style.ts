@@ -28,7 +28,7 @@ const StyledButton = styled.button<{ variant?: string }>`
         ? props.theme.color.primary
         : props.theme.color.darkerGray};
     color: ${(props) => props.variant === "danger" && props.theme.color.white};
-    opacity: ${(props) => (props.variant === "primary" ? 0.7 : 1)};
+    opacity: ${(props) => (props.variant === "primary" ? 0.8 : 1)};
   }
 
   &:disabled {

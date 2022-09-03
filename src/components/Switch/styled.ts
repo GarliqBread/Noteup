@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Label = styled.label`
   position: relative;
   display: inline-block;
+  min-width: 45px;
   width: 45px;
   height: 24px;
 

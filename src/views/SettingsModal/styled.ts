@@ -45,6 +45,7 @@ const Modal = styled.div`
     max-width: 100%;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
   }
 `;
 
@@ -53,11 +54,17 @@ const ModalHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+  background-color: ${(props) => props.theme.color.secondLayer};
   border-bottom: 0.5px solid ${(props) => props.theme.color.border};
   color: ${(props) => props.theme.color.text};
 
   svg {
     color: ${(props) => props.theme.color.text};
+  }
+
+  @media (max-width: 500px) {
+    position: sticky;
+    top: 0;
   }
 `;
 

@@ -11,7 +11,7 @@ import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
 import { NoteContext } from "./NoteContext";
 import { NoteItem } from "./NoteItem";
 import { SearchBar } from "./SearchBar";
-import { List } from "./style";
+import { List, NotesList } from "./style";
 
 export const NoteList = () => {
   const { isSmallDevice } = useWindowDimensions();
@@ -30,37 +30,39 @@ export const NoteList = () => {
   return (
     <>
       {(inView || !isSmallDevice) && (
-        <List>
+        <NotesList>
           <SearchBar isListEmpty={!filteredNotes.length} />
-          {filteredNotes.map((note) => {
-            let noteTitle: string | JSX.Element = getNoteTitle(note.text);
+          <List>
+            {filteredNotes.map((note) => {
+              let noteTitle: string | JSX.Element = getNoteTitle(note.text);
 
-            if (keyword !== "") {
-              const highlightStart = noteTitle.search(regex);
-              if (highlightStart !== -1) {
-                const highlightEnd = highlightStart + keyword.length;
+              if (keyword !== "") {
+                const highlightStart = noteTitle.search(regex);
+                if (highlightStart !== -1) {
+                  const highlightEnd = highlightStart + keyword.length;
 
-                noteTitle = (
-                  <>
-                    {noteTitle.slice(0, highlightStart)}
-                    <strong className="highlighted">
-                      {noteTitle.slice(highlightStart, highlightEnd)}
-                    </strong>
-                    {noteTitle.slice(highlightEnd)}
-                  </>
-                );
+                  noteTitle = (
+                    <>
+                      {noteTitle.slice(0, highlightStart)}
+                      <strong className="highlighted">
+                        {noteTitle.slice(highlightStart, highlightEnd)}
+                      </strong>
+                      {noteTitle.slice(highlightEnd)}
+                    </>
+                  );
+                }
               }
-            }
 
-            return (
-              <NoteContext key={note.id} noteId={note.id}>
-                <NoteItem note={note} selected={selectedNoteId === note.id}>
-                  {noteTitle}
-                </NoteItem>
-              </NoteContext>
-            );
-          })}
-        </List>
+              return (
+                <NoteContext key={note.id} noteId={note.id}>
+                  <NoteItem note={note} selected={selectedNoteId === note.id}>
+                    {noteTitle}
+                  </NoteItem>
+                </NoteContext>
+              );
+            })}
+          </List>
+        </NotesList>
       )}
     </>
   );

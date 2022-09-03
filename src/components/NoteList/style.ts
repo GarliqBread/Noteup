@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
-const List = styled.div`
+const NotesList = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
   background-color: ${(props) => props.theme.color.noteList};
   border-right: 0.5px solid ${(props) => props.theme.color.border};
+`;
+
+const List = styled.div`
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 const SearchContainer = styled.div`
@@ -55,4 +61,4 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   }
 `;
 
-export { List, SearchContainer, NoteItemContainer };
+export { NotesList, List, SearchContainer, NoteItemContainer };

@@ -4,7 +4,7 @@ const TabContainer = styled.div<{ active?: boolean }>`
   min-width: 200px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   padding: 0.75rem;
   margin: 0.25rem 0;
   cursor: pointer;
