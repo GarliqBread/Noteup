@@ -55,18 +55,18 @@ export default createGlobalStyle`
   .code-mirror {
     overflow-y: auto;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 44px);
     display: block !important;
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background: ${(props) => props.theme.color.scrollBar};
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.color.darkestGray};
+    background: #1f6ce0;
     border-radius: 0;
   }
 

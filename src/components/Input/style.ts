@@ -15,7 +15,7 @@ const InputContainer = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   background-color: ${(props) => props.theme.color.input};
   color: ${(props) => props.theme.color.lightText};
   border-radius: ${(props) => props.theme.radius.small};

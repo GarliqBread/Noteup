@@ -23,7 +23,6 @@ export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }:
           <Edit size={15} /> Rename category
         </>
       ),
-      danger: true,
     },
     {
       onClick: () => setCategories(categories.filter((category) => category.id !== categoryId)),
@@ -32,6 +31,7 @@ export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }:
           <Close size={15} /> Delete category
         </>
       ),
+      danger: true,
     },
   ];
 

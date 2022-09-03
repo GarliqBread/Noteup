@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
-import { categoriesSelector } from "recoil/categories.recoil";
 import { selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
 import { sectionsSelector } from "recoil/sections.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
 import { Section } from "utils/enums";
-import { copyToClipboard, downloadNotes } from "utils/helpers";
+import { copyToClipboard, downloadNote as downloadNoteFile } from "utils/helpers";
 
 import {
   ArrowBack,
@@ -17,14 +16,13 @@ import {
   Edit,
   Eye,
   FilledPin,
-  Gear,
   Moon,
   Pin,
   Sun,
   Trash,
 } from "components/Icons";
 
-import { BottomNav, BottomNavButton } from "./styled";
+import { TopNav, TopNavButton } from "./styled";
 
 import { Flex } from "styles/layout";
 
@@ -32,16 +30,14 @@ type Props = {
   note?: Note;
   editing: boolean;
   setEditing: () => void;
-  toggleModal: () => void;
 };
 
-export const EditorBar = ({ note, editing, setEditing, toggleModal }: Props) => {
+export const EditorBar = ({ note, editing, setEditing }: Props) => {
   const [uuidCopiedText, setUuidCopiedText] = useState<string>("");
   const setNoteState = useSetRecoilState(selectedNoteSelector);
   const [theme, toggleTheme] = useRecoilState(themeSelector);
   const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
   const setSection = useSetRecoilState(sectionsSelector);
-  const categories = useRecoilValue(categoriesSelector);
   const successfulCopyMessage = "Note ID copied!";
 
   const toggleNotePin = () =>
@@ -68,7 +64,7 @@ export const EditorBar = ({ note, editing, setEditing, toggleModal }: Props) => 
   };
 
   const downloadNote = () => {
-    !!note && downloadNotes([note], categories);
+    !!note && downloadNoteFile(note);
   };
 
   useEffect(() => {
@@ -82,47 +78,38 @@ export const EditorBar = ({ note, editing, setEditing, toggleModal }: Props) => 
   }, [uuidCopiedText]);
 
   return (
-    <BottomNav>
+    <TopNav>
       <Flex height="100%">
         {!!note && (
           <>
-            <BottomNavButton title="Toggle editing" onClick={setEditing}>
+            <TopNavButton title="Toggle editing" onClick={setEditing}>
               {editing ? <Eye size={18} /> : <Edit size={18} />}
-            </BottomNavButton>
-            {!note.scratchpad && (
-              <>
-                <BottomNavButton primary={note?.pinned} title="Pin note" onClick={toggleNotePin}>
-                  {note?.pinned ? <FilledPin size={18} /> : <Pin size={18} />}
-                </BottomNavButton>
+            </TopNavButton>
+            <TopNavButton primary={note?.pinned} title="Pin note" onClick={toggleNotePin}>
+              {note?.pinned ? <FilledPin size={18} /> : <Pin size={18} />}
+            </TopNavButton>
 
-                <BottomNavButton trash title="Delete note" onClick={deleteNote}>
-                  {note.trash ? <ArrowBack size={18} /> : <Trash size={18} />}
-                </BottomNavButton>
-              </>
-            )}
-            <BottomNavButton title="Download note" onClick={downloadNote}>
+            <TopNavButton trash title="Delete note" onClick={deleteNote}>
+              {note.trash ? <ArrowBack size={18} /> : <Trash size={18} />}
+            </TopNavButton>
+            <TopNavButton title="Download note" onClick={downloadNote}>
               <Download size={18} />
-            </BottomNavButton>
-            {!note.scratchpad && (
-              <BottomNavButton title="Copy note ID" onClick={copyNoteId}>
-                <Clipboard size={18} />
-                <span>{uuidCopiedText}</span>
-              </BottomNavButton>
-            )}
+            </TopNavButton>
+            <TopNavButton title="Copy note ID" onClick={copyNoteId}>
+              <Clipboard size={18} />
+              <span>{uuidCopiedText}</span>
+            </TopNavButton>
           </>
         )}
       </Flex>
       <Flex height="100%" justifyContent="flex-end">
-        <BottomNavButton
+        <TopNavButton
           title="Change theme"
           onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}
         >
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-        </BottomNavButton>
-        <BottomNavButton title="Open settings" onClick={toggleModal}>
-          <Gear size={18} />
-        </BottomNavButton>
+        </TopNavButton>
       </Flex>
-    </BottomNav>
+    </TopNav>
   );
 };

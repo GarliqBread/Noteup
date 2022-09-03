@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-const BottomNav = styled.nav`
+const TopNav = styled.nav`
   width: 100%;
-  height: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
-  jutify-content: space-between;
+  justify-content: space-between;
   background-color: ${(props) => props.theme.color.secondLayer};
   border-top: 0.4px solid ${(props) => props.theme.color.border};
+  box-shadow: ${(props) => props.theme.color.shadow};
+  margin-bottom: 4px;
 
   @media (max-width: 500px) {
     position: sticky;
@@ -15,7 +17,7 @@ const BottomNav = styled.nav`
   }
 `;
 
-const BottomNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`
+const TopNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`
   height: 100%;
   display: flex;
   align-items: center;
@@ -35,4 +37,4 @@ const BottomNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`
   }
 `;
 
-export { BottomNav, BottomNavButton };
+export { TopNav, TopNavButton };

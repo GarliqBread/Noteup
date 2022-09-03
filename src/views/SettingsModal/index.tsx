@@ -20,18 +20,10 @@ import {
   themePreviewOptions,
 } from "utils/constants";
 import { EditorThemeKey, LabelText, NotesSortKey, PreviewThemeKey } from "utils/enums";
-import { backupNotes, downloadNotes } from "utils/helpers";
+import { backupNotes } from "utils/helpers";
 
 import { Button, IconButton, UploadButton } from "components/Button";
-import {
-  Close,
-  CloudDownload,
-  CloudUpload,
-  Download,
-  HardDrive,
-  Keyboard,
-  Sliders,
-} from "components/Icons";
+import { Close, CloudDownload, CloudUpload, HardDrive, Keyboard, Sliders } from "components/Icons";
 import { Option } from "components/SettingsModal/Option";
 import { SelectOptions } from "components/SettingsModal/SelectOption";
 import { Shortcut } from "components/SettingsModal/Shortcut";
@@ -141,16 +133,9 @@ export const SettingsModal = ({ closeModal }: Props) => {
             />
           </TabPanel>
           <TabPanel label="Data management" icon={HardDrive}>
-            <p>Download all notes as Markdown files in a zip.</p>
-            <Button
-              variant="primary"
-              title="Download notes"
-              onClick={() => downloadNotes(notes, categories)}
-            >
-              <Download size={18} /> {LabelText.DOWNLOAD_ALL_NOTES}
-            </Button>
             <p>Export Noteup data as JSON.</p>
             <Button
+              className="download-button"
               variant="primary"
               title="Export backup"
               onClick={() => backupNotes(notes, categories)}
@@ -158,7 +143,12 @@ export const SettingsModal = ({ closeModal }: Props) => {
               <CloudDownload size={18} /> {LabelText.BACKUP_ALL_NOTES}
             </Button>
             <p>Import Noteup JSON file.</p>
-            <UploadButton variant="primary" title="Import backup" onUpload={importBackup}>
+            <UploadButton
+              className="download-button"
+              variant="primary"
+              title="Import backup"
+              onUpload={importBackup}
+            >
               <CloudUpload size={18} /> {LabelText.IMPORT_BACKUP}
             </UploadButton>
           </TabPanel>

@@ -15,6 +15,18 @@ const StyledSidebar = styled(Flex)`
   }
 `;
 
+const Header = styled.h1`
+  width: 100%;
+  color: ${(props) => props.theme.color.white};
+  font-size: 26px;
+  padding: 12px 15px;
+
+  mark {
+    background-color: transparent;
+    color: ${(props) => props.theme.color.primary};
+  }
+`;
+
 const SidebarButton = styled.button<{ selected?: boolean }>`
   width: 100%;
   cursor: pointer;
@@ -116,12 +128,22 @@ const CategoryForm = styled.form`
   }
 `;
 
+const List = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 60%;
+  overflow-y: auto;
+`;
+
 export {
   StyledSidebar,
+  Header,
   SidebarButton,
   CollapseButton,
   CategoryTitle,
   Form,
   CategoryItem,
   CategoryForm,
+  List,
 };

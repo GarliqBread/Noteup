@@ -20,11 +20,7 @@ const TabContainer = styled.div<{ active?: boolean }>`
 
   &:hover {
     color: ${(props) => !props.active && props.theme.color.black};
-    background: ${(props) => !props.active && props.theme.color.lightGray};
-
-    svg {
-      color: ${(props) => !props.active && props.theme.color.black};
-    }
+    background-color: ${(props) => !props.active && props.theme.color.tab};
   }
 
   @media (max-width: 500px) {

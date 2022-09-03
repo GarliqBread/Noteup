@@ -1,12 +1,8 @@
-import dayjs from "dayjs";
-import { v4 as uuid } from "uuid";
-
-import { EditorThemeKey, Folder, NotesSortKey, PreviewThemeKey } from "utils/enums";
+import { EditorThemeKey, Folder, NotesSortKey, PreviewThemeKey, Section } from "utils/enums";
 
 export const folderMap: Record<Folder, string> = {
   [Folder.ALL]: "All Notes",
   [Folder.PINNED]: "Pinned",
-  [Folder.SCRATCH]: "Scratch Paper",
   [Folder.TRASH]: "Trash",
   [Folder.CATEGORY]: "Category",
 };
@@ -40,14 +36,16 @@ export const themePreviewOptions = [
   { value: PreviewThemeKey.ONE, label: "One" },
 ];
 
-export const routes = {
-  FAVORITES: "/shared/",
-};
-
-export const defaultScratchPaper = {
-  scratchpad: true,
-  id: uuid(),
-  text: "# Scratch paper\n\nThe quickest and easiest note to find.",
-  created: dayjs().format(),
-  lastUpdated: dayjs().format(),
+export const navHeaders = {
+  [Section.LIST]: {
+    [Folder.ALL]: "All notes",
+    [Folder.PINNED]: "Pinned notes",
+    [Folder.TRASH]: "Trashed notes",
+    [Folder.CATEGORY]: "Category notes",
+  },
+  [Section.NOTE]: {
+    editing: "Editing note",
+    "not-editing": "Preview note",
+  },
+  [Section.MENU]: "",
 };
