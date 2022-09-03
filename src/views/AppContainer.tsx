@@ -1,11 +1,7 @@
 import { invoke } from "@tauri-apps/api";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-
-import { folderState } from "recoil/folder.recoil";
 
 import { isTauri } from "utils/helpers";
-import { getNoteBarConf } from "utils/helpers";
 
 import { KeyboardShortcuts } from "components/KeyboardShortcuts";
 import { MobileNav } from "components/MobileNav";
@@ -19,7 +15,6 @@ import { SettingsModal } from "./SettingsModal";
 import { Container } from "styles/layout";
 
 export const AppContainer = () => {
-  const activeFolder = useRecoilValue(folderState);
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
@@ -31,12 +26,12 @@ export const AppContainer = () => {
 
   return (
     <Container>
-      <MobileNav />
+      <MobileNav openSettings={() => setShowSettings(true)} />
       <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={200}>
-        <Sidebar />
-        <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
+        <Sidebar showSettings={() => setShowSettings(true)} />
+        <SplitPane split="vertical" minSize={200} maxSize={600} defaultSize={250}>
           <NoteList />
-          <NoteContainer openSettings={() => setShowSettings(true)} />
+          <NoteContainer />
         </SplitPane>
       </SplitPane>
       <KeyboardShortcuts />

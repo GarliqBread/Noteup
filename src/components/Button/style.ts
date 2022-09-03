@@ -3,13 +3,19 @@ import styled from "styled-components";
 const StyledButton = styled.button<{ variant?: string }>`
   display: flex;
   align-items: center;
-  padding: 10px 12px;
+  padding: 9px 10px;
   border: none;
   border-radius: ${(props) => props.theme.radius.small};
   background-color: ${(props) =>
-    props.variant === "primary" ? props.theme.color.primary : props.theme.color.darkGray};
+    props.variant === "primary"
+      ? props.theme.color.primary
+      : props.variant === "danger"
+      ? props.theme.color.danger
+      : props.theme.color.darkGray};
   color: ${(props) =>
-    props.variant === "primary" ? props.theme.color.white : props.theme.color.text};
+    props.variant === "primary" || props.variant === "danger"
+      ? props.theme.color.white
+      : props.theme.color.text};
   cursor: pointer;
   opacity: ${(props) => (props.variant === "primary" ? 0.9 : 1)};
   gap: 10px;

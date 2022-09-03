@@ -33,7 +33,6 @@ export const NotePreview = ({ previewNote }: Props) => {
       setSelectedNoteId(note.id);
 
       if (note?.pinned) return setActiveFolder(Folder.PINNED);
-      if (note?.scratchpad) return setActiveFolder(Folder.SCRATCH);
       if (note?.trash) return setActiveFolder(Folder.TRASH);
 
       return setActiveFolder(Folder.ALL);

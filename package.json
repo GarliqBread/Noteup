@@ -28,7 +28,6 @@
     "clipboard-polyfill": "^4.0.0-rc1",
     "dayjs": "^1.11.5",
     "file-saver": "^2.0.5",
-    "jszip": "^3.10.1",
     "mousetrap": "^1.6.5",
     "mousetrap-global-bind": "^1.1.0",
     "patch-package": "^6.4.7",

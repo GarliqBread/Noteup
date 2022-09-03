@@ -8,7 +8,6 @@ export type Note = {
   created: string;
   lastUpdated: string;
   categoryId?: string;
-  scratchpad?: boolean;
   deleted?: boolean;
   trash?: boolean;
   pinned?: boolean;

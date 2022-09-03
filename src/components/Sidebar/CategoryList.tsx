@@ -12,7 +12,7 @@ import { AddCategoryForm } from "./AddCategoryForm";
 import { CategoryContext } from "./CategoryContext";
 import { CategoryOption } from "./CategoryOption";
 import { CollapseCategoryListButton } from "./CollapseCategoriesButton";
-import { CategoryTitle } from "./style";
+import { CategoryTitle, List } from "./style";
 
 export const CategoryList = () => {
   const [renamingCategoryId, setRenamingCategoryId] = useState("");
@@ -35,20 +35,22 @@ export const CategoryList = () => {
           <Plus size={18} />
         </IconButton>
       </CategoryTitle>
-      {categoryListOpen &&
-        categories.map((category) => (
-          <CategoryContext
-            key={category.id}
-            categoryId={category.id}
-            setRenamingCategoryId={setRenamingCategoryId}
-          >
-            <CategoryOption
-              category={category}
-              renamingId={renamingCategoryId}
-              cancelRenaming={cancelRenaming}
-            />
-          </CategoryContext>
-        ))}
+      <List>
+        {categoryListOpen &&
+          categories.map((category) => (
+            <CategoryContext
+              key={category.id}
+              categoryId={category.id}
+              setRenamingCategoryId={setRenamingCategoryId}
+            >
+              <CategoryOption
+                category={category}
+                renamingId={renamingCategoryId}
+                cancelRenaming={cancelRenaming}
+              />
+            </CategoryContext>
+          ))}
+      </List>
       {addingTempCategory && <AddCategoryForm closeForm={() => setAddingTempCategory(false)} />}
     </>
   );

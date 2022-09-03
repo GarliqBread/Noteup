@@ -7,12 +7,18 @@ import { sectionsSelector } from "recoil/sections.recoil";
 import { Folder, Section } from "utils/enums";
 import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
 
-import { Notes, Pin, PostIt, Trash } from "components/Icons";
+import { Gear, Notes, Pin, Trash } from "components/Icons";
 
 import { CategoryList } from "./CategoryList";
-import { SidebarButton, StyledSidebar } from "./style";
+import { Header, SidebarButton, StyledSidebar } from "./style";
 
-export const Sidebar = () => {
+import { FlexColumn } from "styles/layout";
+
+type Props = {
+  showSettings: () => void;
+};
+
+export const Sidebar = ({ showSettings }: Props) => {
   const { isSmallDevice } = useWindowDimensions();
   const section = useRecoilValue(sectionsSelector);
   const [activeFolder, setActiveFolder] = useRecoilState(activeFolderSelector);
@@ -26,31 +32,35 @@ export const Sidebar = () => {
     <>
       {(inView || !isSmallDevice) && (
         <StyledSidebar>
-          <SidebarButton
-            selected={activeFolder === Folder.SCRATCH}
-            onClick={() => handleFolderChange(Folder.SCRATCH)}
-          >
-            <PostIt size={16} /> Scratch paper
-          </SidebarButton>
-          <SidebarButton
-            selected={activeFolder === Folder.ALL}
-            onClick={() => handleFolderChange(Folder.ALL)}
-          >
-            <Notes size={16} /> Notes
-          </SidebarButton>
-          <SidebarButton
-            selected={activeFolder === Folder.PINNED}
-            onClick={() => handleFolderChange(Folder.PINNED)}
-          >
-            <Pin size={16} /> Pinned
-          </SidebarButton>
-          <SidebarButton
-            selected={activeFolder === Folder.TRASH}
-            onClick={() => handleFolderChange(Folder.TRASH)}
-          >
-            <Trash size={16} /> Trash
-          </SidebarButton>
-          <CategoryList />
+          <FlexColumn height="100%">
+            <Header>
+              Note<mark>up</mark>
+            </Header>
+            <SidebarButton
+              selected={activeFolder === Folder.ALL}
+              onClick={() => handleFolderChange(Folder.ALL)}
+            >
+              <Notes size={16} /> Notes
+            </SidebarButton>
+            <SidebarButton
+              selected={activeFolder === Folder.PINNED}
+              onClick={() => handleFolderChange(Folder.PINNED)}
+            >
+              <Pin size={16} /> Pinned
+            </SidebarButton>
+            <SidebarButton
+              selected={activeFolder === Folder.TRASH}
+              onClick={() => handleFolderChange(Folder.TRASH)}
+            >
+              <Trash size={16} /> Trash
+            </SidebarButton>
+            <CategoryList />
+          </FlexColumn>
+          <FlexColumn>
+            <SidebarButton onClick={showSettings}>
+              <Gear size={16} /> Settings
+            </SidebarButton>
+          </FlexColumn>
         </StyledSidebar>
       )}
     </>

@@ -37,6 +37,10 @@ const Modal = styled.div`
     margin: 0;
   }
 
+  .download-button {
+    min-width: 165px;
+  }
+
   @media (max-width: 500px) {
     max-width: 100%;
     width: 100%;

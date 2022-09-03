@@ -4,11 +4,11 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { categoriesSelector } from "recoil/categories.recoil";
 import { notesState, selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
 
-import { copyToClipboard, downloadNotes } from "utils/helpers";
+import { copyToClipboard, downloadNote as downloadNoteFile } from "utils/helpers";
 
 import { ContextMenu } from "components/ContextMenu";
 import { Dropdown } from "components/Dropdown";
-import { ArrowBack, Clipboard, Close, Download, Pin, Trash } from "components/Icons";
+import { ArrowBack, Clipboard, Download, Pin, Trash } from "components/Icons";
 import { Select } from "components/Select";
 
 type Props = { noteId: string; children: React.ReactNode };
@@ -44,7 +44,7 @@ export const NoteContext = ({ noteId, children }: Props) => {
     setSelectedNoteId(null);
   };
 
-  const downloadNote = () => !!selectedNote && downloadNotes([selectedNote], categories);
+  const downloadNote = () => !!selectedNote && downloadNoteFile(selectedNote);
 
   const copyNoteReference = () => !!selectedNote && copyToClipboard(`{{${selectedNote.id}}}`);
 
@@ -104,7 +104,7 @@ export const NoteContext = ({ noteId, children }: Props) => {
           danger: true,
           children: (
             <>
-              <Close size={15} /> Delete permanently
+              <Trash size={15} /> Delete permanently
             </>
           ),
         },

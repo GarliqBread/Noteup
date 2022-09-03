@@ -15,11 +15,7 @@ import { EditorBar } from "components/EditorBar";
 
 import { FlexColumn } from "styles/layout";
 
-type Props = {
-  openSettings: () => void;
-};
-
-export const NoteContainer = ({ openSettings }: Props) => {
+export const NoteContainer = () => {
   const { isSmallDevice } = useWindowDimensions();
   const section = useRecoilValue(sectionsSelector);
   const [editing, setEditing] = useRecoilState(editingSelector);
@@ -29,25 +25,18 @@ export const NoteContainer = ({ openSettings }: Props) => {
 
   //
   return (
-    <>
+    <FlexColumn>
+      <EditorBar note={note} editing={editing} setEditing={() => setEditing((prev) => !prev)} />
       {((isSmallDevice && editorView) || !isSmallDevice) && (
         <FlexColumn justifyContent="space-between" alignItems="initial" height="100%">
-          {note ? (
+          {note && (
             <>
               {!editing && <NotePreview previewNote={note} />}
               {editing && <NoteEditor note={note} setNote={setNote} />}
             </>
-          ) : (
-            <div />
           )}
-          <EditorBar
-            note={note}
-            editing={editing}
-            setEditing={() => setEditing((prev) => !prev)}
-            toggleModal={openSettings}
-          />
         </FlexColumn>
       )}
-    </>
+    </FlexColumn>
   );
 };

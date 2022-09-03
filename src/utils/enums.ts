@@ -2,7 +2,6 @@ export enum Folder {
   ALL = "ALL",
   CATEGORY = "CATEGORY",
   PINNED = "PINNED",
-  SCRATCH = "SCRATCH",
   TRASH = "TRASH",
 }
 
@@ -58,7 +57,6 @@ export enum LabelText {
   DELETE_PERMANENTLY = "Delete permanently",
   DOWNLOAD = "Download",
   PINNED = "Pinned",
-  SCRATCH = "Scratch paper",
   MARK_AS_PINNED = "Mark as pinned",
   MOVE_TO_TRASH = "Move to trash",
   NEW_CATEGORY = "New category...",

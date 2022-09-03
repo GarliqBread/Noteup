@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { defaultScratchPaper } from "utils/constants";
 import { Folder, NotesSortKey } from "utils/enums";
 import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
 import { getNotesSorter } from "utils/sorting";
@@ -19,7 +18,7 @@ export const notesState: RecoilState<NotesState> = atom({
   key: "notes-state",
   default: {
     keyword: "",
-    notes: [defaultScratchPaper],
+    notes: [],
     sortBy: NotesSortKey.LAST_UPDATED,
     selectedNoteId: null,
   },
@@ -51,10 +50,9 @@ export const filteredNotesSelector = selector({
 
     const filter: Record<Folder, (note: Note) => boolean> = {
       [Folder.CATEGORY]: (note) => !note.trash && note.categoryId === selectedCategoryId,
-      [Folder.SCRATCH]: (note) => !!note.scratchpad,
       [Folder.PINNED]: (note) => !note.trash && !!note.pinned,
       [Folder.TRASH]: (note) => !!note.trash,
-      [Folder.ALL]: (note) => !note.trash && !note.scratchpad,
+      [Folder.ALL]: (note) => !note.trash,
     };
 
     return notes
