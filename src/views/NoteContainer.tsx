@@ -33,7 +33,7 @@ export const NoteContainer = () => {
           {note && (
             <>
               {editing && split && !isSmallDevice ? (
-                <SplitPane split="vertical" defaultSize="50%">
+                <SplitPane split="vertical" size="50%">
                   <NoteEditor note={note} setNote={setNote} />
                   <NotePreview previewNote={note} />
                 </SplitPane>
