@@ -62,16 +62,16 @@ export default createGlobalStyle`
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
-    background: ${(props) => props.theme.color.scrollBar};
+    background-color: ${(props) => props.theme.color.scrollBar};
   }
 
   ::-webkit-scrollbar-thumb {
     background: #1f6ce0;
-    border-radius: 0;
+    border-radius: 2px;
   }
 
   .Resizer {
-    background: #000;
+    background: ${(props) => props.theme.color.white};
     opacity: 0.2;
     z-index: 1;
     box-sizing: border-box;
@@ -113,5 +113,8 @@ export default createGlobalStyle`
   }
   .Resizer.disabled:hover {
     border-color: transparent;
+  }
+  .Pane {
+    overflow: hidden;
   }
 `;

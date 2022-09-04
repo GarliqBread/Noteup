@@ -7,7 +7,7 @@ import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
 import { getNotesSorter } from "utils/sorting";
 
 import { selectedCategoryIdSelector } from "./categories.recoil";
-import { editingSelector } from "./editor.recoil";
+import { editorState } from "./editor.recoil";
 import { activeFolderSelector } from "./folder.recoil";
 import { notesSortKeySelector } from "./settings.recoil";
 import { Note, NotesState } from "./types";
@@ -68,7 +68,11 @@ export const selectNoteIdSelector = selector({
   get: ({ get }) => get(notesState).selectedNoteId,
   set: ({ set, get }, noteId) => {
     if (noteId instanceof DefaultValue) return;
-    set(editingSelector, false);
+    set(editorState, {
+      ...get(editorState),
+      editing: false,
+      split: false,
+    });
     set(notesState, {
       ...get(notesState),
       selectedNoteId: noteId,

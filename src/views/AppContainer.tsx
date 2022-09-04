@@ -29,7 +29,7 @@ export const AppContainer = () => {
       <MobileNav openSettings={() => setShowSettings(true)} />
       <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={200}>
         <Sidebar showSettings={() => setShowSettings(true)} />
-        <SplitPane split="vertical" minSize={200} maxSize={600} defaultSize={250}>
+        <SplitPane split="vertical" minSize={200} maxSize={300} defaultSize={250}>
           <NoteList />
           <NoteContainer />
         </SplitPane>

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const TopNav = styled.nav`
   width: 100%;
-  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;

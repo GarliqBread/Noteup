@@ -16,19 +16,32 @@ export const editorState: RecoilState<EditorState> = atom({
     breakLines: true,
     foldGutter: false,
     lineNumbers: true,
+    renderHTML: true,
     editing: false,
+    split: false,
   },
   effects_UNSTABLE: [persistAtom],
 });
 
 export const editingSelector = selector({
-  key: "editor-selector",
+  key: "editing-selector",
   get: ({ get }) => get(editorState).editing,
   set: ({ get, set }, editing) =>
     !(editing instanceof DefaultValue) &&
     set(editorState, {
       ...get(editorState),
       editing,
+    }),
+});
+
+export const splitSelector = selector({
+  key: "split-selector",
+  get: ({ get }) => get(editorState).split,
+  set: ({ get, set }, split) =>
+    !(split instanceof DefaultValue) &&
+    set(editorState, {
+      ...get(editorState),
+      split,
     }),
 });
 
@@ -95,5 +108,16 @@ export const previewerThemeSelector = selector({
     set(editorState, {
       ...get(editorState),
       previwerTheme,
+    }),
+});
+
+export const renderHTMLSelector = selector({
+  key: "render-html-selector",
+  get: ({ get }) => get(editorState).renderHTML,
+  set: ({ set, get }, renderHTML) =>
+    !(renderHTML instanceof DefaultValue) &&
+    set(editorState, {
+      ...get(editorState),
+      renderHTML,
     }),
 });

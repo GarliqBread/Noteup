@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
+import { categoriesSelector } from "recoil/categories.recoil";
 import { filteredNotesSelector, keywordSelector, selectNoteIdSelector } from "recoil/notes.recoil";
 import { sectionsSelector } from "recoil/sections.recoil";
 
@@ -15,9 +16,10 @@ import { List, NotesList } from "./style";
 
 export const NoteList = () => {
   const { isSmallDevice } = useWindowDimensions();
-  const section = useRecoilValue(sectionsSelector);
+  const categories = useRecoilValue(categoriesSelector);
+  const [section, setSection] = useRecoilState(sectionsSelector);
   const filteredNotes = useRecoilValue(filteredNotesSelector);
-  const selectedNoteId = useRecoilValue(selectNoteIdSelector);
+  const [selectedNoteId, setSelectedNote] = useRecoilState(selectNoteIdSelector);
   const keyword = useRecoilValue(keywordSelector);
 
   const inView = useMemo(() => section === Section.LIST, [section]);
@@ -26,6 +28,11 @@ export const NoteList = () => {
     () => new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
     [keyword],
   );
+
+  const handleNoteClick = (id: string) => {
+    setSelectedNote(id);
+    setSection(Section.NOTE);
+  };
 
   return (
     <>
@@ -55,7 +62,15 @@ export const NoteList = () => {
 
               return (
                 <NoteContext key={note.id} noteId={note.id}>
-                  <NoteItem note={note} selected={selectedNoteId === note.id}>
+                  <NoteItem
+                    note={note}
+                    selected={selectedNoteId === note.id}
+                    onClick={handleNoteClick}
+                    category={
+                      categories.find((category) => category.id === note.categoryId)?.name ||
+                      "Notes"
+                    }
+                  >
                     {noteTitle}
                   </NoteItem>
                 </NoteContext>

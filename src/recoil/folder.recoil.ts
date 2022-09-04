@@ -30,7 +30,7 @@ export const activeFolderSelector = selector({
       : notes.filter((note) => !note.trash).sort(getNotesSorter(sortOrderKey));
 
     const firstNote = {
-      [Folder.ALL]: () => availableNotes[1],
+      [Folder.ALL]: () => availableNotes[0],
       [Folder.CATEGORY]: () => availableNotes.find((note) => note.categoryId === categoryId),
       [Folder.PINNED]: () => availableNotes.find((note) => note.pinned),
       [Folder.TRASH]: () => notes.find((note) => note.trash),
