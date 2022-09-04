@@ -52,7 +52,7 @@ export const darkTheme = {
   offWhite: "#ffffffb3",
   overlayColor: "rgba(0, 0, 0, 0.70)",
   primary: "#1F75FE",
-  scrollBar: "#dbdbdb",
+  scrollBar: "#606060",
   secondary: "#2e2a36",
   secondLayer: "#303030",
   shadow: "none",

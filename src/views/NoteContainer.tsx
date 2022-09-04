@@ -1,7 +1,8 @@
 import { useMemo } from "react";
+import SplitPane from "react-split-pane";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { editingSelector } from "recoil/editor.recoil";
+import { editingSelector, splitSelector } from "recoil/editor.recoil";
 import { selectedNoteSelector } from "recoil/notes.recoil";
 import { sectionsSelector } from "recoil/sections.recoil";
 
@@ -18,21 +19,30 @@ import { FlexColumn } from "styles/layout";
 export const NoteContainer = () => {
   const { isSmallDevice } = useWindowDimensions();
   const section = useRecoilValue(sectionsSelector);
-  const [editing, setEditing] = useRecoilState(editingSelector);
+  const editing = useRecoilValue(editingSelector);
+  const split = useRecoilValue(splitSelector);
   const [note, setNote] = useRecoilState(selectedNoteSelector);
 
   const editorView = useMemo(() => section === Section.NOTE, [section]);
 
-  //
   return (
-    <FlexColumn>
-      <EditorBar note={note} editing={editing} setEditing={() => setEditing((prev) => !prev)} />
+    <FlexColumn width="100%" height="100%">
+      <EditorBar note={note} />
       {((isSmallDevice && editorView) || !isSmallDevice) && (
         <FlexColumn justifyContent="space-between" alignItems="initial" height="100%">
           {note && (
             <>
-              {!editing && <NotePreview previewNote={note} />}
-              {editing && <NoteEditor note={note} setNote={setNote} />}
+              {editing && split && !isSmallDevice ? (
+                <SplitPane split="vertical" defaultSize="50%">
+                  <NoteEditor note={note} setNote={setNote} />
+                  <NotePreview previewNote={note} />
+                </SplitPane>
+              ) : (
+                <>
+                  {!editing && <NotePreview previewNote={note} />}
+                  {editing && <NoteEditor note={note} setNote={setNote} />}
+                </>
+              )}
             </>
           )}
         </FlexColumn>

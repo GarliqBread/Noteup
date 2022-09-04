@@ -7,23 +7,21 @@ overflow-y: auto;
 background: ${(props) => props.theme.color.firstLayer};
 color: ${(props) => props.theme.color.text};
 -webkit-font-smoothing: subpixel-antialiased;
-height: 100vh;
+width: 100%;
+height: 100%;
 padding: 15px;
+margin-bottom: 52px;
 
 a {
-    color: ${(props) => props.theme.color.primary};
-    text-decoration: none;
-    font-weight: 600;
+  color: ${(props) => props.theme.color.primary};
+  text-decoration: none;
+  font-weight: 600;
 
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
-
-  .error {
-    color: $error;
-  }
+}
 
   p,
   ol,
@@ -61,14 +59,12 @@ a {
     }
   }
 
-  // Increased margin on additional headings
   h1:not(:first-child),
   h2:not(:first-child),
   h3:not(:first-child) {
     margin-top: 2rem;
   }
 
-  // Heading individual styles
   h1 {
     margin-top: 0.5rem;
     font-size: 2rem;
@@ -90,10 +86,8 @@ a {
     font-size: 1rem;
   }
 
-  // Blockquote
   blockquote {
     margin: 0 0 1.5rem 0;
-    border-left: 4px solid $light-font-color;
     padding: 0.5rem 1.5rem;
 
     p {
@@ -112,9 +106,7 @@ a {
     }
   }
 
-  // Code block styling
   pre {
-    background: lighten($note-sidebar-color, 8%);
     padding: 1rem;
     tab-size: 2;
     color: #404040;
@@ -123,7 +115,6 @@ a {
     word-spacing: normal;
     word-break: normal;
     border-radius: 0.3rem;
-    border: 1px solid darken($note-sidebar-color, 3%);
     font-size: 0.9rem;
     line-height: 1.4rem;
 
@@ -137,15 +128,12 @@ a {
 
   code {
     padding: 2px 3px;
-    background: lighten($note-sidebar-color, 8%);
     border-radius: 0.3rem;
-    border: 1px solid darken($note-sidebar-color, 3%);
   }
 
   hr {
     height: 0;
     border: 0;
-    border-top: 2px solid lighten($light-font-color, 10%);
   }
 
   img {
@@ -155,22 +143,9 @@ a {
   }
 
   table {
-    border: 1px solid $note-sidebar-color;
     border-collapse: collapse;
     border-spacing: 0;
     max-width: 100%;
-  }
-
-  thead th {
-    border-bottom: 2px solid $note-sidebar-color;
-  }
-
-  tfoot th {
-    border-top: 2px solid $note-sidebar-color;
-  }
-
-  td {
-    border-bottom: 1px solid $note-sidebar-color;
   }
 
   th,
@@ -182,28 +157,26 @@ a {
   ul {
     margin-left: 20px;
   }
+
+  ol > li {
+    margin-left: 20px;
+  }
 }
 
 .preview-button {
   display: flex;
   align-items: center;
-  position: absolute;
-  color: $font-color;
   top: 0;
   right: 1rem;
   border: none;
-  background-color: $note-sidebar-color;
   font-weight: 500;
   padding: 0.5rem;
   font-size: 0.8rem;
   z-index: 2;
-  box-shadow: $box-shadow;
 
   &:hover,
   &:focus {
     border: none;
-    color: darken($font-color, 10%);
-    background-color: darken($note-sidebar-color, 5%);
   }
 
   .invalid-note-uuid {

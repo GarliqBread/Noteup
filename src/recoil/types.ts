@@ -43,7 +43,9 @@ export type EditorState = {
   foldGutter: boolean;
   editorTheme: EditorTheme;
   previwerTheme: PreviewThemeKey;
+  renderHTML: boolean;
   editing: boolean;
+  split: boolean;
 };
 
 export type SectionsState = Section;

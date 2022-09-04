@@ -1,11 +1,4 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-
-import { categoriesSelector } from "recoil/categories.recoil";
-import { selectNoteIdSelector } from "recoil/notes.recoil";
-import { sectionsSelector } from "recoil/sections.recoil";
 import { Note } from "recoil/types";
-
-import { Section } from "utils/enums";
 
 import { FilledPin, Folder, Notes } from "components/Icons";
 
@@ -17,21 +10,14 @@ import { Label } from "styles/typography";
 type Props = {
   note: Note;
   selected?: boolean;
+  category: string;
+  onClick: (id: string) => void;
   children: React.ReactNode;
 };
 
-export const NoteItem = ({ note, children }: Props) => {
-  const categories = useRecoilValue(categoriesSelector);
-  const [selectedNoteId, setSelectedNote] = useRecoilState(selectNoteIdSelector);
-  const setSection = useSetRecoilState(sectionsSelector);
-
-  const handleNoteClick = () => {
-    setSelectedNote(note.id);
-    setSection(Section.NOTE);
-  };
-
+export const NoteItem = ({ note, selected, category, onClick, children }: Props) => {
   return (
-    <NoteItemContainer onClick={handleNoteClick} selected={selectedNoteId === note.id}>
+    <NoteItemContainer onClick={() => onClick(note.id)} selected={selected}>
       <Flex>
         <Flex width="20px" height="20px">
           {note.pinned && <FilledPin className="pin" size={15} />}
@@ -40,9 +26,7 @@ export const NoteItem = ({ note, children }: Props) => {
       </Flex>
       <Flex margin="0 0 0 20px" gap={5}>
         {note.categoryId ? <Folder size={14} /> : <Notes size={14} />}
-        <Label>
-          {categories.find((category) => category.id === note.categoryId)?.name || "Notes"}
-        </Label>
+        <Label>{category}</Label>
       </Flex>
     </NoteItemContainer>
   );

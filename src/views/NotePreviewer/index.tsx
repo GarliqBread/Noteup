@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import rehypeRaw from "rehype-raw";
 import breaks from "remark-breaks";
 import gfm from "remark-gfm";
 
-import { previewerThemeSelector } from "recoil/editor.recoil";
+import { previewerThemeSelector, renderHTMLSelector } from "recoil/editor.recoil";
 import { folderState } from "recoil/folder.recoil";
-import { notesState, selectNoteIdSelector } from "recoil/notes.recoil";
+import { notesSelector, selectNoteIdSelector } from "recoil/notes.recoil";
 import { themeSelector } from "recoil/settings.recoil";
 import { Note } from "recoil/types";
 
@@ -24,7 +25,8 @@ type Props = {
 export const NotePreview = ({ previewNote }: Props) => {
   const theme = useRecoilValue(themeSelector);
   const previewerTheme = useRecoilValue(previewerThemeSelector);
-  const { notes } = useRecoilValue(notesState);
+  const renderHtml = useRecoilValue(renderHTMLSelector);
+  const notes = useRecoilValue(notesSelector);
   const setSelectedNoteId = useSetRecoilState(selectNoteIdSelector);
   const setActiveFolder = useSetRecoilState(folderState);
 
@@ -53,6 +55,7 @@ export const NotePreview = ({ previewNote }: Props) => {
   return (
     <Previewer
       remarkPlugins={[gfm, uuidPlugin, breaks]}
+      rehypePlugins={renderHtml ? [rehypeRaw] : []}
       components={{
         a: ({ href, children }) => returnNoteLink(href, children),
         code({ inline, className, children, ...props }) {
