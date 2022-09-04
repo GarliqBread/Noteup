@@ -19,7 +19,7 @@ const Header = styled.h1`
   width: 100%;
   color: ${(props) => props.theme.color.white};
   font-size: 26px;
-  padding: 12px 15px;
+  padding: 15px;
 
   mark {
     background-color: transparent;
