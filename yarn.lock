@@ -9666,9 +9666,10 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-split-pane@tomkp/react-split-pane#pull/240/head:
+react-split-pane@^2.0.3:
   version "2.0.3"
-  resolved "https://codeload.github.com/tomkp/react-split-pane/tar.gz/5fa31020fac4e06989fda776547c389109a6d19b"
+  resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-2.0.3.tgz#2a4d01ecc6fbba4328fe12139daa8c4a9a6eaa7c"
+  integrity sha512-1rW+EMSJTkS7eYMYethCaNFOjiAVDm/B2LlxJXLr1Uu8ddLrV9pfc5P/fngRBkTGC/0tvxRkW1dLxGY7zvHVkA==
   dependencies:
     glamor "^2.20.40"
     glamorous "^4.11.2"
