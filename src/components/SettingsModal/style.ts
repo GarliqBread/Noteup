@@ -64,7 +64,7 @@ const ShortcutContainer = styled.div`
   }
 
   kbd {
-    background-color: ${(props) => props.theme.color.codeBlock};
+    background-color: ${(props) => props.theme.color.keyBlock};
     border: 1px solid ${(props) => props.theme.color.border};
     border-radius: 3px;
     box-shadow: ${(props) => props.theme.color.insetShadow};

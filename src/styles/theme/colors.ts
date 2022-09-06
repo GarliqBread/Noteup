@@ -1,7 +1,7 @@
 export const lightTheme = {
   black: "#000000",
   border: "#cccccc",
-  codeBlock: "#f7f7f7",
+  codeBlock: "#f4f4f4",
   context: "#ffffff",
   contrastGray: "#eaeaea",
   danger: "#f26d6f",
@@ -14,6 +14,7 @@ export const lightTheme = {
   hover: "rgba(0,0,0,0.08)",
   input: "#ffffff",
   insetShadow: "0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset",
+  keyBlock: "#f7f7f7",
   lightGray: "#f7f4f4",
   lightText: "#565656",
   noteList: "#e5e5e5",
@@ -33,7 +34,7 @@ export const lightTheme = {
 export const darkTheme = {
   black: "#000000",
   border: "#090909",
-  codeBlock: "#262626",
+  codeBlock: "#525252",
   context: "#2d2d2d",
   contrastGray: "#4c4c4c",
   danger: "#f26d6f",
@@ -46,6 +47,7 @@ export const darkTheme = {
   hover: "rgba(0,0,0,0.15)",
   input: "#404040",
   insetShadow: "0 1px 0 rgb(255 255 255 / 20%), 0 0 0 2px #222 inset",
+  keyBlock: "#262626",
   lightGray: "#f7f4f4",
   lightText: "#d0d0d0",
   noteList: "#242424",
