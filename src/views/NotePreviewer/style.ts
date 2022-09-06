@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 
-const Previewer = styled(ReactMarkdown)`
+const Previewer = styled(ReactMarkdown)<{ border?: boolean }>`
 position: relative;
 overflow-y: auto;
 background: ${(props) => props.theme.color.firstLayer};
@@ -11,6 +11,7 @@ width: 100%;
 height: 100%;
 padding: 15px;
 margin-bottom: 52px;
+border-left: ${(props) => props.border && `1px solid ${props.theme.color.border}`};
 
 a {
   color: ${(props) => props.theme.color.primary};

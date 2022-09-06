@@ -21,8 +21,9 @@ import { Previewer } from "./style";
 
 type Props = {
   previewNote: Note;
+  border?: boolean;
 };
-export const NotePreview = ({ previewNote }: Props) => {
+export const NotePreview = ({ previewNote, border }: Props) => {
   const theme = useRecoilValue(themeSelector);
   const previewerTheme = useRecoilValue(previewerThemeSelector);
   const renderHtml = useRecoilValue(renderHTMLSelector);
@@ -54,6 +55,7 @@ export const NotePreview = ({ previewNote }: Props) => {
 
   return (
     <Previewer
+      border={border}
       remarkPlugins={[gfm, uuidPlugin, breaks]}
       rehypePlugins={renderHtml ? [rehypeRaw] : []}
       components={{
