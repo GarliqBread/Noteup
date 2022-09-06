@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
+import { defaultNote } from "utils/constants";
 import { Folder, NotesSortKey } from "utils/enums";
 import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
 import { getNotesSorter } from "utils/sorting";
@@ -18,7 +19,7 @@ export const notesState: RecoilState<NotesState> = atom({
   key: "notes-state",
   default: {
     keyword: "",
-    notes: [],
+    notes: [defaultNote],
     sortBy: NotesSortKey.LAST_UPDATED,
     selectedNoteId: null,
   },
