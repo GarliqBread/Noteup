@@ -2,8 +2,9 @@ import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import rehypeRaw from "rehype-raw";
-import breaks from "remark-breaks";
-import gfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
 
 import { previewerThemeSelector, renderHTMLSelector } from "recoil/editor.recoil";
 import { folderState } from "recoil/folder.recoil";
@@ -56,7 +57,7 @@ export const NotePreview = ({ previewNote, border }: Props) => {
   return (
     <Previewer
       border={border}
-      remarkPlugins={[gfm, uuidPlugin, breaks]}
+      remarkPlugins={[remarkParse, remarkGfm, uuidPlugin, remarkBreaks]}
       rehypePlugins={renderHtml ? [rehypeRaw] : []}
       components={{
         a: ({ href, children }) => returnNoteLink(href, children),
