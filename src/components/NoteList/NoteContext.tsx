@@ -74,7 +74,7 @@ export const NoteContext = ({ noteId, children }: Props) => {
       onClick: downloadNote,
       children: (
         <>
-          <Download size={15} /> Download{" "}
+          <Download size={15} /> Download
         </>
       ),
     },
