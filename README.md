@@ -1,6 +1,6 @@
 # Noteup
 
-Noteup is a free, open-source notes app for the web and desktop. Your notes are saved in local storage and will not be permanently persisted, but are available for download.
+Noteup is a free, open-source notes app for the web and desktop. Your notes are saved in local storage, but are available for download/import.
 
 # Technologies ⚙️
 
@@ -26,6 +26,12 @@ To run the native versions, after the install script run
 yarn tauri dev
 ```
 
+To make a tauri build run
+
+```properties
+yarn tauri build
+```
+
 # Missing features
 
 - [ ] Note sharing
@@ -40,3 +46,7 @@ yarn tauri dev
 This is an open source project, and contributions are welcomed and appreciated. Open issues, bugs, and enhancements are all listed on the [issues](https://github.com/elements/noteup/issues) tab and labeled accordingly.
 
 View [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the style guide, folder structure, scripts, and how to contribute.
+
+# Inspirations
+
+This project was heavily inspired by another markdown note app I was using for a while called [Takenote](https://github.com/taniarascia/takenote) and the macOS notes app.

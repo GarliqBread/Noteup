@@ -147,12 +147,14 @@ a {
     border-collapse: collapse;
     border-spacing: 0;
     max-width: 100%;
+    border: 1px solid ${(props) => props.theme.color.lightText};
   }
 
   th,
   td {
     text-align: left;
     padding: 0.5rem;
+    border: 1px solid ${(props) => props.theme.color.lightText};
   }
 
   ul {
