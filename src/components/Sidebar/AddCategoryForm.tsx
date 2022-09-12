@@ -2,9 +2,9 @@ import { FormEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { v4 as uuid } from "uuid";
 
-import { categoriesSelector } from "recoil/categories.recoil";
+import { categoriesSelector } from "@/recoil/categories.recoil";
 
-import { Input } from "components/Input";
+import { Input } from "@/components/Input";
 
 import { CategoryForm } from "./style";
 

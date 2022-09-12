@@ -1,8 +1,8 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { Folder, Section } from "utils/enums";
-import { getNotesSorter } from "utils/sorting";
+import { Folder, Section } from "@/utils/enums";
+import { getNotesSorter } from "@/utils/sorting";
 
 import { selectedCategoryIdSelector } from "./categories.recoil";
 import { notesSelector, selectNoteIdSelector } from "./notes.recoil";

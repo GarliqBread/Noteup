@@ -2,11 +2,12 @@ import { open } from "@tauri-apps/api/dialog";
 import { readBinaryFile } from "@tauri-apps/api/fs";
 import { ChangeEvent, useRef } from "react";
 
-import { isTauri } from "utils/helpers";
+import { isTauri } from "@/utils/helpers";
 
 import { StyledButton, StyledIconButton } from "./style";
 
 type ButtonProps = {
+  testId?: string;
   className?: string;
   title?: string;
   type?: "button" | "submit" | "reset";
@@ -18,6 +19,7 @@ type ButtonProps = {
 };
 
 export const Button = ({
+  testId,
   className,
   title,
   type,
@@ -28,6 +30,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <StyledButton
+      data-testid={testId}
       className={className}
       disabled={disabled}
       type={type}

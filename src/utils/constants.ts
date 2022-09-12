@@ -1,4 +1,4 @@
-import { EditorThemeKey, Folder, NotesSortKey, PreviewThemeKey, Section } from "utils/enums";
+import { EditorThemeKey, Folder, NotesSortKey, PreviewThemeKey, Section } from "@/utils/enums";
 
 export const folderMap: Record<Folder, string> = {
   [Folder.ALL]: "All Notes",

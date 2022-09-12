@@ -6,17 +6,17 @@ import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 
-import { previewerThemeSelector, renderHTMLSelector } from "recoil/editor.recoil";
-import { folderState } from "recoil/folder.recoil";
-import { notesSelector, selectNoteIdSelector } from "recoil/notes.recoil";
-import { themeSelector } from "recoil/settings.recoil";
-import { Note } from "recoil/types";
+import { previewerThemeSelector, renderHTMLSelector } from "@/recoil/editor.recoil";
+import { folderState } from "@/recoil/folder.recoil";
+import { notesSelector, selectNoteIdSelector } from "@/recoil/notes.recoil";
+import { themeSelector } from "@/recoil/settings.recoil";
+import { Note } from "@/recoil/types";
 
-import { previewThemes } from "utils/editorThemes";
-import { Folder } from "utils/enums";
-import { uuidPlugin } from "utils/reactMarkdownPlugins";
+import { previewThemes } from "@/utils/editorThemes";
+import { Folder } from "@/utils/enums";
+import { uuidPlugin } from "@/utils/reactMarkdownPlugins";
 
-import { NoteLink } from "components/NotePreviewer/NoteLink";
+import { NoteLink } from "@/components/NotePreviewer/NoteLink";
 
 import { Previewer } from "./style";
 

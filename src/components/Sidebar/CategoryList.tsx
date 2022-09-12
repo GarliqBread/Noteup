@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { categoriesSelector, openCategoryListSelector } from "recoil/categories.recoil";
+import { categoriesSelector, openCategoryListSelector } from "@/recoil/categories.recoil";
 
-import { LabelText } from "utils/enums";
+import { LabelText } from "@/utils/enums";
 
-import { IconButton } from "components/Button";
-import { Plus } from "components/Icons";
+import { IconButton } from "@/components/Button";
+import { Plus } from "@/components/Icons";
 
 import { AddCategoryForm } from "./AddCategoryForm";
 import { CategoryContext } from "./CategoryContext";

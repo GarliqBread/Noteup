@@ -1,18 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { categoriesSelector, selectedCategoryIdSelector } from "recoil/categories.recoil";
-import { activeFolderSelector } from "recoil/folder.recoil";
-import { Category } from "recoil/types";
+import { categoriesSelector, selectedCategoryIdSelector } from "@/recoil/categories.recoil";
+import { activeFolderSelector } from "@/recoil/folder.recoil";
+import { Category } from "@/recoil/types";
 
-import { Folder } from "utils/enums";
+import { Folder } from "@/utils/enums";
 
-import { Folder as FolderIcon } from "components/Icons";
-import { Input } from "components/Input";
+import { Folder as FolderIcon } from "@/components/Icons";
+import { Input } from "@/components/Input";
 
 import { CategoryItem, Form } from "./style";
 
-import { Flex } from "styles/layout";
+import { Flex } from "@/styles/layout";
 
 type Props = {
   category: Category;

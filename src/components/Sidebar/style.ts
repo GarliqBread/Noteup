@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Flex } from "styles/layout";
+import { Flex } from "@/styles/layout";
 
 const StyledSidebar = styled(Flex)`
   height: 100%;

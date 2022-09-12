@@ -1,18 +1,18 @@
 import { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { activeFolderSelector } from "recoil/folder.recoil";
-import { sectionsSelector } from "recoil/sections.recoil";
+import { activeFolderSelector } from "@/recoil/folder.recoil";
+import { sectionsSelector } from "@/recoil/sections.recoil";
 
-import { Folder, Section } from "utils/enums";
-import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
+import { Folder, Section } from "@/utils/enums";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
-import { Gear, Notes, Pin, Trash } from "components/Icons";
+import { Gear, Notes, Pin, Trash } from "@/components/Icons";
 
 import { CategoryList } from "./CategoryList";
 import { Header, SidebarButton, StyledSidebar } from "./style";
 
-import { FlexColumn } from "styles/layout";
+import { FlexColumn } from "@/styles/layout";
 
 type Props = {
   showSettings: () => void;

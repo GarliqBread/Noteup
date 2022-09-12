@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 
-import { categoriesSelector } from "recoil/categories.recoil";
+import { categoriesSelector } from "@/recoil/categories.recoil";
 import {
   autoCompleteSelector,
   breakLinesSelector,
@@ -9,27 +9,34 @@ import {
   lineNumbersSelector,
   previewerThemeSelector,
   renderHTMLSelector,
-} from "recoil/editor.recoil";
-import { notesSelector } from "recoil/notes.recoil";
-import { sortKeySelector, themeSelector } from "recoil/settings.recoil";
-import { Category, Note } from "recoil/types";
+} from "@/recoil/editor.recoil";
+import { notesSelector } from "@/recoil/notes.recoil";
+import { sortKeySelector, themeSelector } from "@/recoil/settings.recoil";
+import { Category, Note } from "@/recoil/types";
 
 import {
   notesSortOptions,
   shortcutMap,
   themeEditorOptions,
   themePreviewOptions,
-} from "utils/constants";
-import { EditorThemeKey, LabelText, NotesSortKey, PreviewThemeKey } from "utils/enums";
-import { backupNotes } from "utils/helpers";
+} from "@/utils/constants";
+import { EditorThemeKey, LabelText, NotesSortKey, PreviewThemeKey } from "@/utils/enums";
+import { backupNotes } from "@/utils/helpers";
 
-import { Button, IconButton, UploadButton } from "components/Button";
-import { Close, CloudDownload, CloudUpload, HardDrive, Keyboard, Sliders } from "components/Icons";
-import { Option } from "components/SettingsModal/Option";
-import { SelectOptions } from "components/SettingsModal/SelectOption";
-import { Shortcut } from "components/SettingsModal/Shortcut";
-import { TabPanel } from "components/Tabs/TabPanel";
-import { Tabs } from "components/Tabs/Tabs";
+import { Button, IconButton, UploadButton } from "@/components/Button";
+import {
+  Close,
+  CloudDownload,
+  CloudUpload,
+  HardDrive,
+  Keyboard,
+  Sliders,
+} from "@/components/Icons";
+import { Option } from "@/components/SettingsModal/Option";
+import { SelectOptions } from "@/components/SettingsModal/SelectOption";
+import { Shortcut } from "@/components/SettingsModal/Shortcut";
+import { TabPanel } from "@/components/Tabs/TabPanel";
+import { Tabs } from "@/components/Tabs/Tabs";
 
 import { Modal, ModalHeader, Overlay, Wrapper } from "./styled";
 

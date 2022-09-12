@@ -1,6 +1,6 @@
 import Pane from "react-split-pane";
 
-import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
 type Props = {
   split?: "vertical" | "horizontal";

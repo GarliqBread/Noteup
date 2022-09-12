@@ -1,7 +1,7 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { Section } from "utils/enums";
+import { Section } from "@/utils/enums";
 
 import { SectionsState } from "./types";
 

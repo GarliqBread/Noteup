@@ -1,4 +1,4 @@
-import { Note } from "recoil/types";
+import { Note } from "@/recoil/types";
 
 import { NotesSortKey } from "./enums";
 import { getNoteTitle } from "./helpers";
@@ -28,7 +28,6 @@ const lastUpdated: NotesSortStrategy = {
     const dateA = new Date(a.lastUpdated);
     const dateB = new Date(b.lastUpdated);
 
-    // the first note in the list should consistently sort after if it is created at the same time
     return dateA < dateB ? 1 : -1;
   },
 };

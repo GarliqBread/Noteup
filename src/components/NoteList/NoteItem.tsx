@@ -1,11 +1,11 @@
-import { Note } from "recoil/types";
+import { Note } from "@/recoil/types";
 
-import { FilledPin, Folder, Notes } from "components/Icons";
+import { FilledPin, Folder, Notes } from "@/components/Icons";
 
 import { NoteItemContainer } from "./style";
 
-import { Ellipsis, Flex } from "styles/layout";
-import { Label } from "styles/typography";
+import { Ellipsis, Flex } from "@/styles/layout";
+import { Label } from "@/styles/typography";
 
 type Props = {
   note: Note;

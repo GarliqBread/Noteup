@@ -1,7 +1,7 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { NotesSortKey } from "utils/enums";
+import { NotesSortKey } from "@/utils/enums";
 
 import { SettingsState } from "./types";
 

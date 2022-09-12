@@ -2,15 +2,15 @@ import dayjs from "dayjs";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { v4 as uuid } from "uuid";
 
-import { selectedCategoryIdSelector } from "recoil/categories.recoil";
-import { editingSelector } from "recoil/editor.recoil";
-import { activeFolderSelector } from "recoil/folder.recoil";
-import { notesSelector, selectedNoteSelector } from "recoil/notes.recoil";
-import { themeSelector } from "recoil/settings.recoil";
+import { selectedCategoryIdSelector } from "@/recoil/categories.recoil";
+import { editingSelector } from "@/recoil/editor.recoil";
+import { activeFolderSelector } from "@/recoil/folder.recoil";
+import { notesSelector, selectedNoteSelector } from "@/recoil/notes.recoil";
+import { themeSelector } from "@/recoil/settings.recoil";
 
-import { Folder, Shortcuts } from "utils/enums";
-import { downloadNote } from "utils/helpers";
-import { useKey } from "utils/hooks";
+import { Folder, Shortcuts } from "@/utils/enums";
+import { downloadNote } from "@/utils/helpers";
+import { useKey } from "@/utils/hooks";
 
 export const KeyboardShortcuts = () => {
   const setNotes = useSetRecoilState(notesSelector);

@@ -1,10 +1,10 @@
 import { useRecoilState } from "recoil";
 
-import { categoriesSelector } from "recoil/categories.recoil";
+import { categoriesSelector } from "@/recoil/categories.recoil";
 
-import { ContextMenu } from "components/ContextMenu";
-import { Dropdown } from "components/Dropdown";
-import { Close, Edit } from "components/Icons";
+import { ContextMenu } from "@/components/ContextMenu";
+import { Dropdown } from "@/components/Dropdown";
+import { Close, Edit } from "@/components/Icons";
 
 type Props = {
   categoryId: string;

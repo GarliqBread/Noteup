@@ -1,4 +1,4 @@
-import { Select, SelectOption } from "components/Select";
+import { Select, SelectOption } from "@/components/Select";
 
 import { SelectOptionContainer } from "./style";
 

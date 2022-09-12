@@ -1,15 +1,15 @@
 import { useRef } from "react";
 
-import { Shortcuts } from "utils/enums";
-import { useKey } from "utils/hooks";
+import { Shortcuts } from "@/utils/enums";
+import { useKey } from "@/utils/hooks";
 
-import { IconButton } from "components/Button";
-import { Close } from "components/Icons";
+import { IconButton } from "@/components/Button";
+import { Close } from "@/components/Icons";
 
 import { InputContainer, StyledInput } from "./style";
 
 type Props = {
-  id?: string;
+  testId?: string;
   value: string;
   placeholder?: string;
   maxLength?: number;
@@ -20,7 +20,7 @@ type Props = {
 };
 
 export const Input = ({
-  id,
+  testId,
   value,
   placeholder,
   maxLength,
@@ -41,7 +41,7 @@ export const Input = ({
   return (
     <InputContainer>
       <StyledInput
-        id={id}
+        data-testid={testId}
         ref={inputRef}
         value={value}
         placeholder={placeholder}

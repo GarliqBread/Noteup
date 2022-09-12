@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-import { editingSelector, splitSelector } from "recoil/editor.recoil";
-import { selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
-import { sectionsSelector } from "recoil/sections.recoil";
-import { themeSelector } from "recoil/settings.recoil";
-import { Note } from "recoil/types";
+import { editingSelector, splitSelector } from "@/recoil/editor.recoil";
+import { selectNoteIdSelector, selectedNoteSelector } from "@/recoil/notes.recoil";
+import { sectionsSelector } from "@/recoil/sections.recoil";
+import { themeSelector } from "@/recoil/settings.recoil";
+import { Note } from "@/recoil/types";
 
-import { Section } from "utils/enums";
-import { copyToClipboard, downloadNote as downloadNoteFile } from "utils/helpers";
-import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
+import { Section } from "@/utils/enums";
+import { copyToClipboard, downloadNote as downloadNoteFile } from "@/utils/helpers";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
 import {
   ArrowBack,
@@ -23,11 +23,11 @@ import {
   Split,
   Sun,
   Trash,
-} from "components/Icons";
+} from "@/components/Icons";
 
 import { TopNav, TopNavButton } from "./styled";
 
-import { Flex } from "styles/layout";
+import { Flex } from "@/styles/layout";
 
 type Props = {
   note?: Note;
