@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
-import { Note } from "recoil/types";
+import { Note } from "@/recoil/types";
 
-import { Errors } from "utils/enums";
-import { getNoteTitle } from "utils/helpers";
+import { Errors } from "@/utils/enums";
+import { getNoteTitle } from "@/utils/helpers";
 
 export interface NoteLinkProps {
   uuid: string;

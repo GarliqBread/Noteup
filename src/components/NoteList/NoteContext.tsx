@@ -1,15 +1,15 @@
 import { useMemo } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { categoriesSelector } from "recoil/categories.recoil";
-import { notesState, selectNoteIdSelector, selectedNoteSelector } from "recoil/notes.recoil";
+import { categoriesSelector } from "@/recoil/categories.recoil";
+import { notesState, selectNoteIdSelector, selectedNoteSelector } from "@/recoil/notes.recoil";
 
-import { copyToClipboard, downloadNote as downloadNoteFile } from "utils/helpers";
+import { copyToClipboard, downloadNote as downloadNoteFile } from "@/utils/helpers";
 
-import { ContextMenu } from "components/ContextMenu";
-import { Dropdown } from "components/Dropdown";
-import { ArrowBack, Clipboard, Download, Pin, Trash } from "components/Icons";
-import { Select } from "components/Select";
+import { ContextMenu } from "@/components/ContextMenu";
+import { Dropdown } from "@/components/Dropdown";
+import { ArrowBack, Clipboard, Download, Pin, Trash } from "@/components/Icons";
+import { Select } from "@/components/Select";
 
 type Props = { noteId: string; children: React.ReactNode };
 

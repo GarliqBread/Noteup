@@ -1,7 +1,7 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { Folder } from "utils/enums";
+import { Folder } from "@/utils/enums";
 
 import { activeFolderSelector } from "./folder.recoil";
 import { CategoryState } from "./types";

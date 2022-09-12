@@ -5,12 +5,12 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "importOrder": [
-    "^recoil/(.*)$",
-    "^utils/(.*)$",
-    "^views/(.*)$",
-    "^components/(.*)$",
-    "^[./]",
-    "^styles/(.*)$"
+    "^@/recoil/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/views/(.*)$",
+    "^@/components/(.*)$",
+    "^@/styles/(.*)$",
+    "^[./]"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true

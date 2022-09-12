@@ -4,7 +4,7 @@ import * as clipboard from "clipboard-polyfill/text";
 import dayjs from "dayjs";
 import { saveAs } from "file-saver";
 
-import { Category, Note } from "recoil/types";
+import { Category, Note } from "@/recoil/types";
 
 import { LabelText } from "./enums";
 

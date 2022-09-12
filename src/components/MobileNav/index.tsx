@@ -1,16 +1,16 @@
 import { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { editingSelector } from "recoil/editor.recoil";
-import { activeFolderSelector } from "recoil/folder.recoil";
-import { sectionsSelector } from "recoil/sections.recoil";
+import { editingSelector } from "@/recoil/editor.recoil";
+import { activeFolderSelector } from "@/recoil/folder.recoil";
+import { sectionsSelector } from "@/recoil/sections.recoil";
 
-import { navHeaders } from "utils/constants";
-import { Section } from "utils/enums";
-import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
+import { navHeaders } from "@/utils/constants";
+import { Section } from "@/utils/enums";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
-import { IconButton } from "components/Button";
-import { ArrowLeft, Gear } from "components/Icons";
+import { IconButton } from "@/components/Button";
+import { ArrowLeft, Gear } from "@/components/Icons";
 
 import { Nav } from "./style";
 

@@ -1,4 +1,4 @@
-import { NotesSortKey, PreviewThemeKey, Section } from "utils/enums";
+import { NotesSortKey, PreviewThemeKey, Section } from "@/utils/enums";
 
 type EditorTheme = "github" | "xcode" | "duotone";
 

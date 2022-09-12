@@ -2,10 +2,10 @@ import dayjs from "dayjs";
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { defaultNote } from "utils/constants";
-import { Folder, NotesSortKey } from "utils/enums";
-import { getNoteTitle, removeDuplicateNotes } from "utils/helpers";
-import { getNotesSorter } from "utils/sorting";
+import { defaultNote } from "@/utils/constants";
+import { Folder, NotesSortKey } from "@/utils/enums";
+import { getNoteTitle, removeDuplicateNotes } from "@/utils/helpers";
+import { getNotesSorter } from "@/utils/sorting";
 
 import { selectedCategoryIdSelector } from "./categories.recoil";
 import { editorState } from "./editor.recoil";

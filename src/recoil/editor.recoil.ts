@@ -1,7 +1,7 @@
 import { DefaultValue, RecoilState, atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-import { EditorThemeKey, PreviewThemeKey } from "utils/enums";
+import { EditorThemeKey, PreviewThemeKey } from "@/utils/enums";
 
 import { EditorState } from "./types";
 

@@ -10,11 +10,11 @@ import {
   editorThemeSelector,
   foldGutterSelector,
   lineNumbersSelector,
-} from "recoil/editor.recoil";
-import { themeSelector } from "recoil/settings.recoil";
-import { Note } from "recoil/types";
+} from "@/recoil/editor.recoil";
+import { themeSelector } from "@/recoil/settings.recoil";
+import { Note } from "@/recoil/types";
 
-import { editorThemes } from "utils/editorThemes";
+import { editorThemes } from "@/utils/editorThemes";
 
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 

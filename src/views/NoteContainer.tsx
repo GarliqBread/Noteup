@@ -2,19 +2,19 @@ import { useMemo } from "react";
 import SplitPane from "react-split-pane";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { editingSelector, splitSelector } from "recoil/editor.recoil";
-import { selectedNoteSelector } from "recoil/notes.recoil";
-import { sectionsSelector } from "recoil/sections.recoil";
+import { editingSelector, splitSelector } from "@/recoil/editor.recoil";
+import { selectedNoteSelector } from "@/recoil/notes.recoil";
+import { sectionsSelector } from "@/recoil/sections.recoil";
 
-import { Section } from "utils/enums";
-import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
+import { Section } from "@/utils/enums";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
-import { NoteEditor } from "views/NoteEditor";
-import { NotePreview } from "views/NotePreviewer";
+import { NoteEditor } from "@/views/NoteEditor";
+import { NotePreview } from "@/views/NotePreviewer";
 
-import { EditorBar } from "components/EditorBar";
+import { EditorBar } from "@/components/EditorBar";
 
-import { FlexColumn } from "styles/layout";
+import { FlexColumn } from "@/styles/layout";
 
 export const NoteContainer = () => {
   const { isSmallDevice } = useWindowDimensions();

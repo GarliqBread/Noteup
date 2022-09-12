@@ -1,6 +1,9 @@
 name: "Update artifacts"
 
-on: pull_request
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   create-release:

@@ -1,13 +1,17 @@
 import { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { categoriesSelector } from "recoil/categories.recoil";
-import { filteredNotesSelector, keywordSelector, selectNoteIdSelector } from "recoil/notes.recoil";
-import { sectionsSelector } from "recoil/sections.recoil";
+import { categoriesSelector } from "@/recoil/categories.recoil";
+import {
+  filteredNotesSelector,
+  keywordSelector,
+  selectNoteIdSelector,
+} from "@/recoil/notes.recoil";
+import { sectionsSelector } from "@/recoil/sections.recoil";
 
-import { Section } from "utils/enums";
-import { getNoteTitle } from "utils/helpers";
-import { useWindowDimensions } from "utils/hooks/useWindowDimensions";
+import { Section } from "@/utils/enums";
+import { getNoteTitle } from "@/utils/helpers";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
 import { NoteContext } from "./NoteContext";
 import { NoteItem } from "./NoteItem";

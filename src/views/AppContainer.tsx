@@ -1,18 +1,18 @@
 import { invoke } from "@tauri-apps/api";
 import { useEffect, useState } from "react";
 
-import { isTauri } from "utils/helpers";
+import { isTauri } from "@/utils/helpers";
 
-import { KeyboardShortcuts } from "components/KeyboardShortcuts";
-import { MobileNav } from "components/MobileNav";
-import { NoteList } from "components/NoteList";
-import { Sidebar } from "components/Sidebar";
-import { SplitPane } from "components/SplitPanel";
+import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
+import { MobileNav } from "@/components/MobileNav";
+import { NoteList } from "@/components/NoteList";
+import { Sidebar } from "@/components/Sidebar";
+import { SplitPane } from "@/components/SplitPanel";
 
 import { NoteContainer } from "./NoteContainer";
 import { SettingsModal } from "./SettingsModal";
 
-import { Container } from "styles/layout";
+import { Container } from "@/styles/layout";
 
 export const AppContainer = () => {
   const [showSettings, setShowSettings] = useState(false);

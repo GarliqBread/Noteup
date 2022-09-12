@@ -1,6 +1,6 @@
 import { Root, Trigger } from "@radix-ui/react-dropdown-menu";
 
-import { More } from "components/Icons";
+import { More } from "@/components/Icons";
 
 import { DropItem, MenuContent, TriggerButton } from "./style";
 
@@ -16,7 +16,7 @@ export const Dropdown = ({ menu }: Props) => {
   return (
     <Root>
       <Trigger asChild>
-        <TriggerButton>
+        <TriggerButton data-testid="trigger">
           <More className="dropdown-icon" size={18} />
         </TriggerButton>
       </Trigger>

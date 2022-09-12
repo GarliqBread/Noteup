@@ -16,10 +16,18 @@ type Props = {
 export const Select = ({ className = "", emptyText, options, onChange, value }: Props) => {
   return (
     <SelectContainer className={className}>
-      <StyledSelect onChange={(event) => onChange(event.target.value)} value={value}>
+      <StyledSelect
+        data-testid="test-select"
+        onChange={(event) => onChange(event.target.value)}
+        value={value}
+      >
         {value === "" && emptyText && <option>{emptyText}</option>}
         {options.map((selectOption) => (
-          <option key={selectOption.value} value={selectOption.value}>
+          <option
+            data-testid={selectOption.value}
+            key={selectOption.value}
+            value={selectOption.value}
+          >
             {selectOption.label}
           </option>
         ))}

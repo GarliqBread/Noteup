@@ -1,4 +1,4 @@
-import { RenderedIcon } from "components/Icons";
+import { RenderedIcon } from "@/components/Icons";
 
 type Props = {
   label: string;
