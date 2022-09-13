@@ -3,7 +3,7 @@ name: "Update artifacts"
 on:
   push:
     branches:
-      - release
+      - master
 
 jobs:
   create-release:
