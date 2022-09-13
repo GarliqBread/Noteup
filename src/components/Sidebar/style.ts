@@ -15,15 +15,19 @@ const StyledSidebar = styled(Flex)`
   }
 `;
 
-const Header = styled.h1`
+const Header = styled.h2`
   width: 100%;
   color: ${(props) => props.theme.color.white};
-  font-size: 26px;
+  font-size: 24px;
   padding: 15px;
 
   mark {
     background-color: transparent;
     color: ${(props) => props.theme.color.primary};
+  }
+
+  svg {
+    margin-right: 8px;
   }
 `;
 
