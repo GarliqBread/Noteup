@@ -1,12 +1,10 @@
 &nbsp;
-<h2 style="display:flex;align-items:center;justify-content:center;">
+<div style="display:flex;align-items:center;justify-content:center;">
   <img src="./assets/logo.svg" style="width:36px;margin-right:8px">
   Noteup
-</h2>
+</div>
 
 <p align="center">A web and desktop markup notes app.</p>
-
-&nbsp;
 
 ![Screenshot](./assets/mockups.png)
 
@@ -24,19 +22,19 @@ yarn install
 yarn start
 ```
 
-To run the native versions, after the install script run
+To run the desktop version, after installing run
 
 ```properties
 yarn tauri dev
 ```
 
-To make a tauri build run
+To make a desktop build run
 
 ```properties
 yarn tauri build
 ```
 
-## Missing features
+## Roadmap
 
 - [ ] Note sharing
 - [ ] Account sync
@@ -82,4 +80,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
-
