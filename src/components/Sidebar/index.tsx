@@ -7,7 +7,7 @@ import { sectionsSelector } from "@/recoil/sections.recoil";
 import { Folder, Section } from "@/utils/enums";
 import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
-import { Gear, Notes, Pin, Trash } from "@/components/Icons";
+import { Gear, Logo, Notes, Pin, Trash } from "@/components/Icons";
 
 import { CategoryList } from "./CategoryList";
 import { Header, SidebarButton, StyledSidebar } from "./style";
@@ -34,6 +34,7 @@ export const Sidebar = ({ showSettings }: Props) => {
         <StyledSidebar>
           <FlexColumn height="100%">
             <Header>
+              <Logo />
               Note<mark>up</mark>
             </Header>
             <SidebarButton
