@@ -13,6 +13,7 @@ async fn show_main_window(window: tauri::Window) {
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![show_main_window])
+    .plugin(tauri_plugin_window_state::Builder::default().build())
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
