@@ -2,13 +2,13 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 60,
   "commit": false,
   "commitConvention": "angular",
   "contributors": [
     {
       "login": "Prophetaa",
-      "name": "Cláudio Silva",
+      "name": "Cláudio",
       "avatar_url": "https://avatars.githubusercontent.com/u/38473739?v=4",
       "profile": "https://github.com/Prophetaa",
       "contributions": [
@@ -25,3 +25,4 @@
   "projectName": "Noteup",
   "projectOwner": "elementsinteractive"
 }
+

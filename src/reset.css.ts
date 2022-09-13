@@ -33,6 +33,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    background-color: ${(props) => props.theme.color.firstLayer};
     overscroll-behavior-y: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -47,7 +48,76 @@ export default createGlobalStyle`
   a:hover {
     cursor: pointer;
   }
-  textarea {
-    resize: none;
+  code, p, span {
+    color: ${(props) => props.theme.color.text};
+  }
+  code {
+    background-color: ${(props) => props.theme.color.codeBlock};
+  }
+
+  .code-mirror {
+    overflow-y: auto;
+    width: 100%;
+    height: calc(100vh - 44px);
+    display: block !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: ${(props) => props.theme.color.scrollBar};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1f6ce0;
+    border-radius: 2px;
+  }
+
+  .Resizer {
+    background: ${(props) => props.theme.color.white};
+    opacity: 0.2;
+    z-index: 1;
+    box-sizing: border-box;
+    background-clip: padding-box;
+  }
+  
+  .Resizer:hover {
+    transition: all 0.5s ease;
+  }
+  
+  .Resizer.horizontal {
+    height: 11px;
+    margin: -5px 0;
+    border-top: 5px solid rgba(255, 255, 255, 0);
+    border-bottom: 5px solid rgba(255, 255, 255, 0);
+    cursor: row-resize;
+    width: 100%;
+  }
+  
+  .Resizer.horizontal:hover {
+    border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .Resizer.vertical {
+    width: 11px;
+    margin: 0 -5px;
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    cursor: col-resize;
+  }
+  
+  .Resizer.vertical:hover {
+    border-left: 5px solid rgba(0, 0, 0, 0.5);
+    border-right: 5px solid rgba(0, 0, 0, 0.5);
+  }
+  .Resizer.disabled {
+    cursor: not-allowed;
+  }
+  .Resizer.disabled:hover {
+    border-color: transparent;
+  }
+  .Pane {
+    overflow: hidden;
   }
 `;

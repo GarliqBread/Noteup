@@ -1,80 +1,88 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { notesState } from "recoil/notes.recoil";
-import { settingsState } from "recoil/settings.recoil";
-import { Note } from "recoil/types";
 
-import { Folder } from "utils/enums";
-import { getNoteTitle } from "utils/helpers";
-import { getNotesSorter } from "utils/sorting";
+import { categoriesSelector } from "@/recoil/categories.recoil";
+import {
+  filteredNotesSelector,
+  keywordSelector,
+  selectNoteIdSelector,
+} from "@/recoil/notes.recoil";
+import { sectionsSelector } from "@/recoil/sections.recoil";
 
-import { ContextMenu } from "./ContextMenu";
+import { Section } from "@/utils/enums";
+import { getNoteTitle } from "@/utils/helpers";
+import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
+
+import { NoteContext } from "./NoteContext";
 import { NoteItem } from "./NoteItem";
 import { SearchBar } from "./SearchBar";
-import { List } from "./style";
+import { List, NotesList } from "./style";
 
 export const NoteList = () => {
-  const { notesSortKey } = useRecoilValue(settingsState);
-  const [{ notes, selectedNoteId, selectedCategoryId, activeFolder }, setNotesState] =
-    useRecoilState(notesState);
-  const [keyword, setKeyword] = useState("");
+  const { isSmallDevice } = useWindowDimensions();
+  const categories = useRecoilValue(categoriesSelector);
+  const [section, setSection] = useRecoilState(sectionsSelector);
+  const filteredNotes = useRecoilValue(filteredNotesSelector);
+  const [selectedNoteId, setSelectedNote] = useRecoilState(selectNoteIdSelector);
+  const keyword = useRecoilValue(keywordSelector);
+
+  const inView = useMemo(() => section === Section.LIST, [section]);
 
   const regex = useMemo(
     () => new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
     [keyword],
   );
 
-  const filter: Record<Folder, (note: Note) => boolean> = {
-    [Folder.CATEGORY]: (note) => !note.trash && note.categoryId === selectedCategoryId,
-    [Folder.SCRATCH]: (note) => !!note.scratchpad,
-    [Folder.PINNED]: (note) => !note.trash && !!note.pinned,
-    [Folder.TRASH]: (note) => !!note.trash,
-    [Folder.ALL]: (note) => !note.trash && !note.scratchpad,
+  const handleNoteClick = (id: string) => {
+    setSelectedNote(id);
+    setSection(Section.NOTE);
   };
 
-  const filteredNotes = notes
-    .filter(filter[activeFolder])
-    .filter((note) => regex.test(getNoteTitle(note.text)))
-    .sort(getNotesSorter(notesSortKey));
-
   return (
-    <List>
-      <SearchBar
-        keyword={keyword}
-        setKeyword={setKeyword}
-        isTrash={activeFolder === Folder.TRASH && filteredNotes.length > 0}
-        deleteTrash={() =>
-          setNotesState((state) => ({ ...state, notes: state.notes.filter((note) => !note.trash) }))
-        }
-      />
-      {filteredNotes.map((note) => {
-        let noteTitle: string | JSX.Element = getNoteTitle(note.text);
+    <>
+      {(inView || !isSmallDevice) && (
+        <NotesList>
+          <SearchBar isListEmpty={!filteredNotes.length} />
+          <List>
+            {filteredNotes.map((note) => {
+              let noteTitle: string | JSX.Element = getNoteTitle(note.text);
 
-        if (keyword !== "") {
-          const highlightStart = noteTitle.search(regex);
-          if (highlightStart !== -1) {
-            const highlightEnd = highlightStart + keyword.length;
+              if (keyword !== "") {
+                const highlightStart = noteTitle.search(regex);
+                if (highlightStart !== -1) {
+                  const highlightEnd = highlightStart + keyword.length;
 
-            noteTitle = (
-              <span>
-                {noteTitle.slice(0, highlightStart)}
-                <strong className="highlighted">
-                  {noteTitle.slice(highlightStart, highlightEnd)}
-                </strong>
-                {noteTitle.slice(highlightEnd)}
-              </span>
-            );
-          }
-        }
+                  noteTitle = (
+                    <>
+                      {noteTitle.slice(0, highlightStart)}
+                      <strong className="highlighted">
+                        {noteTitle.slice(highlightStart, highlightEnd)}
+                      </strong>
+                      {noteTitle.slice(highlightEnd)}
+                    </>
+                  );
+                }
+              }
 
-        return (
-          <ContextMenu key={note.id} noteId={note.id} trash={note.trash} pinned={note.pinned}>
-            <NoteItem note={note} selected={selectedNoteId === note.id}>
-              {noteTitle}
-            </NoteItem>
-          </ContextMenu>
-        );
-      })}
-    </List>
+              return (
+                <NoteContext key={note.id} noteId={note.id}>
+                  <NoteItem
+                    note={note}
+                    selected={selectedNoteId === note.id}
+                    onClick={handleNoteClick}
+                    category={
+                      categories.find((category) => category.id === note.categoryId)?.name ||
+                      "Notes"
+                    }
+                  >
+                    {noteTitle}
+                  </NoteItem>
+                </NoteContext>
+              );
+            })}
+          </List>
+        </NotesList>
+      )}
+    </>
   );
 };

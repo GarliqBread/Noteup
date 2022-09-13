@@ -1,15 +1,14 @@
-import { Folder, NotesSortKey } from "utils/enums";
+import { NotesSortKey, PreviewThemeKey, Section } from "@/utils/enums";
+
+type EditorTheme = "github" | "xcode" | "duotone";
 
 export type Note = {
   id: string;
   text: string;
   created: string;
   lastUpdated: string;
-  /**
-   * Refers to the category UUID and not the actual name.
-   */
   categoryId?: string;
-  scratchpad?: boolean;
+  deleted?: boolean;
   trash?: boolean;
   pinned?: boolean;
 };
@@ -21,10 +20,32 @@ export type Category = {
 
 export type NotesState = {
   notes: Note[];
-  categories: Category[];
+  keyword: string;
   sortBy: keyof NotesSortKey;
-  route: keyof typeof Folder;
   selectedNoteId: string | null;
-  activeFolder: Folder;
-  selectedCategoryId: string | null;
 };
+
+export type CategoryState = {
+  categories: Category[];
+  selectedCategoryId: string | null;
+  categoryListOpen: boolean;
+};
+
+export type SettingsState = {
+  theme: "light" | "dark";
+  notesSortKey: NotesSortKey;
+};
+
+export type EditorState = {
+  autoComplete: boolean;
+  breakLines: boolean;
+  lineNumbers: boolean;
+  foldGutter: boolean;
+  editorTheme: EditorTheme;
+  previwerTheme: PreviewThemeKey;
+  renderHTML: boolean;
+  editing: boolean;
+  split: boolean;
+};
+
+export type SectionsState = Section;

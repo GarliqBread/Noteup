@@ -1,10 +1,15 @@
 import { useRecoilValue } from "recoil";
-import { settingsState } from "recoil/settings.recoil";
-import GlobalStyles from "reset.css";
+import GlobalStyles from "@/reset.css";
 import { ThemeProvider } from "styled-components";
-import { themes } from "styles/theme";
-import { darkTheme, lightTheme } from "styles/theme/colors";
 
+import { settingsState } from "@/recoil/settings.recoil";
+
+import { themes } from "@/styles/theme";
+import { darkTheme, lightTheme } from "@/styles/theme/colors";
+
+export const wrapWithTheme = (children: JSX.Element): JSX.Element => (
+  <ThemeProvider theme={themes}>{children}</ThemeProvider>
+);
 interface Props {
   children: JSX.Element;
 }

@@ -5,10 +5,11 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "importOrder": [
-    "^services/(.*)$",
-    "^utils/(.*)$",
-    "^constants/(.*)$",
-    "^components/(.*)$",
+    "^@/recoil/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/views/(.*)$",
+    "^@/components/(.*)$",
+    "^@/styles/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,

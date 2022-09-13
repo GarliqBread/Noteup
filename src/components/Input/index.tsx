@@ -1,18 +1,34 @@
 import { useRef } from "react";
 
-import { IconButton } from "components/Button";
-import { Close } from "components/Icons";
+import { Shortcuts } from "@/utils/enums";
+import { useKey } from "@/utils/hooks";
+
+import { IconButton } from "@/components/Button";
+import { Close } from "@/components/Icons";
 
 import { InputContainer, StyledInput } from "./style";
 
 type Props = {
+  testId?: string;
   value: string;
-  onChange: (value: string) => void;
   placeholder?: string;
+  maxLength?: number;
   clear?: boolean;
+  autoFocus?: boolean;
+  onChange: (value: string) => void;
+  onBlur?: (value: string) => void;
 };
 
-export const Input = ({ value, onChange, placeholder, clear }: Props) => {
+export const Input = ({
+  testId,
+  value,
+  placeholder,
+  maxLength,
+  autoFocus,
+  clear,
+  onChange,
+  onBlur,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClear = () => {
@@ -20,12 +36,18 @@ export const Input = ({ value, onChange, placeholder, clear }: Props) => {
     inputRef.current?.focus();
   };
 
+  useKey(Shortcuts.SEARCH, () => inputRef.current?.focus());
+
   return (
     <InputContainer>
       <StyledInput
+        data-testid={testId}
         ref={inputRef}
         value={value}
         placeholder={placeholder}
+        autoFocus={autoFocus}
+        maxLength={maxLength}
+        onBlur={(e) => onBlur && onBlur(e.target.value)}
         onChange={(e) => onChange(e.target.value)}
       />
       {clear && value !== "" && (

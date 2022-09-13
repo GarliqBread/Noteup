@@ -10,7 +10,13 @@ type FlexProps = {
   gap?: number;
 };
 
-export const Flex = styled.div<FlexProps>`
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`;
+
+const Flex = styled.div<FlexProps>`
   position: relative;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height};
@@ -22,13 +28,17 @@ export const Flex = styled.div<FlexProps>`
   gap: ${(props) => props.gap || 0}px;
 `;
 
-export const FlexColumn = styled(Flex)<FlexProps>`
+const FlexColumn = styled(Flex)<FlexProps>`
   flex-direction: column;
 `;
 
-export const Ellipsis = styled.div`
+const Ellipsis = styled.div`
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 15px;
+  max-width: 83%;
 `;
+
+export { Container, Flex, FlexColumn, Ellipsis };

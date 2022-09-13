@@ -7,7 +7,7 @@ const fontWeights = {
 
 const fontSizes = {
   small: "10px",
-  label: "13px",
+  label: "12px",
   body: "14px",
   large: "16px",
   h5: "18px",
