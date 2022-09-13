@@ -1,9 +1,28 @@
 {
-  "files": ["README.md"],
-  "imageSize": 50,
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 60,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Prophetaa",
+      "name": "Cláudio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38473739?v=4",
+      "profile": "https://github.com/Prophetaa",
+      "contributions": [
+        "code",
+        "doc",
+        "maintenance"
+      ]
+    }
+  ],
   "contributorsPerLine": 7,
-  "contributorsSortAlphabetically": false,
-  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
   "skipCi": true,
-  "contributors": []
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "Noteup",
+  "projectOwner": "elementsinteractive"
 }
+

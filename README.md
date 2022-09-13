@@ -55,11 +55,20 @@ View [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the style guide, folder s
 
 This project was heavily inspired by another markdown note app called [Takenote](https://github.com/taniarascia/takenote) and the macOS notes app.
 
-## Contributors
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/Prophetaa"><img src="https://avatars.githubusercontent.com/u/38473739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cláudio Silva</b></sub></a><br /><a href="https://github.com/elementsinteractive/Noteup/commits?author=Prophetaa" title="Code">💻</a> <a href="https://github.com/elementsinteractive/Noteup/commits?author=Prophetaa" title="Documentation">📖</a> <a href="#maintenance-Prophetaa" title="Maintenance">🚧</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
@@ -73,3 +82,4 @@ This project was heavily inspired by another markdown note app called [Takenote]
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
