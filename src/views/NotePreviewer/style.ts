@@ -164,6 +164,34 @@ a {
   ol > li {
     margin-left: 20px;
   }
+
+  ul.contains-task-list {
+    list-style-type: none;
+
+    input { 
+      position: relative;
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      background-color: ${(props) => props.theme.color.input};
+      border-radius:${(props) => props.theme.radius.xsmall};
+      transition: all 150ms;
+      box-shadow: ${(props) => props.theme.color.shadow};
+      border: 0.5px solid ${(props) => props.theme.color.border};
+
+      &:checked {
+        background-color: ${(props) => props.theme.color.primary};
+
+        &::before {
+          content: '\\2713';
+          display: block;
+          color: ${(props) => props.theme.color.white};
+          position: absolute;
+          left: 2.5px;
+        }
+      }
+    }
+  }
 }
 
 .preview-button {
