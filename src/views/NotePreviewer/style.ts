@@ -108,10 +108,9 @@ a {
   }
 
   pre {
-    padding: 1rem;
+    margin-bottom: 16px;
     tab-size: 2;
     color: #404040;
-    margin: 0 0 1.5rem 0;
     white-space: pre-wrap;
     word-spacing: normal;
     word-break: normal;
@@ -133,8 +132,7 @@ a {
   }
 
   hr {
-    height: 0;
-    border: 0;
+    border: 0.5px solid ${(props) => props.theme.color.border};
   }
 
   img {
