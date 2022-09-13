@@ -1,8 +1,8 @@
 &nbsp;
-<div style="display:flex;align-items:center;justify-content:center;">
+<h2 align="center">
   <img src="./assets/logo.svg" style="width:36px;margin-right:8px">
   Noteup
-</div>
+</h2>
 
 <p align="center">A web and desktop markup notes app.</p>
 
