@@ -17,7 +17,6 @@ const StyledButton = styled.button<{ variant?: string }>`
       ? props.theme.color.white
       : props.theme.color.text};
   cursor: pointer;
-  opacity: ${(props) => (props.variant === "primary" ? 0.9 : 1)};
   gap: 10px;
 
   &:hover {
@@ -28,7 +27,7 @@ const StyledButton = styled.button<{ variant?: string }>`
         ? props.theme.color.primary
         : props.theme.color.darkerGray};
     color: ${(props) => props.variant === "danger" && props.theme.color.white};
-    opacity: ${(props) => (props.variant === "primary" ? 0.8 : 1)};
+    opacity: ${(props) => (props.variant === "primary" ? 0.9 : 1)};
   }
 
   &:disabled {

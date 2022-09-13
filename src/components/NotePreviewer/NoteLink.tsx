@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 
 import { Note } from "@/recoil/types";
 
-import { Errors } from "@/utils/enums";
 import { getNoteTitle } from "@/utils/helpers";
 
 export interface NoteLinkProps {
@@ -25,6 +24,5 @@ export const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: Not
   const title = note !== undefined ? getNoteTitle(note.text) : null;
 
   if (note && title) return <a onClick={() => handleNoteLinkClick(note)}>{title}</a>;
-
-  return <span className="error">{Errors.INVALID_LINKED_NOTE_ID}</span>;
+  return <>{`{{${id}}}`}</>;
 };

@@ -14,7 +14,6 @@ import { Note } from "@/recoil/types";
 
 import { previewThemes } from "@/utils/editorThemes";
 import { Folder } from "@/utils/enums";
-import { uuidPlugin } from "@/utils/reactMarkdownPlugins";
 
 import { NoteLink } from "@/components/NotePreviewer/NoteLink";
 
@@ -57,7 +56,7 @@ export const NotePreview = ({ previewNote, border }: Props) => {
   return (
     <Previewer
       border={border}
-      remarkPlugins={[remarkParse, remarkGfm, uuidPlugin, remarkBreaks]}
+      remarkPlugins={[remarkParse, remarkGfm, remarkBreaks]}
       rehypePlugins={renderHtml ? [rehypeRaw] : []}
       components={{
         a: ({ href, children }) => returnNoteLink(href, children),

@@ -45,10 +45,6 @@ export enum PreviewThemeKey {
   VS = "vs",
 }
 
-export enum Errors {
-  INVALID_LINKED_NOTE_ID = "<invalid note id provided>",
-}
-
 export enum LabelText {
   ADD_CATEGORY = "Add category",
   COLLAPSE_CATEGORY = "Collapse Category List",
