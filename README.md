@@ -1,14 +1,18 @@
-# Noteup
+&nbsp;
+<h2 style="display:flex;align-items:center;justify-content:center;">
+  <img src="./assets/logo.svg" style="width:36px;margin-right:8px">
+  Noteup
+</h2>
 
-Noteup is a free, open-source notes app for the web and desktop. Your notes are saved in local storage, but are available for download/import.
+<p align="center">A web and desktop markup notes app.</p>
 
-# Technologies ⚙️
+&nbsp;
 
-- React
-- Recoil
-- Tauri (native wrapper for desktop)
+![Screenshot](./assets/mockups.png)
 
-# Get started
+Noteup is a free, open-source notes app for the web, mobile and desktop. Your notes are saved in local storage, but are available for download/import.
+
+## Get started
 
 To get started just clone the repo and run the install and start scripts
 
@@ -32,7 +36,7 @@ To make a tauri build run
 yarn tauri build
 ```
 
-# Missing features
+## Missing features
 
 - [ ] Note sharing
 - [ ] Account sync
@@ -47,6 +51,25 @@ This is an open source project, and contributions are welcomed and appreciated. 
 
 View [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the style guide, folder structure, scripts, and how to contribute.
 
-# Inspirations
+## Inspirations
 
-This project was heavily inspired by another markdown note app I was using for a while called [Takenote](https://github.com/taniarascia/takenote) and the macOS notes app.
+This project was heavily inspired by another markdown note app called [Takenote](https://github.com/taniarascia/takenote) and the macOS notes app.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Author
+
+- [Cláudio](https://github.com/Prophetaa)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
