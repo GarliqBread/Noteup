@@ -8,7 +8,7 @@
 
 ![Screenshot](./assets/mockups.png)
 
-Noteup is a free, open-source notes app for the web, mobile and desktop. Your notes are saved in local storage, but are available for download/import.
+Noteup is a free, open-source markup notes app for the web, mobile(PWA) and desktop. Your notes are saved in the local storage, but are available for import/export.
 
 ## Get started
 
@@ -36,12 +36,13 @@ yarn tauri build
 
 ## Roadmap
 
+- [ ] Tandem scroll for side-by-side editing
+- [ ] Add a page with markdown help commands
 - [ ] Note sharing
 - [ ] Account sync
 - [ ] Cross-platform sync
 - [ ] Extra download options (like `.pdf`)
 - [ ] Quick command bar (WYSIWYG style)
-- [ ] Add a page with markdown help commands
 
 ## Contributing
 
