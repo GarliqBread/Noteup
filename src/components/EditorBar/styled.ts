@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 const TopNav = styled.nav`
   width: 100%;
-  min-height: 50px;
-  max-height: 50px;
+  min-height: 51px;
+  max-height: 51px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: ${(props) => props.theme.color.secondLayer};
-  border-top: 0.4px solid ${(props) => props.theme.color.border};
   box-shadow: ${(props) => props.theme.color.shadow};
   margin-bottom: 4px;
 

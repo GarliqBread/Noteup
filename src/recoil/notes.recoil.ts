@@ -21,7 +21,7 @@ export const notesState: RecoilState<NotesState> = atom({
     keyword: "",
     notes: [defaultNote],
     sortBy: NotesSortKey.LAST_UPDATED,
-    selectedNoteId: null,
+    selectedNoteId: "default-note",
   },
   effects_UNSTABLE: [persistAtom],
 });
