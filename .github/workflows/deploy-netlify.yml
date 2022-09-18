@@ -19,7 +19,7 @@ jobs:
           cache: "yarn"
 
       - run: yarn install
-      - run: yarn build --if-present
+      - run: yarn build
 
       - name: Run the tests and generate coverage report
         run: yarn test -- --coverage
