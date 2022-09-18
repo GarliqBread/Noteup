@@ -13,6 +13,7 @@ import { NoteEditor } from "@/views/NoteEditor";
 import { NotePreview } from "@/views/NotePreviewer";
 
 import { EditorBar } from "@/components/EditorBar";
+import { EmptyEditorMessage } from "@/components/NotePreviewer/EmptyEditorMessage";
 
 import { FlexColumn } from "@/styles/layout";
 
@@ -29,8 +30,8 @@ export const NoteContainer = () => {
     <FlexColumn width="100%" height="100%">
       <EditorBar note={note} />
       {((isSmallDevice && editorView) || !isSmallDevice) && (
-        <FlexColumn justifyContent="space-between" alignItems="initial" height="100%">
-          {note && (
+        <FlexColumn justifyContent="center" height="100%">
+          {note ? (
             <>
               {editing && split && !isSmallDevice ? (
                 <SplitPane split="vertical" size="50%">
@@ -44,6 +45,8 @@ export const NoteContainer = () => {
                 </>
               )}
             </>
+          ) : (
+            <EmptyEditorMessage />
           )}
         </FlexColumn>
       )}

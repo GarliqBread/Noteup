@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { categoriesSelector } from "@/recoil/categories.recoil";
+import { activeFolderSelector } from "@/recoil/folder.recoil";
 import {
   filteredNotesSelector,
   keywordSelector,
@@ -9,6 +10,7 @@ import {
 } from "@/recoil/notes.recoil";
 import { sectionsSelector } from "@/recoil/sections.recoil";
 
+import { emptyListMessage } from "@/utils/constants";
 import { Section } from "@/utils/enums";
 import { getNoteTitle } from "@/utils/helpers";
 import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
@@ -16,11 +18,12 @@ import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 import { NoteContext } from "./NoteContext";
 import { NoteItem } from "./NoteItem";
 import { SearchBar } from "./SearchBar";
-import { List, NotesList } from "./style";
+import { EmptyListMessage, List, NotesList } from "./style";
 
 export const NoteList = () => {
   const { isSmallDevice } = useWindowDimensions();
   const categories = useRecoilValue(categoriesSelector);
+  const activeFolder = useRecoilValue(activeFolderSelector);
   const [section, setSection] = useRecoilState(sectionsSelector);
   const filteredNotes = useRecoilValue(filteredNotesSelector);
   const [selectedNoteId, setSelectedNote] = useRecoilState(selectNoteIdSelector);
@@ -80,6 +83,9 @@ export const NoteList = () => {
                 </NoteContext>
               );
             })}
+            {!filteredNotes.length && (
+              <EmptyListMessage>{emptyListMessage[activeFolder]}</EmptyListMessage>
+            )}
           </List>
         </NotesList>
       )}

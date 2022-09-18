@@ -1,0 +1,17 @@
+import { useDeviceOS } from "@/utils/hooks/useDeviceOS";
+
+import { Flex, FlexColumn } from "@/styles/layout";
+import { KBD, LargeText } from "@/styles/typography";
+
+export const EmptyEditorMessage = () => {
+  const { ctrlKey, altKey } = useDeviceOS();
+
+  return (
+    <FlexColumn gap={10} height="auto">
+      <LargeText>Create a new note</LargeText>
+      <Flex justifyContent="center" gap={5}>
+        <KBD>{ctrlKey}</KBD> + <KBD>{altKey}</KBD> + <KBD>N</KBD>
+      </Flex>
+    </FlexColumn>
+  );
+};

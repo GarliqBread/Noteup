@@ -16,7 +16,7 @@ export const lightTheme = {
   insetShadow: "0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset",
   keyBlock: "#f7f7f7",
   lightGray: "#f7f4f4",
-  lightText: "#565656",
+  lightText: "#595858",
   noteList: "#e5e5e5",
   offWhite: "#ffffffb3",
   overlayColor: "rgba(0, 0, 0, 0.15)",

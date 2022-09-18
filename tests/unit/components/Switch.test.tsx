@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
-import { wrapWithTheme } from "@/components/ThemeWrapper";
 import { Switch } from "@/components/Switch";
+import { wrapWithTheme } from "@/components/ThemeWrapper";
 
 describe("<Switch />", () => {
   it("renders the Switch component", () => {

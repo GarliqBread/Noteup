@@ -1,8 +1,8 @@
 import { ChevronDown, ChevronRight, Stack } from "@/components/Icons";
 
-import { CollapseButton } from "./style";
-
 import { Label } from "@/styles/typography";
+
+import { CollapseButton } from "./style";
 
 type Props = {
   onClick: () => void;

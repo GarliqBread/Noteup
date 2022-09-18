@@ -1,5 +1,5 @@
-import { useRecoilValue } from "recoil";
 import GlobalStyles from "@/reset.css";
+import { useRecoilValue } from "recoil";
 import { ThemeProvider } from "styled-components";
 
 import { settingsState } from "@/recoil/settings.recoil";

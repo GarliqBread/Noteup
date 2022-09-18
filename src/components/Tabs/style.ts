@@ -93,6 +93,7 @@ const TabContent = styled.div`
   }
 
   @media (max-width: 500px) {
+    width: 100%;
     padding: 15px 10px;
     height: 100%;
     max-height: none;

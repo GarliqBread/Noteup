@@ -25,9 +25,9 @@ import {
   Trash,
 } from "@/components/Icons";
 
-import { TopNav, TopNavButton } from "./styled";
-
 import { Flex } from "@/styles/layout";
+
+import { TopNav, TopNavButton } from "./styled";
 
 type Props = {
   note?: Note;

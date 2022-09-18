@@ -9,10 +9,10 @@ import { NoteList } from "@/components/NoteList";
 import { Sidebar } from "@/components/Sidebar";
 import { SplitPane } from "@/components/SplitPanel";
 
+import { Container } from "@/styles/layout";
+
 import { NoteContainer } from "./NoteContainer";
 import { SettingsModal } from "./SettingsModal";
-
-import { Container } from "@/styles/layout";
 
 export const AppContainer = () => {
   const [showSettings, setShowSettings] = useState(false);
