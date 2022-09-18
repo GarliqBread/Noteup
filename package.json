@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/elementsinteractive/Noteup"
   },
+  "engines" : { 
+    "node" : ">=18.0.0"
+  },
   "scripts": {
     "start": "vite",
     "build": "eslint src && vite build",

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import { Shortcuts } from "@/utils/enums";
-import { useKey } from "@/utils/hooks";
+import { useKey } from "@/utils/hooks/useKey";
 
 import { IconButton } from "@/components/Button";
 import { Close } from "@/components/Icons";
