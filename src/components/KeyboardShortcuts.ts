@@ -10,17 +10,17 @@ import { themeSelector } from "@/recoil/settings.recoil";
 
 import { Folder, Shortcuts } from "@/utils/enums";
 import { downloadNote } from "@/utils/helpers";
-import { useKey } from "@/utils/hooks";
+import { useKey } from "@/utils/hooks/useKey";
 
 export const KeyboardShortcuts = () => {
   const setNotes = useSetRecoilState(notesSelector);
   const selectedCategoryId = useRecoilValue(selectedCategoryIdSelector);
-  const activeFolder = useRecoilValue(activeFolderSelector);
+  const [activeFolder, setActiveFolder] = useRecoilState(activeFolderSelector);
   const [selectedNote, setSelectedNote] = useRecoilState(selectedNoteSelector);
   const [editing, setEditing] = useRecoilState(editingSelector);
   const [theme, setTheme] = useRecoilState(themeSelector);
 
-  const createNewNote = () =>
+  const createNewNote = () => {
     setNotes([
       {
         id: uuid(),
@@ -31,6 +31,10 @@ export const KeyboardShortcuts = () => {
         pinned: activeFolder === Folder.PINNED,
       },
     ]);
+    if (activeFolder === Folder.TRASH) {
+      setActiveFolder(Folder.ALL);
+    }
+  };
 
   const deleteCurrentNote = () => {
     if (selectedNote) {

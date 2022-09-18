@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
-import { wrapWithTheme } from "@/components/ThemeWrapper";
 import { Button } from "@/components/Button";
+import { wrapWithTheme } from "@/components/ThemeWrapper";
 
 describe("<Button />", () => {
   it("renders the Button component", () => {

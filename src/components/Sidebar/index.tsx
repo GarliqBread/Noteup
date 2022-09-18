@@ -9,10 +9,10 @@ import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
 import { Gear, Logo, Notes, Pin, Trash } from "@/components/Icons";
 
+import { FlexColumn } from "@/styles/layout";
+
 import { CategoryList } from "./CategoryList";
 import { Header, SidebarButton, StyledSidebar } from "./style";
-
-import { FlexColumn } from "@/styles/layout";
 
 type Props = {
   showSettings: () => void;

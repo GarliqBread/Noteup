@@ -1,4 +1,5 @@
-&nbsp;
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c07f2af9-ca82-4f2e-a051-3de8e232cebe/deploy-status)](https://app.netlify.com/sites/stupendous-cucurucho-1aee31/deploys)
+
 <h2 align="center">
   <img src="./assets/logo.svg" style="width:36px;margin-right:8px">
   Noteup

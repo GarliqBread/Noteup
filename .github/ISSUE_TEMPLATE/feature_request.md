@@ -1,9 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: '[Feature]'
-labels: 'Type: Feature'
-assignees: ''
+title: "[Feature]"
+labels: "Type: Feature"
+assignees: ""
 ---
 
 **Problem**

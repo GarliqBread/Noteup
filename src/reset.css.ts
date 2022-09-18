@@ -54,7 +54,7 @@ export default createGlobalStyle`
   code {
     background-color: ${(props) => props.theme.color.codeBlock};
   }
-
+  
   .code-mirror {
     overflow-y: auto;
     width: 100%;

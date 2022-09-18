@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 
-import { wrapWithTheme } from "@/components/ThemeWrapper";
 import { Dropdown } from "@/components/Dropdown";
+import { wrapWithTheme } from "@/components/ThemeWrapper";
 
 describe("<Dropdown />", () => {
   it("renders the Dropdown component", () => {

@@ -15,6 +15,13 @@ const List = styled.div`
   overflow-y: auto;
 `;
 
+const EmptyListMessage = styled.p`
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  color: ${(props) => props.theme.color.gray};
+`;
+
 const SearchContainer = styled.div`
   position: sticky;
   width: 100%;
@@ -61,4 +68,4 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   }
 `;
 
-export { NotesList, List, SearchContainer, NoteItemContainer };
+export { NotesList, List, EmptyListMessage, SearchContainer, NoteItemContainer };

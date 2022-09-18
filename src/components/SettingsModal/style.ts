@@ -62,20 +62,6 @@ const ShortcutContainer = styled.div`
   .keys {
     width: 180px;
   }
-
-  kbd {
-    background-color: ${(props) => props.theme.color.keyBlock};
-    border: 1px solid ${(props) => props.theme.color.border};
-    border-radius: 3px;
-    box-shadow: ${(props) => props.theme.color.insetShadow};
-    color: ${(props) => props.theme.color.lightText};
-    display: inline-block;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.4;
-    margin: 0 0.1em;
-    padding: 0.1em 0.6em;
-  }
 `;
 
 export { OptionContainer, SelectOptionContainer, ShortcutContainer };

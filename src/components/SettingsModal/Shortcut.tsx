@@ -1,3 +1,7 @@
+import { useDeviceOS } from "@/utils/hooks/useDeviceOS";
+
+import { KBD } from "@/styles/typography";
+
 import { ShortcutContainer } from "./style";
 
 type Props = {
@@ -6,11 +10,13 @@ type Props = {
 };
 
 export const Shortcut = ({ action, letter }: Props) => {
+  const { altKey, ctrlKey } = useDeviceOS();
+
   return (
     <ShortcutContainer>
       <div>{action}</div>
       <div className="keys">
-        <kbd>CTRL</kbd> <kbd>ALT</kbd> <kbd>{letter}</kbd>
+        <KBD>{ctrlKey}</KBD> <KBD>{altKey}</KBD> <KBD>{letter}</KBD>
       </div>
     </ShortcutContainer>
   );

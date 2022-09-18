@@ -10,9 +10,9 @@ import { Folder } from "@/utils/enums";
 import { Folder as FolderIcon } from "@/components/Icons";
 import { Input } from "@/components/Input";
 
-import { CategoryItem, Form } from "./style";
-
 import { Flex } from "@/styles/layout";
+
+import { CategoryItem, Form } from "./style";
 
 type Props = {
   category: Category;

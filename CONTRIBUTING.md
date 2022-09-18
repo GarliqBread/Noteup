@@ -54,31 +54,31 @@ Description of the project files and directories.
 
 An explanation of the `package.json` scripts.
 
-| Command         | Description                                 |
-| --------------- | ------------------------------------------- |
-| `build`         | Create a production build of Noteup         |
-| `start`         | Run Noteup in a testing environment         |
-| `format`        | Run prettier on all the project's files     |
-| `lint`          | Run ESlint on all the project's files       |
-| `postinstall`   | Run post-install package patches            |
-| `test`          | Run unit and component tests                |
-| `test:e2e`      | Run end-to-end tests in the command line    |
+| Command       | Description                              |
+| ------------- | ---------------------------------------- |
+| `build`       | Create a production build of Noteup      |
+| `start`       | Run Noteup in a testing environment      |
+| `format`      | Run prettier on all the project's files  |
+| `lint`        | Run ESlint on all the project's files    |
+| `postinstall` | Run post-install package patches         |
+| `test`        | Run unit and component tests             |
+| `test:e2e`    | Run end-to-end tests in the command line |
 
 ## Technologies
 
 This project is possible thanks to all these open source languages, libraries, and frameworks.
 
-| Tech                                          | Description                               |
-| --------------------------------------------- | ----------------------------------------- |
-| [Codemirror](https://codemirror.net/)         | Browser-based text editor                 |
-| [TypeScript](https://www.typescriptlang.org/) | Static type-checking programming language |
-| [React](https://reactjs.org/)                 | Front end user interface                  |
-| [Recoil](https://recoiljs.org/)               | Global state management                   |
-| [Vite](https://vitejs.dev/)                   | Dev server and build tool                 |
-| [Styled-components](https://styled-components.com/)| JavaScript styling                   |
-| [ESLint](https://eslint.org/)                 | TypeScript linting                        |
-| [Jest](https://jestjs.io/)                    | Unit testing framework                    |
-| [Cypress](https://www.cypress.io/)            | End-to-end testing framework              |
+| Tech                                                | Description                               |
+| --------------------------------------------------- | ----------------------------------------- |
+| [Codemirror](https://codemirror.net/)               | Browser-based text editor                 |
+| [TypeScript](https://www.typescriptlang.org/)       | Static type-checking programming language |
+| [React](https://reactjs.org/)                       | Front end user interface                  |
+| [Recoil](https://recoiljs.org/)                     | Global state management                   |
+| [Vite](https://vitejs.dev/)                         | Dev server and build tool                 |
+| [Styled-components](https://styled-components.com/) | JavaScript styling                        |
+| [ESLint](https://eslint.org/)                       | TypeScript linting                        |
+| [Jest](https://jestjs.io/)                          | Unit testing framework                    |
+| [Cypress](https://www.cypress.io/)                  | End-to-end testing framework              |
 
 ## Styleguide
 
