@@ -2,17 +2,20 @@
 <h2 align="center">
   <img src="./assets/logo.svg" style="width:36px;margin-right:8px">
   Noteup
+
+[Live version](https://noteup.dev/)
+
 </h2>
 
 <p align="center">A web and desktop markup notes app.</p>
 
 ![Screenshot](./assets/mockups.png)
 
-Noteup is a free, open-source markup notes app for the web, mobile(PWA) and desktop. Your notes are saved in the local storage, but are available for import/export.
+[Noteup](https://noteup.dev/) is a free, open-source markup notes app for the web, mobile(PWA) and desktop. Your notes are saved in the local storage, but are available for import/export.
 
 ## Get started
 
-To get started just clone the repo and run the install and start scripts
+To get started just visit [noteup.dev](https://noteup.dev) or [download a build](https://github.com/elementsinteractive/Noteup/releases) or clone the repo and run the install and start scripts
 
 ```properties
 yarn install
