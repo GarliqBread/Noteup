@@ -9,7 +9,7 @@
   },
   "package": {
     "productName": "Noteup",
-    "version": "0.2.0"
+    "version": null
   },
   "tauri": {
     "allowlist": {
