@@ -1,6 +1,5 @@
 [package]
 name = "app"
-version = "0.2.0"
 description = "Markdown notes app"
 authors = ["Elements"]
 license = "MIT"
