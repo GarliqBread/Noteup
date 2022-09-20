@@ -35,6 +35,7 @@ yarn tauri dev
 To make a desktop build run
 
 ```properties
+yarn build
 yarn tauri build
 ```
 
@@ -56,7 +57,7 @@ View [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the style guide, folder s
 
 ## Inspirations
 
-This project was heavily inspired by another markdown note app called [Takenote](https://github.com/taniarascia/takenote) and the macOS notes app.
+This project was visually inspired by another markdown note app called [Takenote](https://github.com/taniarascia/takenote) and the macOS notes app.
 
 ## Contributors ✨
 
