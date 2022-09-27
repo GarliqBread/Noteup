@@ -1,16 +1,22 @@
-import ReactMarkdown from "react-markdown";
+import MarkdownPreview from "react-markdown";
 import styled from "styled-components";
 
-const Previewer = styled(ReactMarkdown)<{ border?: boolean }>`
+export const PreviewerWrapper = styled.div`
+  width: 100%;
+  height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
+  overflow-y: auto;
+
+  @media (max-width: 500px) {
+    height: ${({ theme }) => `calc(100% - ${theme.spaces.mobileEditor})`};
+  }
+`;
+
+export const Previewer = styled(MarkdownPreview)<{ border?: boolean }>`
 position: relative;
-overflow-y: auto;
 background: ${(props) => props.theme.color.firstLayer};
 color: ${(props) => props.theme.color.text};
--webkit-font-smoothing: subpixel-antialiased;
 width: 100%;
-height: 100%;
 padding: 15px;
-margin-bottom: 52px;
 border-left: ${(props) => props.border && `1px solid ${props.theme.color.border}`};
 
 a {
@@ -114,9 +120,12 @@ a {
     white-space: pre-wrap;
     word-spacing: normal;
     word-break: normal;
-    border-radius: 0.3rem;
     font-size: 0.9rem;
     line-height: 1.4rem;
+
+    div:first-child {
+      border-radius: ${({ theme }) => theme.radius.small};
+    }
 
     code {
       padding: 0;
@@ -182,35 +191,14 @@ a {
 
         &::before {
           content: '\\2713';
+          font-size: 12px;
           display: block;
           color: ${(props) => props.theme.color.white};
           position: absolute;
-          left: 2.5px;
+          left: 3px;
         }
       }
     }
   }
 }
-
-.preview-button {
-  display: flex;
-  align-items: center;
-  top: 0;
-  right: 1rem;
-  border: none;
-  font-weight: 500;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  z-index: 2;
-
-  &:hover,
-  &:focus {
-    border: none;
-  }
-
-  .invalid-note-uuid {
-    color: green;
-  }
 `;
-
-export { Previewer };

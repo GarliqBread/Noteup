@@ -41,7 +41,7 @@ yarn tauri build
 
 ## Roadmap
 
-- [ ] Tandem scroll for side-by-side editing
+- [x] Tandem scroll for side-by-side editing
 - [ ] Add a page with markdown help commands
 - [ ] Note sharing
 - [ ] Account sync

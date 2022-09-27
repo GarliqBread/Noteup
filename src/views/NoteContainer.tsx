@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import SplitPane from "react-split-pane";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { editingSelector, splitSelector } from "@/recoil/editor.recoil";
@@ -17,6 +16,8 @@ import { EmptyEditorMessage } from "@/components/NotePreviewer/EmptyEditorMessag
 
 import { FlexColumn } from "@/styles/layout";
 
+import { SplitScreenEditor } from "./SplitScreenEditor";
+
 export const NoteContainer = () => {
   const { isSmallDevice } = useWindowDimensions();
   const section = useRecoilValue(sectionsSelector);
@@ -30,14 +31,11 @@ export const NoteContainer = () => {
     <FlexColumn width="100%" height="100%">
       <EditorBar note={note} />
       {((isSmallDevice && editorView) || !isSmallDevice) && (
-        <FlexColumn justifyContent="center" height="100%">
+        <>
           {note ? (
             <>
               {editing && split && !isSmallDevice ? (
-                <SplitPane split="vertical" size="50%">
-                  <NoteEditor note={note} setNote={setNote} />
-                  <NotePreview border previewNote={note} />
-                </SplitPane>
+                <SplitScreenEditor note={note} setNote={setNote} />
               ) : (
                 <>
                   {!editing && <NotePreview previewNote={note} />}
@@ -48,7 +46,7 @@ export const NoteContainer = () => {
           ) : (
             <EmptyEditorMessage />
           )}
-        </FlexColumn>
+        </>
       )}
     </FlexColumn>
   );
