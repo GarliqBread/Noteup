@@ -1,6 +1,5 @@
 import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
-import { MarkdownPreviewRef } from "@uiw/react-markdown-preview";
-import { UIEvent, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import SplitPane from "react-split-pane";
 
 import { Note } from "@/recoil/types";
@@ -16,31 +15,32 @@ type Props = {
 export const SplitScreenEditor = ({ note, setNote }: Props) => {
   const active = useRef<"text" | "preview">("text");
   const editorRef = useRef<ReactCodeMirrorRef>(null);
-  const previewRef = useRef<MarkdownPreviewRef>(null);
+  const previewRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = (e: UIEvent<HTMLDivElement, UIEvent>) => {
-    const textareaDom = editorRef.current?.editor?.children[0].children[1] as HTMLDivElement;
-    const previewDom = previewRef.current?.mdp.current;
-    if (textareaDom && previewDom) {
+  const handleScroll = (e: Event) => {
+    const editorDom = editorRef.current?.editor?.children[0].children[1] as HTMLDivElement;
+    const previewDom = previewRef.current;
+
+    if (editorDom && previewDom) {
       const scale =
-        (textareaDom.scrollHeight - textareaDom.offsetHeight) /
+        (editorDom.scrollHeight - editorDom.offsetHeight) /
         (previewDom.scrollHeight - previewDom.offsetHeight);
 
-      if (e.target === textareaDom && active.current === "text") {
-        previewDom.scrollTop = textareaDom.scrollTop / scale;
+      if (e.target === editorDom && active.current === "text") {
+        previewDom.scrollTop = editorDom.scrollTop / scale;
       }
       if (e.target === previewDom && active.current === "preview") {
-        textareaDom.scrollTop = previewDom.scrollTop * scale;
+        editorDom.scrollTop = previewDom.scrollTop * scale;
       }
     }
   };
 
   useEffect(() => {
     if (previewRef.current) {
-      previewRef.current.mdp?.current?.addEventListener("mouseover", () => {
+      previewRef.current?.addEventListener("mouseover", () => {
         active.current = "preview";
       });
-      previewRef.current.mdp?.current?.addEventListener("mouseleave", () => {
+      previewRef.current?.addEventListener("mouseleave", () => {
         active.current = "text";
       });
     }

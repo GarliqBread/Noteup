@@ -3,7 +3,7 @@ import { languages } from "@codemirror/language-data";
 import { ViewPlugin } from "@codemirror/view";
 import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { EditorView } from "codemirror";
-import { Ref, Suspense, UIEvent, lazy, useMemo } from "react";
+import { Ref, Suspense, lazy, useMemo } from "react";
 import { useRecoilValue } from "recoil";
 
 import {
@@ -24,7 +24,7 @@ type Props = {
   innerRef?: Ref<ReactCodeMirrorRef>;
   note: Note;
   setNote: (value: Note) => void;
-  onScroll?: (e: UIEvent<HTMLDivElement, UIEvent>) => void;
+  onScroll?: (e: Event) => void;
 };
 
 export const NoteEditor = ({ innerRef, note, setNote, onScroll }: Props) => {
@@ -47,8 +47,10 @@ export const NoteEditor = ({ innerRef, note, setNote, onScroll }: Props) => {
   );
   const scroll = ViewPlugin.fromClass(
     class {
-      constructor(view: any) {
-        view.scrollDOM.addEventListener("scroll", onScroll);
+      constructor(view: EditorView) {
+        if (onScroll) {
+          view.scrollDOM.addEventListener("scroll", onScroll);
+        }
       }
     },
   );
@@ -79,7 +81,6 @@ export const NoteEditor = ({ innerRef, note, setNote, onScroll }: Props) => {
         extensions={extensions}
         theme={editorThemes[theme][editorTheme]}
         basicSetup={codeMirrorOptions}
-        onScroll={(e) => console.log(e)}
       />
     </Suspense>
   );

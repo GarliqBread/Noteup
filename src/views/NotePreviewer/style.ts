@@ -1,20 +1,23 @@
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import MarkdownPreview from "react-markdown";
 import styled from "styled-components";
 
-const Previewer = styled(MarkdownPreview)<{ border?: boolean }>`
+export const PreviewerWrapper = styled.div`
+  width: 100%;
+  height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
+  overflow-y: auto;
+
+  @media (max-width: 500px) {
+    height: ${({ theme }) => `calc(100% - ${theme.spaces.mobileEditor})`};
+  }
+`;
+
+export const Previewer = styled(MarkdownPreview)<{ border?: boolean }>`
 position: relative;
-overflow-y: auto;
 background: ${(props) => props.theme.color.firstLayer};
 color: ${(props) => props.theme.color.text};
--webkit-font-smoothing: subpixel-antialiased;
 width: 100%;
-height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
 padding: 15px;
 border-left: ${(props) => props.border && `1px solid ${props.theme.color.border}`};
-
-@media (max-width: 500px) {
-  height: ${({ theme }) => `calc(100% - ${theme.spaces.mobileEditor})`};
-}
 
 a {
   color: ${(props) => props.theme.color.primary};
@@ -119,13 +122,16 @@ a {
     word-break: normal;
     font-size: 0.9rem;
     line-height: 1.4rem;
-    border: none;
+
+    div:first-child {
+      border-radius: ${({ theme }) => theme.radius.small};
+    }
 
     code {
-      padding: 10px;
-      background: ${({ theme }) => theme.color.lightGray};
+      padding: 0;
+      background: transparent;
       line-height: 1.2;
-      border: none;
+      border-width: 0;
     }
   }
 
@@ -185,37 +191,14 @@ a {
 
         &::before {
           content: '\\2713';
-          font-size: 14px;
+          font-size: 12px;
           display: block;
           color: ${(props) => props.theme.color.white};
           position: absolute;
           left: 3px;
-          top: -3px;
         }
       }
     }
   }
 }
-
-.preview-button {
-  display: flex;
-  align-items: center;
-  top: 0;
-  right: 1rem;
-  border: none;
-  font-weight: 500;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  z-index: 2;
-
-  &:hover,
-  &:focus {
-    border: none;
-  }
-
-  .invalid-note-uuid {
-    color: green;
-  }
 `;
-
-export { Previewer };

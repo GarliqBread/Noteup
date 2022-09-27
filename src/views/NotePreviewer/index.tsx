@@ -1,5 +1,4 @@
-import { MarkdownPreviewRef } from "@uiw/react-markdown-preview";
-import { ReactNode, Ref, UIEvent } from "react";
+import { ReactNode, Ref } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import rehypeRaw from "rehype-raw";
@@ -18,13 +17,13 @@ import { Folder } from "@/utils/enums";
 
 import { NoteLink } from "@/components/NotePreviewer/NoteLink";
 
-import { Previewer } from "./style";
+import { Previewer, PreviewerWrapper } from "./style";
 
 type Props = {
-  innerRef?: Ref<MarkdownPreviewRef>;
+  innerRef?: Ref<HTMLDivElement>;
   previewNote: Note;
   border?: boolean;
-  onScroll?: (e: UIEvent<HTMLDivElement, UIEvent>) => void;
+  onScroll?: (e: Event) => void;
 };
 
 export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) => {
@@ -58,18 +57,34 @@ export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) 
   };
 
   return (
-    <Previewer
-      ref={innerRef}
-      border={border}
-      remarkPlugins={[remarkParse, remarkGfm, remarkBreaks]}
-      rehypePlugins={renderHtml ? [rehypeRaw] : []}
-      components={{
-        a: ({ href, children }) => returnNoteLink(href, children),
-      }}
-      source={previewNote.text.replaceAll("{{", "[](https://uuid:").replaceAll("}}", ")")}
-      // eslint-disable-next-line
-      // @ts-ignore
-      onScroll={onScroll}
-    />
+    <PreviewerWrapper ref={innerRef} onScroll={onScroll}>
+      <Previewer
+        border={border}
+        remarkPlugins={[remarkParse, remarkGfm, remarkBreaks]}
+        rehypePlugins={renderHtml ? [rehypeRaw] : []}
+        components={{
+          a: ({ href, children }) => returnNoteLink(href, children),
+          code({ inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || "");
+            return !inline && match ? (
+              <SyntaxHighlighter
+                children={String(children).replace(/\n$/, "")}
+                // eslint-disable-next-line
+                // @ts-ignore
+                style={previewThemes[theme][previewerTheme]}
+                language={match[1]}
+                PreTag="div"
+                {...props}
+              />
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            );
+          },
+        }}
+        children={previewNote.text.replaceAll("{{", "[](https://uuid:").replaceAll("}}", ")")}
+      />
+    </PreviewerWrapper>
   );
 };
