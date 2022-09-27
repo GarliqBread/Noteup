@@ -1,17 +1,20 @@
-import ReactMarkdown from "react-markdown";
+import MarkdownPreview from "@uiw/react-markdown-preview";
 import styled from "styled-components";
 
-const Previewer = styled(ReactMarkdown)<{ border?: boolean }>`
+const Previewer = styled(MarkdownPreview)<{ border?: boolean }>`
 position: relative;
 overflow-y: auto;
 background: ${(props) => props.theme.color.firstLayer};
 color: ${(props) => props.theme.color.text};
 -webkit-font-smoothing: subpixel-antialiased;
 width: 100%;
-height: 100%;
+height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
 padding: 15px;
-margin-bottom: 52px;
 border-left: ${(props) => props.border && `1px solid ${props.theme.color.border}`};
+
+@media (max-width: 500px) {
+  height: ${({ theme }) => `calc(100% - ${theme.spaces.mobileEditor})`};
+}
 
 a {
   color: ${(props) => props.theme.color.primary};
@@ -114,15 +117,15 @@ a {
     white-space: pre-wrap;
     word-spacing: normal;
     word-break: normal;
-    border-radius: 0.3rem;
     font-size: 0.9rem;
     line-height: 1.4rem;
+    border: none;
 
     code {
-      padding: 0;
-      background: transparent;
+      padding: 10px;
+      background: ${({ theme }) => theme.color.lightGray};
       line-height: 1.2;
-      border-width: 0;
+      border: none;
     }
   }
 
@@ -182,10 +185,12 @@ a {
 
         &::before {
           content: '\\2713';
+          font-size: 14px;
           display: block;
           color: ${(props) => props.theme.color.white};
           position: absolute;
-          left: 2.5px;
+          left: 3px;
+          top: -3px;
         }
       }
     }

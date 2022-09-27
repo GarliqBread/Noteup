@@ -1,7 +1,9 @@
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
+import { ViewPlugin } from "@codemirror/view";
+import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { EditorView } from "codemirror";
-import { Suspense, lazy, useMemo } from "react";
+import { Ref, Suspense, UIEvent, lazy, useMemo } from "react";
 import { useRecoilValue } from "recoil";
 
 import {
@@ -19,11 +21,13 @@ import { editorThemes } from "@/utils/editorThemes";
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 
 type Props = {
+  innerRef?: Ref<ReactCodeMirrorRef>;
   note: Note;
   setNote: (value: Note) => void;
+  onScroll?: (e: UIEvent<HTMLDivElement, UIEvent>) => void;
 };
 
-export const NoteEditor = ({ note, setNote }: Props) => {
+export const NoteEditor = ({ innerRef, note, setNote, onScroll }: Props) => {
   const breakLines = useRecoilValue(breakLinesSelector);
   const foldGutter = useRecoilValue(foldGutterSelector);
   const lineNumbers = useRecoilValue(lineNumbersSelector);
@@ -41,16 +45,26 @@ export const NoteEditor = ({ note, setNote }: Props) => {
     }),
     [lineNumbers, foldGutter, autoComplete],
   );
-
+  const scroll = ViewPlugin.fromClass(
+    class {
+      constructor(view: any) {
+        view.scrollDOM.addEventListener("scroll", onScroll);
+      }
+    },
+  );
   const extensions = useMemo(() => {
-    const defaultExtensions = [markdown({ base: markdownLanguage, codeLanguages: languages })];
+    const defaultExtensions = [
+      scroll,
+      markdown({ base: markdownLanguage, codeLanguages: languages }),
+    ];
 
     return breakLines ? [EditorView.lineWrapping, ...defaultExtensions] : defaultExtensions;
-  }, [breakLines]);
+  }, [scroll, breakLines]);
 
   return (
     <Suspense>
       <CodeMirror
+        ref={innerRef}
         className="code-mirror"
         value={note.text}
         height="100%"
@@ -65,6 +79,7 @@ export const NoteEditor = ({ note, setNote }: Props) => {
         extensions={extensions}
         theme={editorThemes[theme][editorTheme]}
         basicSetup={codeMirrorOptions}
+        onScroll={(e) => console.log(e)}
       />
     </Suspense>
   );

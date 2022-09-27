@@ -6,8 +6,8 @@
     "type": "git",
     "url": "git+https://github.com/elementsinteractive/Noteup"
   },
-  "engines" : { 
-    "node" : ">=18.0.0"
+  "engines": {
+    "node": ">=18.0.0"
   },
   "scripts": {
     "start": "vite",
@@ -28,6 +28,7 @@
     "@uiw/codemirror-theme-github": "^4.11.5",
     "@uiw/codemirror-theme-xcode": "^4.11.5",
     "@uiw/react-codemirror": "^4.11.5",
+    "@uiw/react-markdown-preview": "^4.1.0",
     "axios": "^0.27.2",
     "clipboard-polyfill": "^4.0.0-rc1",
     "dayjs": "^1.11.5",
@@ -38,7 +39,6 @@
     "postinstall-postinstall": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.3",
     "react-router-dom": "^6.3.0",
     "react-split-pane": "^0.1.92",
     "react-syntax-highlighter": "^15.5.0",

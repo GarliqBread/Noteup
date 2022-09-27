@@ -10,11 +10,6 @@ const TopNav = styled.nav`
   background-color: ${(props) => props.theme.color.secondLayer};
   box-shadow: ${(props) => props.theme.color.shadow};
   margin-bottom: 4px;
-
-  @media (max-width: 500px) {
-    position: sticky;
-    bottom: -1px;
-  }
 `;
 
 const TopNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`

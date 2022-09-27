@@ -56,10 +56,12 @@ export default createGlobalStyle`
   }
   
   .code-mirror {
-    overflow-y: auto;
     width: 100%;
-    height: calc(100vh - 44px);
-    display: block !important;
+    height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
+
+    @media (max-width: 500px) {
+      height: ${({ theme }) => `calc(100% - ${theme.spaces.mobileEditor})`};
+    }
   }
 
   ::-webkit-scrollbar {
