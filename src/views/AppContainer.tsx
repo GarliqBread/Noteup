@@ -1,7 +1,7 @@
-import { invoke } from "@tauri-apps/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { isTauri } from "@/utils/helpers";
+import { NoteContainer } from "@/views/NoteContainer";
+import { SettingsModal } from "@/views/SettingsModal";
 
 import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
 import { MobileNav } from "@/components/MobileNav";
@@ -11,18 +11,8 @@ import { SplitPane } from "@/components/SplitPanel";
 
 import { Container } from "@/styles/layout";
 
-import { NoteContainer } from "./NoteContainer";
-import { SettingsModal } from "./SettingsModal";
-
 export const AppContainer = () => {
   const [showSettings, setShowSettings] = useState(false);
-
-  useEffect(() => {
-    if (isTauri) {
-      // On mount open the tauri application
-      invoke("show_main_window");
-    }
-  }, []);
 
   return (
     <Container>

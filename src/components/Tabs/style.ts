@@ -63,8 +63,7 @@ const TabList = styled.nav`
   flex: 0 0 220px;
   height: 100%;
   margin-top: 15px;
-  padding-right: 15px;
-  padding-left: 40px;
+  padding: 0 15px;
   margin-right: 15px;
   border-right: 1px solid ${(props) => props.theme.color.border};
 

@@ -68,4 +68,16 @@ const ModalHeader = styled.div`
   }
 `;
 
-export { Wrapper, Overlay, Modal, ModalHeader };
+const Version = styled.span`
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: ${(props) => props.theme.color.lightText};
+  font-size: ${(props) => props.theme.fontSizes.body};
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export { Wrapper, Overlay, Modal, ModalHeader, Version };
