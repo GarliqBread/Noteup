@@ -65,11 +65,11 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 1200,
         "resizable": true,
         "title": "Noteup",
         "width": 1200,
-        "minWidth": 800,
+        "height": 1200,
+        "minWidth": 1000,
         "minHeight": 800,
         "visible": false
       }

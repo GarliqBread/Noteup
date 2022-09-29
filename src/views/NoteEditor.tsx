@@ -1,6 +1,7 @@
+import { defaultKeymap } from "@codemirror/commands";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-import { ViewPlugin } from "@codemirror/view";
+import { ViewPlugin, keymap } from "@codemirror/view";
 import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { EditorView } from "codemirror";
 import { Ref, Suspense, lazy, useMemo } from "react";
@@ -16,6 +17,7 @@ import {
 import { themeSelector } from "@/recoil/settings.recoil";
 import { Note } from "@/recoil/types";
 
+import { customKeymap } from "@/utils/editorKeymaps";
 import { editorThemes } from "@/utils/editorThemes";
 
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
@@ -58,6 +60,7 @@ export const NoteEditor = ({ innerRef, note, setNote, onScroll }: Props) => {
     const defaultExtensions = [
       scroll,
       markdown({ base: markdownLanguage, codeLanguages: languages }),
+      keymap.of([...defaultKeymap, ...customKeymap]),
     ];
 
     return breakLines ? [EditorView.lineWrapping, ...defaultExtensions] : defaultExtensions;

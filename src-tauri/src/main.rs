@@ -4,16 +4,20 @@
 )]
 
 use tauri::Manager;
-
-#[tauri::command]
-async fn show_main_window(window: tauri::Window) {
-  window.get_window("main").unwrap().show().unwrap();
-}
+use std::thread::sleep;
+use std::time::Duration;
 
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![show_main_window])
-    .plugin(tauri_plugin_window_state::Builder::default().build())
+    .setup(|app| {
+      let main_window = app.get_window("main").unwrap();
+      tauri::async_runtime::spawn(async move {
+        sleep(Duration::from_millis(500));
+        main_window.show().unwrap();
+      });
+
+      Ok(())
+    })
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

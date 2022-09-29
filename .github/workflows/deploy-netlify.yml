@@ -19,7 +19,7 @@ jobs:
           cache: "yarn"
 
       - run: yarn install
-      - run: yarn build
+      - run: VITE_FRONTEND_VERSION=$GITHUB_REF_NAME yarn build
 
       - name: Run the tests and generate coverage report
         run: yarn test -- --coverage
@@ -28,8 +28,6 @@ jobs:
         uses: codecov/codecov-action@v2.1.0
 
       - name: Netlify Deploy
-        # uses: jsmrcaga/action-netlify-deploy@v1.7.1
-
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
