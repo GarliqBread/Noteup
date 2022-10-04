@@ -1,24 +1,27 @@
 import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
-import { useEffect, useRef } from "react";
+import { RefObject, UIEvent, useEffect, useRef } from "react";
 import SplitPane from "react-split-pane";
+import { useRecoilValue } from "recoil";
 
+import { toolbarSelector } from "@/recoil/editor.recoil";
 import { Note } from "@/recoil/types";
 
 import { NoteEditor } from "./NoteEditor";
 import { NotePreview } from "./NotePreviewer";
 
 type Props = {
+  editorRef: RefObject<ReactCodeMirrorRef>;
   note: Note;
   setNote: (value: Note) => void;
 };
 
-export const SplitScreenEditor = ({ note, setNote }: Props) => {
+export const SplitScreenEditor = ({ editorRef, note, setNote }: Props) => {
+  const showToolbar = useRecoilValue(toolbarSelector);
   const active = useRef<"text" | "preview">("text");
-  const editorRef = useRef<ReactCodeMirrorRef>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = (e: Event) => {
-    const editorDom = editorRef.current?.editor?.children[0].children[1] as HTMLDivElement;
+  const handleScroll = (e: UIEvent<HTMLDivElement>) => {
+    const editorDom = editorRef?.current?.editor?.children[0].children[1] as HTMLDivElement;
     const previewDom = previewRef.current;
 
     if (editorDom && previewDom) {
@@ -48,8 +51,8 @@ export const SplitScreenEditor = ({ note, setNote }: Props) => {
 
   return (
     <div>
-      <SplitPane split="vertical" size="50%">
-        <NoteEditor innerRef={editorRef} note={note} setNote={setNote} onScroll={handleScroll} />
+      <SplitPane split="vertical" size="50%" pane1Style={{ zIndex: showToolbar ? 5 : 0 }}>
+        <NoteEditor editorRef={editorRef} note={note} setNote={setNote} onScroll={handleScroll} />
         <NotePreview border innerRef={previewRef} previewNote={note} onScroll={handleScroll} />
       </SplitPane>
     </div>

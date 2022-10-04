@@ -1,4 +1,4 @@
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 
@@ -8,11 +8,11 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <RecoilRoot>
       <ThemeWrapper>
         <App />
       </ThemeWrapper>
     </RecoilRoot>
-  </React.StrictMode>,
+  </StrictMode>,
 );

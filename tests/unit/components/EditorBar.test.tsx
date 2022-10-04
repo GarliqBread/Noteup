@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { RecoilRoot } from "recoil";
 
-import { EditorBar } from "@/components/EditorBar";
+import { EditorBar } from "@/components/NoteEditor/EditorBar";
 import { wrapWithTheme } from "@/components/ThemeWrapper";
 
 describe("<EditorBar />", () => {

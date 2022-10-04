@@ -19,7 +19,7 @@ jobs:
           cache: "yarn"
 
       - run: yarn install
-      - run: VITE_FRONTEND_VERSION=$GITHUB_REF_NAME yarn build
+      - run: yarn build
 
       - name: Run the tests and generate coverage report
         run: yarn test -- --coverage

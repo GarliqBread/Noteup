@@ -1,4 +1,4 @@
-import { ReactNode, Ref } from "react";
+import { ReactNode, Ref, UIEvent } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import rehypeRaw from "rehype-raw";
@@ -23,7 +23,7 @@ type Props = {
   innerRef?: Ref<HTMLDivElement>;
   previewNote: Note;
   border?: boolean;
-  onScroll?: (e: Event) => void;
+  onScroll?: (e: UIEvent<HTMLDivElement>) => void;
 };
 
 export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) => {
@@ -57,7 +57,7 @@ export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) 
   };
 
   return (
-    <PreviewerWrapper ref={innerRef} onScroll={onScroll}>
+    <PreviewerWrapper ref={innerRef} onScroll={(e) => onScroll && onScroll(e)}>
       <Previewer
         border={border}
         remarkPlugins={[remarkParse, remarkGfm, remarkBreaks]}

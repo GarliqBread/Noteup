@@ -1,6 +1,6 @@
 {
   "name": "noteup",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "eslint src && vite build",
+    "build": "eslint src && VITE_FRONTEND_VERSION=$npm_package_version vite build",
     "test": "jest --config jest.config.ts",
     "format": "prettier --write \"./**/*.{json,ts,tsx,js,md,scss,yaml,yml}\"",
     "lint": "eslint . --ext .js,.ts,.tsx --fix",

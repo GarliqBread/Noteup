@@ -1,4 +1,6 @@
 export const spaces = {
-  desktopEditor: "51px",
+  desktopEditor: "46px",
+  desktopEditorWithToolbar: "80px",
+  desktopPreview: "46px",
   mobileEditor: "89px",
 };

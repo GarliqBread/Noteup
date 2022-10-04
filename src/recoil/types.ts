@@ -46,6 +46,7 @@ export type EditorState = {
   renderHTML: boolean;
   editing: boolean;
   split: boolean;
+  toolbar: boolean;
 };
 
 export type SectionsState = Section;

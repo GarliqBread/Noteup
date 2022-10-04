@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
+import { useMemo, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { editingSelector, splitSelector } from "@/recoil/editor.recoil";
@@ -11,7 +12,7 @@ import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 import { NoteEditor } from "@/views/NoteEditor";
 import { NotePreview } from "@/views/NotePreviewer";
 
-import { EditorBar } from "@/components/EditorBar";
+import { EditorBar } from "@/components/NoteEditor/EditorBar";
 import { EmptyEditorMessage } from "@/components/NotePreviewer/EmptyEditorMessage";
 
 import { FlexColumn } from "@/styles/layout";
@@ -20,6 +21,7 @@ import { SplitScreenEditor } from "./SplitScreenEditor";
 
 export const NoteContainer = () => {
   const { isSmallDevice } = useWindowDimensions();
+  const editorRef = useRef<ReactCodeMirrorRef>(null);
   const section = useRecoilValue(sectionsSelector);
   const editing = useRecoilValue(editingSelector);
   const split = useRecoilValue(splitSelector);
@@ -35,11 +37,11 @@ export const NoteContainer = () => {
           {note ? (
             <>
               {editing && split && !isSmallDevice ? (
-                <SplitScreenEditor note={note} setNote={setNote} />
+                <SplitScreenEditor editorRef={editorRef} note={note} setNote={setNote} />
               ) : (
                 <>
                   {!editing && <NotePreview previewNote={note} />}
-                  {editing && <NoteEditor note={note} setNote={setNote} />}
+                  {editing && <NoteEditor editorRef={editorRef} note={note} setNote={setNote} />}
                 </>
               )}
             </>

@@ -57,6 +57,7 @@ const ModalHeader = styled.div`
   background-color: ${(props) => props.theme.color.secondLayer};
   border-bottom: 0.5px solid ${(props) => props.theme.color.border};
   color: ${(props) => props.theme.color.text};
+  z-index: 100;
 
   svg {
     color: ${(props) => props.theme.color.text};
