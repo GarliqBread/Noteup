@@ -1,6 +1,6 @@
 import { EditorSelection, StateCommand, Transaction } from "@codemirror/state";
 
-const insertBoldMarker: StateCommand = ({ state, dispatch }) => {
+export const insertBoldMarker: StateCommand = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const isBoldBefore = state.sliceDoc(range.from - 2, range.from) === "**";
     const isBoldAfter = state.sliceDoc(range.to, range.to + 2) === "**";
@@ -45,7 +45,7 @@ const insertBoldMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-const insertItalicMarker: StateCommand = ({ state, dispatch }) => {
+export const insertItalicMarker: StateCommand = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const isItalicBefore = state.sliceDoc(range.from - 1, range.from) === "*";
     const isItalicAfter = state.sliceDoc(range.to, range.to + 1) === "*";
@@ -90,7 +90,7 @@ const insertItalicMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-const insertCodeMarker: StateCommand = ({ state, dispatch }) => {
+export const insertCodeMarker: StateCommand = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const isCodeBefore = state.sliceDoc(range.from - 1, range.from) === "`";
     const isCodeAfter = state.sliceDoc(range.to, range.to + 1) === "`";
@@ -135,7 +135,7 @@ const insertCodeMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-const insertLinkMarker: StateCommand = ({ state, dispatch }) => {
+export const insertLinkMarker: StateCommand = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const changes = [
       {

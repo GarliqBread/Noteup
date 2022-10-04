@@ -32,6 +32,7 @@ export const SearchBar = ({ isListEmpty }: Props) => {
   const isTrash = activeFolder === Folder.TRASH;
 
   const addNewNote = () => {
+    setEditing(false);
     setNotes([
       {
         id: uuid(),
@@ -43,7 +44,7 @@ export const SearchBar = ({ isListEmpty }: Props) => {
       },
     ]);
     setSection(Section.NOTE);
-    setEditing(true);
+    setTimeout(() => setEditing(true), 100);
   };
 
   useEffect(() => () => setKeyword(""), [setKeyword]);

@@ -59,6 +59,10 @@ export default createGlobalStyle`
     width: 100%;
     height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
 
+    &-toolbar {
+      height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditorWithToolbar})`};
+    }
+
     @media (max-width: 500px) {
       height: ${({ theme }) => `calc(100% - ${theme.spaces.mobileEditor})`};
     }

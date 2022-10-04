@@ -9,7 +9,7 @@ const TopNav = styled.nav`
   justify-content: space-between;
   background-color: ${(props) => props.theme.color.secondLayer};
   box-shadow: ${(props) => props.theme.color.shadow};
-  margin-bottom: 4px;
+  z-index: 2;
 `;
 
 const TopNavButton = styled.button<{ trash?: boolean; primary?: boolean }>`

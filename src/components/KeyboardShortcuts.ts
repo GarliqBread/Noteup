@@ -21,6 +21,7 @@ export const KeyboardShortcuts = () => {
   const [theme, setTheme] = useRecoilState(themeSelector);
 
   const createNewNote = () => {
+    setEditing(false);
     setNotes([
       {
         id: uuid(),
@@ -31,6 +32,7 @@ export const KeyboardShortcuts = () => {
         pinned: activeFolder === Folder.PINNED,
       },
     ]);
+    setTimeout(() => setEditing(true), 100);
     if (activeFolder === Folder.TRASH) {
       setActiveFolder(Folder.ALL);
     }
@@ -52,7 +54,6 @@ export const KeyboardShortcuts = () => {
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
   useKey(Shortcuts.NEW_NOTE, createNewNote);
-  //   useKey(Shortcuts.NEW_CATEGORY, newCategory);
   useKey(Shortcuts.DELETE_NOTE, deleteCurrentNote);
   useKey(Shortcuts.DOWNLOAD_NOTES, handleDownloadNotes);
   useKey(Shortcuts.PREVIEW, toggleEditing);

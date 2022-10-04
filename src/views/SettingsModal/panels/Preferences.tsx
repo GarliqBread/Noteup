@@ -8,6 +8,7 @@ import {
   lineNumbersSelector,
   previewerThemeSelector,
   renderHTMLSelector,
+  toolbarSelector,
 } from "@/recoil/editor.recoil";
 import { sortKeySelector, themeSelector } from "@/recoil/settings.recoil";
 
@@ -21,6 +22,7 @@ export const PreferencesPanel = () => {
   const [theme, setTheme] = useRecoilState(themeSelector);
   const [sortKey, setSortKey] = useRecoilState(sortKeySelector);
   const [autoComplete, setAutoComplete] = useRecoilState(autoCompleteSelector);
+  const [toolbar, setToolbar] = useRecoilState(toolbarSelector);
   const [lineNumbers, setLineNumbers] = useRecoilState(lineNumbersSelector);
   const [breakLines, setBreakLines] = useRecoilState(breakLinesSelector);
   const [foldGutter, setFoldGutter] = useRecoilState(foldGutterSelector);
@@ -28,6 +30,7 @@ export const PreferencesPanel = () => {
   const [previewerTheme, setPreviewerTheme] = useRecoilState(previewerThemeSelector);
   const [renderHTML, setRenderHTML] = useRecoilState(renderHTMLSelector);
 
+  const toggleToolbar = () => setToolbar(!toolbar);
   const toggleLineNumbers = () => setLineNumbers(!lineNumbers);
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
   const toggleAutoComplete = () => setAutoComplete(!autoComplete);
@@ -37,6 +40,12 @@ export const PreferencesPanel = () => {
 
   return (
     <>
+      <Option
+        title="Editor toolbar"
+        description="Editor's shortcut toolbar"
+        toggle={toggleToolbar}
+        checked={toolbar}
+      />
       <Option
         title="Display line numbers"
         description="Editor's line numbers"

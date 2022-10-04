@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const PreviewerWrapper = styled.div`
   width: 100%;
-  height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopEditor})`};
+  height: ${({ theme }) => `calc(100% - ${theme.spaces.desktopPreview})`};
   overflow-y: auto;
 
   @media (max-width: 500px) {
@@ -12,23 +12,32 @@ export const PreviewerWrapper = styled.div`
 `;
 
 export const Previewer = styled(MarkdownPreview)<{ border?: boolean }>`
-position: relative;
-background: ${(props) => props.theme.color.firstLayer};
-color: ${(props) => props.theme.color.text};
-width: 100%;
-padding: 15px;
-border-left: ${(props) => props.border && `1px solid ${props.theme.color.border}`};
+  position: relative;
+  background: ${(props) => props.theme.color.firstLayer};
+  color: ${(props) => props.theme.color.text};
+  width: 100%;
+  min-height: 100%;
+  padding: 15px;
+  border-left: ${(props) => props.border && `1px solid ${props.theme.color.border}`};
 
-a {
-  color: ${(props) => props.theme.color.primary};
-  text-decoration: none;
-  font-weight: 600;
-
-  &:hover {
-    cursor: pointer;
+  u {
     text-decoration: underline;
   }
-}
+
+  del {
+    text-decoration: line-through;
+  }
+
+  a {
+    color: ${(props) => props.theme.color.primary};
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 
   p,
   ol,
@@ -202,6 +211,15 @@ a {
           left: 3px;
         }
       }
+    }
+  }
+
+  blockquote {
+    padding: 0 16px;
+    border-left: 4px solid ${(props) => props.theme.color.darkerGray};
+
+    p{
+      color: ${(props) => props.theme.color.darkerGray};
     }
   }
 }

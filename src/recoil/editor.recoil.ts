@@ -19,6 +19,7 @@ export const editorState: RecoilState<EditorState> = atom({
     renderHTML: true,
     editing: false,
     split: false,
+    toolbar: true,
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -119,5 +120,16 @@ export const renderHTMLSelector = selector({
     set(editorState, {
       ...get(editorState),
       renderHTML,
+    }),
+});
+
+export const toolbarSelector = selector({
+  key: "toolbar-selector",
+  get: ({ get }) => get(editorState).toolbar,
+  set: ({ set, get }, toolbar) =>
+    !(toolbar instanceof DefaultValue) &&
+    set(editorState, {
+      ...get(editorState),
+      toolbar,
     }),
 });

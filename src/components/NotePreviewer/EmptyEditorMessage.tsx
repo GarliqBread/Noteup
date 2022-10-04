@@ -7,7 +7,7 @@ export const EmptyEditorMessage = () => {
   const { ctrlKey, altKey } = useDeviceOS();
 
   return (
-    <FlexColumn gap={10} height="auto">
+    <FlexColumn gap={10} height="100%" justifyContent="center">
       <LargeText>Create a new note</LargeText>
       <Flex justifyContent="center" gap={5}>
         <KBD>{ctrlKey}</KBD> + <KBD>{altKey}</KBD> + <KBD>N</KBD>
