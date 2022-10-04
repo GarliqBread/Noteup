@@ -42,12 +42,13 @@ yarn tauri build
 ## Roadmap
 
 - [x] Tandem scroll for side-by-side editing
+- [x] Quick command bar (WYSIWYG style)
+- [ ] Add landing page to the website
 - [ ] Add a page with markdown help commands
 - [ ] Note sharing
 - [ ] Account sync
 - [ ] Cross-platform sync
 - [ ] Extra download options (like `.pdf`)
-- [ ] Quick command bar (WYSIWYG style)
 
 ## Contributing
 
