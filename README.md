@@ -70,7 +70,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/MonsterCurry"><img src="https://avatars.githubusercontent.com/u/38473739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cláudio Silva</b></sub></a><br /><a href="https://github.com/elementsinteractive/Noteup/commits?author=MonsterCurry" title="Code">💻</a> <a href="https://github.com/elementsinteractive/Noteup/commits?author=MonsterCurry" title="Documentation">📖</a> <a href="#maintenance-MonsterCurry" title="Maintenance">🚧</a></td>
+      <td align="center"><a href="https://github.com/GarliqBread"><img src="https://avatars.githubusercontent.com/u/38473739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cláudio Silva</b></sub></a><br /><a href="https://github.com/elementsinteractive/Noteup/commits?author=GarliqBread" title="Code">💻</a> <a href="https://github.com/elementsinteractive/Noteup/commits?author=GarliqBread" title="Documentation">📖</a> <a href="#maintenance-GarliqBread" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
@@ -82,7 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 ## Author
 
-- [Cláudio](https://github.com/MonsterCurry)
+- [Cláudio](https://github.com/GarliqBread)
 
 ## License
 
