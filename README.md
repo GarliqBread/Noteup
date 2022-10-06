@@ -8,11 +8,11 @@
 
 </h2>
 
-<p align="center">A web and desktop markup notes app.</p>
+<p align="center">A Web and Desktop markup note-taking app.</p>
 
 ![Screenshot](./assets/mockups.png)
 
-[Noteup](https://noteup.dev/) is a free, open-source markup notes app for the web, mobile(PWA) and desktop. Your notes are saved in the local storage, but are available for import/export.
+[Noteup](https://noteup.dev/) is a free, open-source Github-flavored markup note-taking app for the web, mobile(PWA) and desktop. Your notes are saved in the local storage but are available for import/export.
 
 ## Get started
 
@@ -43,7 +43,7 @@ yarn tauri build
 
 - [x] Tandem scroll for side-by-side editing
 - [x] Quick command bar (WYSIWYG style)
-- [ ] Add landing page to the website
+- [x] Add a landing page to the website
 - [ ] Add a page with markdown help commands
 - [ ] Note sharing
 - [ ] Account sync
@@ -52,7 +52,7 @@ yarn tauri build
 
 ## Contributing
 
-This is an open source project, and contributions are welcomed and appreciated. Open issues, bugs, and enhancements are all listed on the [issues](https://github.com/elements/noteup/issues) tab and labeled accordingly.
+This is an open-source project, and contributions are welcomed and appreciated. Open issues, bugs, and enhancements are all listed on the [issues](https://github.com/elements/noteup/issues) tab and labeled accordingly.
 
 View [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the style guide, folder structure, scripts, and how to contribute.
 
@@ -62,7 +62,7 @@ This project was visually inspired by another markdown note app called [Takenote
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
