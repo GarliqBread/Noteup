@@ -30,10 +30,11 @@ jobs:
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
       - name: get version
         run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_VITE_FRONTEND_VERSION: process.env.PACKAGE_VERSION
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo VITE_FRONTEND_VERSION=process.env.PACKAGE_VERSION >> .env
+          cat .env
       - name: install app dependencies and build it
         run: yarn && yarn build
       - uses: tauri-apps/tauri-action@v0
