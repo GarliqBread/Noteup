@@ -12,7 +12,7 @@ fn main() {
     .setup(|app| {
       let main_window = app.get_window("main").unwrap();
       tauri::async_runtime::spawn(async move {
-        sleep(Duration::from_millis(500));
+        sleep(Duration::from_millis(700));
         main_window.show().unwrap();
       });
 

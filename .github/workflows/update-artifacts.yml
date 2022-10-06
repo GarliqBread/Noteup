@@ -24,6 +24,7 @@ jobs:
         id: create-release
         uses: actions/github-script@v6
         with:
+          envkey_VITE_FRONTEND_VERSION: process.env.PACKAGE_VERSION
           script: |
             const { data } = await github.rest.repos.createRelease({
               owner: context.repo.owner,
