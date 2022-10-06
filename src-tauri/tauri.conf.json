@@ -67,6 +67,7 @@
         "fullscreen": false,
         "resizable": true,
         "title": "Noteup",
+        "url": "/app",
         "width": 1200,
         "height": 1200,
         "minWidth": 1000,

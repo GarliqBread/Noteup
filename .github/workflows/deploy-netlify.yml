@@ -11,11 +11,14 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - name: get version
+        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          envkey_VITE_FRONTEND_VERSION: process.env.PACKAGE_VERSION
           cache: "yarn"
 
       - run: yarn install
