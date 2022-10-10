@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/app" element={<AppContainer />} />
         <Route path="/" element={<LandingPage />} />
+        <Route path="/*" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   );

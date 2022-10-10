@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     VitePWA({
-      base: "/app",
+      base: "/",
       includeAssets: ["favicon.ico", "favicon.svg", "robots.txt", "apple-touch-icon.png"],
       injectRegister: "auto",
       registerType: "autoUpdate",
@@ -22,6 +22,7 @@ export default defineConfig({
         display: "standalone",
         theme_color: "#2d2d2d",
         background_color: "#2d2d2d",
+        start_url: "/app",
         icons: [
           {
             src: "/favicon.ico",

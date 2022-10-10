@@ -12,7 +12,7 @@ import { sectionsSelector } from "@/recoil/sections.recoil";
 
 import { emptyListMessage } from "@/utils/constants";
 import { Section } from "@/utils/enums";
-import { getNoteTitle } from "@/utils/helpers";
+import { getNoteBody, getNoteTitle } from "@/utils/helpers";
 import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
 import { NoteContext } from "./NoteContext";
@@ -68,8 +68,9 @@ export const NoteList = () => {
               }
 
               return (
-                <NoteContext key={note.id} noteId={note.id}>
+                <NoteContext key={note.id} noteId={note.id} selected={selectedNoteId === note.id}>
                   <NoteItem
+                    title={noteTitle}
                     note={note}
                     selected={selectedNoteId === note.id}
                     onClick={handleNoteClick}
@@ -78,7 +79,7 @@ export const NoteList = () => {
                       "Notes"
                     }
                   >
-                    {noteTitle}
+                    {getNoteBody(note.text)}
                   </NoteItem>
                 </NoteContext>
               );

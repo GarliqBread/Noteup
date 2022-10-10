@@ -11,14 +11,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - name: Get version
-        run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - name: "Create env file"
-        run: |
-          touch .env
-          echo VITE_FRONTEND_VERSION=`${process.env.PACKAGE_VERSION}` >> .env
-          cat .env
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_VITE_FRONTEND_VERSION: $(node -p "require('./package.json').version")"
+          file_name: .env
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:

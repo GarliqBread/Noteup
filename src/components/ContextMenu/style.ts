@@ -1,13 +1,16 @@
 import { Content, Item } from "@radix-ui/react-context-menu";
 import styled from "styled-components";
 
-const ContextWrapper = styled.div`
+import { lightTheme } from "@/styles/theme/colors";
+
+const ContextWrapper = styled.div<{ color: keyof typeof lightTheme }>`
   position: relative;
   width: 100%;
 
   &:hover {
     .dropdown-icon {
       visibility: visible !important;
+      color: ${(props) => props.theme.color[props.color]} !important;
     }
   }
 `;

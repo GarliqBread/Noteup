@@ -7,6 +7,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   overflow-x: hidden;
+  background-color: #ffffff;
 `;
 
 export const Navbar = styled.nav<{ shadow: boolean }>`

@@ -11,9 +11,9 @@ import { Dropdown } from "@/components/Dropdown";
 import { ArrowBack, Clipboard, Download, Pin, Trash } from "@/components/Icons";
 import { Select } from "@/components/Select";
 
-type Props = { noteId: string; children: React.ReactNode };
+type Props = { noteId: string; selected: boolean; children: React.ReactNode };
 
-export const NoteContext = ({ noteId, children }: Props) => {
+export const NoteContext = ({ noteId, selected, children }: Props) => {
   const categories = useRecoilValue(categoriesSelector);
   const setNotesState = useSetRecoilState(selectedNoteSelector);
   const selectedNote = useRecoilValue(notesState).notes.find((note) => note.id === noteId);
@@ -142,7 +142,7 @@ export const NoteContext = ({ noteId, children }: Props) => {
       ];
 
   return (
-    <ContextMenu menu={[...menu, ...staticMenuOptions]}>
+    <ContextMenu color={selected ? "white" : "text"} menu={[...menu, ...staticMenuOptions]}>
       {children}
       <Dropdown menu={[...menu, ...staticMenuOptions]} />
     </ContextMenu>

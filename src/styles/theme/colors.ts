@@ -17,7 +17,7 @@ export const lightTheme = {
   keyBlock: "#f7f7f7",
   lightGray: "#f7f4f4",
   lightText: "#595858",
-  noteList: "#e5e5e5",
+  noteList: "#efefef",
   offWhite: "#ffffffb3",
   overlayColor: "rgba(0, 0, 0, 0.15)",
   primary: "#1f75fe",
