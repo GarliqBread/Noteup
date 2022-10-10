@@ -36,7 +36,7 @@ export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }:
   ];
 
   return (
-    <ContextMenu menu={menu}>
+    <ContextMenu color="offWhite" menu={menu}>
       {children}
       <Dropdown menu={menu} />
     </ContextMenu>

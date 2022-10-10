@@ -1,13 +1,16 @@
 import { Note } from "@/recoil/types";
 
+import { useDayjs } from "@/utils/hooks/useDayjs";
+
 import { FilledPin, Folder, Notes } from "@/components/Icons";
 
-import { Ellipsis, Flex } from "@/styles/layout";
+import { Ellipsis, EllipsisParagraph, Flex } from "@/styles/layout";
 import { Label } from "@/styles/typography";
 
 import { NoteItemContainer } from "./style";
 
 type Props = {
+  title: string | JSX.Element;
   note: Note;
   selected?: boolean;
   category: string;
@@ -15,18 +18,24 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const NoteItem = ({ note, selected, category, onClick, children }: Props) => {
+export const NoteItem = ({ title, note, selected, category, onClick, children }: Props) => {
+  const { formatTo } = useDayjs();
+
   return (
     <NoteItemContainer onClick={() => onClick(note.id)} selected={selected}>
       <Flex>
-        <Flex width="20px" height="20px">
-          {note.pinned && <FilledPin className="pin" size={15} />}
-        </Flex>
-        <Ellipsis>{children}</Ellipsis>
+        {note.pinned && <FilledPin className="pin" size={15} />}
+        <Ellipsis>{title}</Ellipsis>
       </Flex>
-      <Flex margin="0 0 0 20px" gap={5}>
-        {note.categoryId ? <Folder size={14} /> : <Notes size={14} />}
-        <Label>{category}</Label>
+      <Flex margin="6px 0">
+        <EllipsisParagraph>{children}</EllipsisParagraph>
+      </Flex>
+      <Flex alignItems="center" justifyContent="space-between">
+        <Flex gap={5} width="auto">
+          {note.categoryId ? <Folder size={14} /> : <Notes size={14} />}
+          <Label>{category}</Label>
+        </Flex>
+        <Label>{formatTo(note.lastUpdated)}</Label>
       </Flex>
     </NoteItemContainer>
   );

@@ -41,7 +41,7 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px 8px;
-  min-height: 70px;
+  min-height: 80px;
   background-color: ${(props) =>
     props.selected ? props.theme.color.primary : props.theme.color.noteList};
   border-bottom: 1px solid ${(props) => props.theme.color.border};
@@ -57,6 +57,11 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
       props.selected ? props.theme.color.offWhite : props.theme.color.lightText};
   }
 
+  p {
+    color: ${(props) =>
+      props.selected ? props.theme.color.offWhite : props.theme.color.lightText};
+  }
+
   .highlighted {
     color: ${(props) => (props.selected ? props.theme.color.primary : props.theme.color.white)};
     background-color: ${(props) =>
@@ -64,6 +69,7 @@ const NoteItemContainer = styled.div<{ selected?: boolean }>`
   }
 
   .pin {
+    margin-right: 3px;
     color: ${(props) => (props.selected ? props.theme.color.white : props.theme.color.primary)};
   }
 `;

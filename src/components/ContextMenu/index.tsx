@@ -1,8 +1,11 @@
 import { Portal, Root, Trigger } from "@radix-ui/react-context-menu";
 
+import { lightTheme } from "@/styles/theme/colors";
+
 import { ContextContent, ContextItem, ContextWrapper } from "./style";
 
 type Props = {
+  color: keyof typeof lightTheme;
   menu: {
     onClick?: () => void;
     children: JSX.Element;
@@ -11,9 +14,9 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const ContextMenu = ({ menu, children }: Props) => {
+export const ContextMenu = ({ color, menu, children }: Props) => {
   return (
-    <ContextWrapper>
+    <ContextWrapper color={color}>
       <Root>
         <Trigger>{children}</Trigger>
         <Portal>
