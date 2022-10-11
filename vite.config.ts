@@ -16,12 +16,12 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
       manifest: {
-        name: "Notup",
+        name: "Noteup",
         short_name: "Noteup",
-        description: "Markup note taking made simple",
+        description: "Markdown note-taking made simple",
         display: "standalone",
-        theme_color: "#2d2d2d",
-        background_color: "#2d2d2d",
+        theme_color: "#ffffff",
+        background_color: "#ffffff",
         start_url: "/app",
         icons: [
           {
