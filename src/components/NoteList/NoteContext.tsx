@@ -112,7 +112,7 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
       onClick: copyNoteReference,
       children: (
         <>
-          <Clipboard size={15} /> Copy reference to note
+          <Clipboard size={15} /> Copy reference
         </>
       ),
     },
@@ -176,9 +176,9 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
       ];
 
   return (
-    <ContextMenu color={selected ? "white" : "text"} menu={[...menu, ...staticMenuOptions]}>
+    <ContextMenu menu={[...menu, ...staticMenuOptions]}>
       {children}
-      <Dropdown menu={[...menu, ...staticMenuOptions]} />
+      <Dropdown selected={selected} menu={[...menu, ...staticMenuOptions]} />
     </ContextMenu>
   );
 };

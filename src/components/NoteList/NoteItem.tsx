@@ -27,7 +27,7 @@ export const NoteItem = ({ title, note, selected, category, onClick, children }:
         {note.pinned && <FilledPin className="pin" size={15} />}
         <Ellipsis>{title}</Ellipsis>
       </Flex>
-      <Flex margin="6px 0">
+      <Flex margin="4px 0 6px 0">
         <EllipsisParagraph>{children}</EllipsisParagraph>
       </Flex>
       <Flex alignItems="center" justifyContent="space-between">

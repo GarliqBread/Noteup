@@ -69,5 +69,5 @@ export enum LabelText {
   BACKUP_ALL_NOTES = "Export backup",
   IMPORT_BACKUP = "Import backup",
   TOGGLE_PINNED = "Toggle pinned",
-  COPY_REFERENCE_TO_NOTE = "Copy reference to note",
+  COPY_REFERENCE_TO_NOTE = "Copy reference",
 }
