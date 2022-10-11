@@ -10,7 +10,7 @@ import { Folder } from "@/utils/enums";
 import { Folder as FolderIcon } from "@/components/Icons";
 import { Input } from "@/components/Input";
 
-import { Flex } from "@/styles/layout";
+import { Ellipsis, Flex } from "@/styles/layout";
 
 import { CategoryItem, Form } from "./style";
 
@@ -64,7 +64,6 @@ export const CategoryOption = ({ category, renamingId, cancelRenaming }: Props) 
           <Form onSubmit={handleRename} onClick={(e) => e.stopPropagation()}>
             <Input
               aria-label="Category name"
-              id="category-input"
               autoFocus
               value={tempName}
               onChange={setTempName}
@@ -72,7 +71,7 @@ export const CategoryOption = ({ category, renamingId, cancelRenaming }: Props) 
             />
           </Form>
         ) : (
-          category.name
+          <Ellipsis>{category.name}</Ellipsis>
         )}
       </Flex>
     </CategoryItem>

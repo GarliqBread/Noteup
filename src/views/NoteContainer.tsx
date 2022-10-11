@@ -32,6 +32,7 @@ export const NoteContainer = () => {
   return (
     <FlexColumn width="100%" height="100%">
       <EditorBar note={note} />
+      <div id="pdf-preview" />
       {((isSmallDevice && editorView) || !isSmallDevice) && (
         <>
           {note ? (

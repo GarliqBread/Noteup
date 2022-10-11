@@ -59,6 +59,7 @@ export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) 
   return (
     <PreviewerWrapper ref={innerRef} onScroll={(e) => onScroll && onScroll(e)}>
       <Previewer
+        className="previewer"
         border={border}
         remarkPlugins={[remarkParse, remarkGfm, remarkBreaks]}
         rehypePlugins={renderHtml ? [rehypeRaw] : []}

@@ -75,6 +75,15 @@ export default createGlobalStyle`
     background: #1f6ce0;
     border-radius: 2px;
   }
+  #pdf-preview {
+    position: absolute;
+    width: 793px;
+    z-index: -1;
+
+    .previewer {
+      min-height: 841px;
+    }
+  }
   .Resizer {
     opacity: 0.2;
     z-index: 97;

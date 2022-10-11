@@ -8,7 +8,8 @@ import { themeSelector } from "@/recoil/settings.recoil";
 import { Note } from "@/recoil/types";
 
 import { Section } from "@/utils/enums";
-import { copyToClipboard, downloadNote as downloadNoteFile } from "@/utils/helpers";
+import { downloadMarkdown, downloadPdf } from "@/utils/exports";
+import { copyToClipboard } from "@/utils/helpers";
 import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
 import {
@@ -18,12 +19,15 @@ import {
   Edit,
   Eye,
   FilledPin,
+  Markdown,
   Moon,
+  PDF,
   Pin,
   Split,
   Sun,
   Trash,
 } from "@/components/Icons";
+import { Popover } from "@/components/Popover";
 
 import { Flex } from "@/styles/layout";
 
@@ -71,15 +75,38 @@ export const EditorBar = ({ note }: Props) => {
     setUuidCopiedText(successfulCopyMessage);
   };
 
-  const downloadNote = () => {
-    !!note && downloadNoteFile(note);
+  const downloadNoteAsPDF = () => !!note && downloadPdf(note);
+
+  const downloadNoteAsMarkdown = () => {
+    !!note && downloadMarkdown(note);
   };
+
+  const popoverMenu = [
+    {
+      id: "pdf",
+      onClick: downloadNoteAsPDF,
+      children: (
+        <>
+          as PDF <PDF />
+        </>
+      ),
+    },
+    {
+      id: "markdown",
+      onClick: downloadNoteAsMarkdown,
+      children: (
+        <>
+          as Markdown <Markdown />
+        </>
+      ),
+    },
+  ];
 
   useEffect(() => {
     if (uuidCopiedText === successfulCopyMessage) {
       const timer = setTimeout(() => {
         setUuidCopiedText("");
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -105,9 +132,11 @@ export const EditorBar = ({ note }: Props) => {
             <TopNavButton trash title="Delete note" onClick={deleteNote}>
               {note.trash ? <ArrowBack size={18} /> : <Trash size={18} />}
             </TopNavButton>
-            <TopNavButton title="Download note" onClick={downloadNote}>
-              <Download size={18} />
-            </TopNavButton>
+            <Popover menu={popoverMenu}>
+              <TopNavButton title="Download note">
+                <Download size={18} />
+              </TopNavButton>
+            </Popover>
             <TopNavButton title="Copy note ID" onClick={copyNoteId}>
               <Clipboard size={18} />
               <span>{uuidCopiedText}</span>

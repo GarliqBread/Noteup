@@ -4,12 +4,15 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { categoriesSelector } from "@/recoil/categories.recoil";
 import { notesState, selectNoteIdSelector, selectedNoteSelector } from "@/recoil/notes.recoil";
 
-import { copyToClipboard, downloadNote as downloadNoteFile } from "@/utils/helpers";
+import { downloadMarkdown, downloadPdf } from "@/utils/exports";
+import { copyToClipboard } from "@/utils/helpers";
 
 import { ContextMenu } from "@/components/ContextMenu";
 import { Dropdown } from "@/components/Dropdown";
-import { ArrowBack, Clipboard, Download, Pin, Trash } from "@/components/Icons";
+import { ArrowBack, Clipboard, Download, Markdown, PDF, Pin, Trash } from "@/components/Icons";
 import { Select } from "@/components/Select";
+
+import { Flex } from "@/styles/layout";
 
 type Props = { noteId: string; selected: boolean; children: React.ReactNode };
 
@@ -44,7 +47,9 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
     setSelectedNoteId(null);
   };
 
-  const downloadNote = () => !!selectedNote && downloadNoteFile(selectedNote);
+  const downloadNoteAsMarkdown = () => !!selectedNote && downloadMarkdown(selectedNote);
+
+  const downloadNoteAsPDF = () => !!selectedNote && downloadPdf(selectedNote);
 
   const copyNoteReference = () => !!selectedNote && copyToClipboard(`{{${selectedNote.id}}}`);
 
@@ -71,15 +76,39 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
 
   const staticMenuOptions = [
     {
-      onClick: downloadNote,
+      id: "download",
       children: (
-        <>
-          <Download size={15} /> Download
-        </>
+        <Flex justifyContent="space-between">
+          <Flex gap={5}>
+            <Download size={15} /> Download
+          </Flex>
+          {"\u203a"}
+        </Flex>
       ),
+      subMenu: [
+        {
+          id: "pdf",
+          onClick: downloadNoteAsPDF,
+          children: (
+            <Flex justifyContent="space-between">
+              as PDF <PDF />
+            </Flex>
+          ),
+        },
+        {
+          id: "md",
+          onClick: downloadNoteAsMarkdown,
+          children: (
+            <Flex justifyContent="space-between">
+              as Markdown <Markdown />
+            </Flex>
+          ),
+        },
+      ],
     },
 
     {
+      id: "copy",
       onClick: copyNoteReference,
       children: (
         <>
@@ -92,6 +121,7 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
   const menu = selectedNote?.trash
     ? [
         {
+          id: "trash",
           onClick: toggleNoteTrash,
           children: (
             <>
@@ -100,6 +130,7 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
           ),
         },
         {
+          id: "delete",
           onClick: deleteNote,
           danger: true,
           children: (
@@ -111,6 +142,7 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
       ]
     : [
         {
+          id: "select",
           children: (
             <Select
               key="select"
@@ -123,6 +155,7 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
           ),
         },
         {
+          id: "pin",
           onClick: toggleNotePin,
           children: (
             <>
@@ -131,6 +164,7 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
           ),
         },
         {
+          id: "move",
           onClick: toggleNoteTrash,
           children: (
             <>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { lightTheme } from "./theme/colors";
+
 type FlexProps = {
   width?: string;
   height?: string;
@@ -8,6 +10,7 @@ type FlexProps = {
   justifyContent?: string;
   alignItems?: string;
   gap?: number;
+  bg?: keyof typeof lightTheme;
 };
 
 const Container = styled.div`
@@ -30,6 +33,7 @@ const Flex = styled.div<FlexProps>`
 
 const FlexColumn = styled(Flex)<FlexProps>`
   flex-direction: column;
+  background-color: ${(props) => props.bg && props.theme.color[props.bg]};
 `;
 
 const Ellipsis = styled.div`

@@ -1,10 +1,6 @@
-import { save } from "@tauri-apps/api/dialog";
-import { BaseDirectory, writeTextFile } from "@tauri-apps/api/fs";
 import * as clipboard from "clipboard-polyfill/text";
-import dayjs from "dayjs";
-import { saveAs } from "file-saver";
 
-import { Category, Note } from "@/recoil/types";
+import { Note } from "@/recoil/types";
 
 import { LabelText } from "./enums";
 
@@ -44,49 +40,4 @@ export const getNoteBody = (text: string): string => {
 
 export const copyToClipboard = (text: string) => {
   clipboard.writeText(text);
-};
-
-export const downloadNote = (note: Note): void => {
-  if (isTauri) {
-    save({
-      filters: [
-        {
-          name: "files",
-          extensions: ["md"],
-        },
-      ],
-    }).then((path) =>
-      writeTextFile(path, note.text, {
-        dir: BaseDirectory.App,
-      }),
-    );
-  } else {
-    const blob = new Blob([note.text], {
-      type: "text/plain;charset=utf-8",
-    });
-
-    saveAs(blob, "note.md");
-  }
-};
-
-export const backupNotes = (notes: Note[], categories: Category[]) => {
-  if (isTauri) {
-    save({
-      filters: [
-        {
-          name: "files",
-          extensions: ["json"],
-        },
-      ],
-    }).then((path) =>
-      writeTextFile(path, JSON.stringify({ notes, categories }), {
-        dir: BaseDirectory.App,
-      }),
-    );
-  } else {
-    const json = JSON.stringify({ notes, categories });
-    const blob = new Blob([json], { type: "application/json" });
-
-    saveAs(blob, `noteup-backup-${dayjs().format("YYYY-MM-DD")}.json`);
-  }
 };

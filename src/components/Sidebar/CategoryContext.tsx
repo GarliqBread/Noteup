@@ -17,6 +17,7 @@ export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }:
 
   const menu = [
     {
+      id: "rename",
       onClick: () => setRenamingCategoryId(categoryId),
       children: (
         <>
@@ -25,6 +26,7 @@ export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }:
       ),
     },
     {
+      id: "delete",
       onClick: () => setCategories(categories.filter((category) => category.id !== categoryId)),
       children: (
         <>

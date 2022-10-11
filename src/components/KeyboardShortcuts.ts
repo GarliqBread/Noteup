@@ -9,7 +9,7 @@ import { notesSelector, selectedNoteSelector } from "@/recoil/notes.recoil";
 import { themeSelector } from "@/recoil/settings.recoil";
 
 import { Folder, Shortcuts } from "@/utils/enums";
-import { downloadNote } from "@/utils/helpers";
+import { downloadMarkdown } from "@/utils/exports";
 import { useKey } from "@/utils/hooks/useKey";
 
 export const KeyboardShortcuts = () => {
@@ -47,7 +47,7 @@ export const KeyboardShortcuts = () => {
     }
   };
 
-  const handleDownloadNotes = () => !!selectedNote && downloadNote(selectedNote);
+  const handleDownloadNotes = () => !!selectedNote && downloadMarkdown(selectedNote);
 
   const toggleEditing = () => setEditing(!editing);
 

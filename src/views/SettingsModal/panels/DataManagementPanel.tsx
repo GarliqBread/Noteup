@@ -5,7 +5,7 @@ import { notesSelector } from "@/recoil/notes.recoil";
 import { Category, Note } from "@/recoil/types";
 
 import { LabelText } from "@/utils/enums";
-import { backupNotes } from "@/utils/helpers";
+import { backupNotes } from "@/utils/exports";
 
 import { Button, UploadButton } from "@/components/Button";
 import { CloudDownload, CloudUpload } from "@/components/Icons";
