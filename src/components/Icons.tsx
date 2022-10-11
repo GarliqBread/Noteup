@@ -3,6 +3,7 @@ export type IconProps = {
   size?: number;
   width?: number;
   height?: number;
+  stroke?: string;
 };
 
 export type RenderedIcon = (props: IconProps) => JSX.Element;
@@ -407,7 +408,7 @@ export const Stack = ({ size = 24, className = "" }: IconProps) => (
   </svg>
 );
 
-export const More = ({ size = 24, className = "" }: IconProps) => (
+export const More = ({ size = 24, stroke, className = "" }: IconProps) => (
   <svg
     className={className}
     width={size}
@@ -415,7 +416,7 @@ export const More = ({ size = 24, className = "" }: IconProps) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke={stroke || "currentColor"}
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"

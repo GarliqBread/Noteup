@@ -1,16 +1,13 @@
 import { Content, Item, SubContent, SubTrigger } from "@radix-ui/react-context-menu";
 import styled from "styled-components";
 
-import { lightTheme } from "@/styles/theme/colors";
-
-const ContextWrapper = styled.div<{ color: keyof typeof lightTheme }>`
+const ContextWrapper = styled.div`
   position: relative;
   width: 100%;
 
   &:hover {
     .dropdown-icon {
       visibility: visible !important;
-      color: ${(props) => props.theme.color[props.color]} !important;
     }
   }
 `;
@@ -22,7 +19,7 @@ const ContextContent = styled(Content)`
   padding: 5px;
   border-radius: ${(props) => props.theme.radius.xsmall};
   border: 1px solid ${(props) => props.theme.color.firstLayer};
-  min-width: 250px;
+  min-width: 200px;
   box-shadow: ${(props) => props.theme.color.shadower};
   z-index: 105;
 
@@ -36,7 +33,7 @@ const ContextContent = styled(Content)`
 `;
 
 const ContextMenuSubContent = styled(SubContent)`
-display: flex;
+  display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.color.context}};
   padding: 5px;
