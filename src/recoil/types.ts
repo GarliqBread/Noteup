@@ -42,7 +42,7 @@ export type EditorState = {
   lineNumbers: boolean;
   foldGutter: boolean;
   editorTheme: EditorTheme;
-  previwerTheme: PreviewThemeKey;
+  previewerTheme: PreviewThemeKey;
   renderHTML: boolean;
   editing: boolean;
   split: boolean;

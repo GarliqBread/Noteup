@@ -44,11 +44,11 @@ yarn tauri build
 - [x] Tandem scroll for side-by-side editing
 - [x] Quick command bar (WYSIWYG style)
 - [x] Add a landing page to the website
+- [x] Extra download options (like `.pdf`)
 - [ ] Add a page with markdown help commands
 - [ ] Note sharing
 - [ ] Account sync
 - [ ] Cross-platform sync
-- [ ] Extra download options (like `.pdf`)
 
 ## Contributing
 

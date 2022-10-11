@@ -36,7 +36,7 @@ export const darkTheme = {
   black: "#000000",
   border: "#090909",
   codeBlock: "#525252",
-  context: "#2d2d2d",
+  context: "#3a3a3a",
   contrastGray: "#4c4c4c",
   danger: "#f26d6f",
   darkerGray: "#b8b8b8",

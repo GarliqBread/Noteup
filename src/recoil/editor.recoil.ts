@@ -11,7 +11,7 @@ export const editorState: RecoilState<EditorState> = atom({
   key: "editor-state",
   default: {
     editorTheme: EditorThemeKey.DUOTONE,
-    previwerTheme: PreviewThemeKey.DUOTONE,
+    previewerTheme: PreviewThemeKey.DUOTONE,
     autoComplete: true,
     breakLines: true,
     foldGutter: false,
@@ -103,12 +103,12 @@ export const editorThemeSelector = selector({
 
 export const previewerThemeSelector = selector({
   key: "perviewer-theme-selector",
-  get: ({ get }) => get(editorState).previwerTheme,
-  set: ({ set, get }, previwerTheme) =>
-    !(previwerTheme instanceof DefaultValue) &&
+  get: ({ get }) => get(editorState).previewerTheme,
+  set: ({ set, get }, previewerTheme) =>
+    !(previewerTheme instanceof DefaultValue) &&
     set(editorState, {
       ...get(editorState),
-      previwerTheme,
+      previewerTheme,
     }),
 });
 

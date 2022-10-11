@@ -112,6 +112,11 @@ const CategoryItem = styled.div<{ selected?: boolean }>`
 
   .icon {
     color: ${(props) => props.selected && props.theme.color.primary};
+    min-width: 16px;
+  }
+
+  div:first-child {
+    max-width: 90%;
   }
 `;
 
