@@ -36,7 +36,7 @@ export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) 
 
   const handleNoteLinkClick = (note: Note) => {
     if (note) {
-      setSelectedNoteId(note.id);
+      setSelectedNoteId(note.id || note.tempId || "");
 
       if (note?.pinned) return setActiveFolder(Folder.PINNED);
       if (note?.trash) return setActiveFolder(Folder.TRASH);

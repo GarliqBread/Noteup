@@ -145,6 +145,18 @@ const List = styled.div`
   overflow-y: auto;
 `;
 
+const UserButton = styled.div`
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  background-color: transparent;
+  color: ${(props) => props.theme.color.white};
+  border-top: 0.5px solid ${(props) => props.theme.color.black};
+`;
+
 export {
   StyledSidebar,
   Header,
@@ -155,4 +167,5 @@ export {
   CategoryItem,
   CategoryForm,
   List,
+  UserButton,
 };

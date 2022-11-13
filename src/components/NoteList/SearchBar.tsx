@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { v4 as uuid } from "uuid";
 
+import { tokenSelector } from "@/recoil/auth.recoil";
 import { selectedCategoryIdSelector } from "@/recoil/categories.recoil";
 import { editingSelector } from "@/recoil/editor.recoil";
 import { activeFolderSelector } from "@/recoil/folder.recoil";
@@ -22,6 +23,7 @@ type Props = {
 };
 
 export const SearchBar = ({ isListEmpty }: Props) => {
+  const token = useRecoilValue(tokenSelector);
   const [notes, setNotes] = useRecoilState(notesSelector);
   const [noteState, setNoteState] = useRecoilState(notesState);
   const [keyword, setKeyword] = useRecoilState(keywordSelector);
@@ -35,12 +37,14 @@ export const SearchBar = ({ isListEmpty }: Props) => {
     setEditing(false);
     setNotes([
       {
-        id: uuid(),
+        tempId: uuid(),
         text: "",
         created: dayjs().format(),
-        lastUpdated: dayjs().format(),
+        lastUpdated: dayjs().toISOString(),
         categoryId: selectedCategoryId || undefined,
         pinned: activeFolder === Folder.PINNED,
+        toSync: !!token,
+        synced: false,
       },
     ]);
     setSection(Section.NOTE);

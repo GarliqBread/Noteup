@@ -9,10 +9,16 @@ import { Close, Edit } from "@/components/Icons";
 type Props = {
   categoryId: string;
   setRenamingCategoryId: (id: string) => void;
+  selected: boolean;
   children: React.ReactNode;
 };
 
-export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }: Props) => {
+export const CategoryContext = ({
+  categoryId,
+  setRenamingCategoryId,
+  selected,
+  children,
+}: Props) => {
   const [categories, setCategories] = useRecoilState(categoriesSelector);
 
   const menu = [
@@ -38,9 +44,9 @@ export const CategoryContext = ({ categoryId, setRenamingCategoryId, children }:
   ];
 
   return (
-    <ContextMenu color="offWhite" menu={menu}>
+    <ContextMenu menu={menu}>
       {children}
-      <Dropdown menu={menu} />
+      <Dropdown selected={selected} menu={menu} />
     </ContextMenu>
   );
 };

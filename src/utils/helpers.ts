@@ -10,10 +10,11 @@ export const removeDuplicateNotes = (arr: Note[]): Note[] => {
   const uniqueIds: string[] = [];
 
   return arr.filter((element) => {
-    const isDuplicate = uniqueIds.includes(element.id);
+    if (!element.id && !element.tempId) return false;
+    const isDuplicate = uniqueIds.find((item) => item === element.id || item === element.tempId);
 
     if (!isDuplicate) {
-      uniqueIds.push(element.id);
+      uniqueIds.push(element.tempId || element.id || "");
 
       return true;
     }

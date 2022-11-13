@@ -19,7 +19,9 @@ type Props = { noteId: string; selected: boolean; children: React.ReactNode };
 export const NoteContext = ({ noteId, selected, children }: Props) => {
   const categories = useRecoilValue(categoriesSelector);
   const setNotesState = useSetRecoilState(selectedNoteSelector);
-  const selectedNote = useRecoilValue(notesState).notes.find((note) => note.id === noteId);
+  const selectedNote = useRecoilValue(notesState).notes.find(
+    (note) => note.id === noteId || note.tempId === noteId,
+  );
   const setSelectedNoteId = useSetRecoilState(selectNoteIdSelector);
 
   const toggleNoteTrash = () => {
@@ -51,7 +53,8 @@ export const NoteContext = ({ noteId, selected, children }: Props) => {
 
   const downloadNoteAsPDF = () => !!selectedNote && downloadPdf(selectedNote);
 
-  const copyNoteReference = () => !!selectedNote && copyToClipboard(`{{${selectedNote.id}}}`);
+  const copyNoteReference = () =>
+    !!selectedNote && copyToClipboard(`{{${selectedNote.id || selectedNote.tempId}}}`);
 
   const updateCategory = (categoryId: string) =>
     !!selectedNote &&

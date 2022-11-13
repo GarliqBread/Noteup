@@ -68,11 +68,15 @@ export const NoteList = () => {
               }
 
               return (
-                <NoteContext key={note.id} noteId={note.id} selected={selectedNoteId === note.id}>
+                <NoteContext
+                  key={note.tempId || note.id}
+                  noteId={note.tempId || note.id || ""}
+                  selected={selectedNoteId === note.id || selectedNoteId === note.tempId}
+                >
                   <NoteItem
                     title={noteTitle}
                     note={note}
-                    selected={selectedNoteId === note.id}
+                    selected={selectedNoteId === note.id || selectedNoteId === note.tempId}
                     onClick={handleNoteClick}
                     category={
                       categories.find((category) => category.id === note.categoryId)?.name ||

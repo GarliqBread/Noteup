@@ -71,7 +71,7 @@ export const EditorBar = ({ note }: Props) => {
   const toggleSplit = () => !!note && setSplit(!split);
 
   const copyNoteId = () => {
-    !!note && copyToClipboard(`{{${note.id}}}`);
+    !!note && copyToClipboard(`{{${note.id || note.tempId}}}`);
     setUuidCopiedText(successfulCopyMessage);
   };
 

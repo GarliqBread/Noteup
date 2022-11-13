@@ -36,7 +36,7 @@ export const activeFolderSelector = selector({
       [Folder.TRASH]: () => notes.find((note) => note.trash),
     }[folder]();
 
-    set(selectNoteIdSelector, firstNote ? firstNote.id : "");
+    set(selectNoteIdSelector, firstNote ? firstNote.id || firstNote.tempId || "" : "");
     set(folderState, folder);
     set(sectionsSelector, Section.LIST);
 

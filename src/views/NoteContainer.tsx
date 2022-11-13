@@ -26,7 +26,6 @@ export const NoteContainer = () => {
   const editing = useRecoilValue(editingSelector);
   const split = useRecoilValue(splitSelector);
   const [note, setNote] = useRecoilState(selectedNoteSelector);
-
   const editorView = useMemo(() => section === Section.NOTE, [section]);
 
   return (

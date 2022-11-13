@@ -22,7 +22,7 @@ export const NoteItem = ({ title, note, selected, category, onClick, children }:
   const { formatTo } = useDayjs();
 
   return (
-    <NoteItemContainer onClick={() => onClick(note.id)} selected={selected}>
+    <NoteItemContainer onClick={() => onClick(note.tempId || note.id || "")} selected={selected}>
       <Flex>
         {note.pinned && <FilledPin className="pin" size={15} />}
         <Ellipsis>{title}</Ellipsis>

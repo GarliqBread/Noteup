@@ -20,7 +20,7 @@ export const NoteLink = ({ notes, uuid, originalText, handleNoteLinkClick }: Not
     );
   }
   const id = uuid.split("uuid:")[1];
-  const note = notes.find((note) => note.id === id);
+  const note = notes.find((note) => note.id === id || note.tempId === id);
   const title = note !== undefined ? getNoteTitle(note.text) : null;
 
   if (note && title) return <a onClick={() => handleNoteLinkClick(note)}>{title}</a>;

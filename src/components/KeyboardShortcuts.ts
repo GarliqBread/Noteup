@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { v4 as uuid } from "uuid";
 
+import { tokenSelector } from "@/recoil/auth.recoil";
 import { selectedCategoryIdSelector } from "@/recoil/categories.recoil";
 import { editingSelector } from "@/recoil/editor.recoil";
 import { activeFolderSelector } from "@/recoil/folder.recoil";
@@ -13,6 +14,7 @@ import { downloadMarkdown } from "@/utils/exports";
 import { useKey } from "@/utils/hooks/useKey";
 
 export const KeyboardShortcuts = () => {
+  const token = useRecoilValue(tokenSelector);
   const setNotes = useSetRecoilState(notesSelector);
   const selectedCategoryId = useRecoilValue(selectedCategoryIdSelector);
   const [activeFolder, setActiveFolder] = useRecoilState(activeFolderSelector);
@@ -24,12 +26,14 @@ export const KeyboardShortcuts = () => {
     setEditing(false);
     setNotes([
       {
-        id: uuid(),
+        tempId: uuid(),
         text: "",
         created: dayjs().format(),
-        lastUpdated: dayjs().format(),
+        lastUpdated: dayjs().toISOString(),
         categoryId: selectedCategoryId || undefined,
         pinned: activeFolder === Folder.PINNED,
+        synced: false,
+        toSync: !!token,
       },
     ]);
     setTimeout(() => setEditing(true), 100);

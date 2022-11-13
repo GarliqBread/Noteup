@@ -22,6 +22,7 @@ export const notesState: RecoilState<NotesState> = atom({
     notes: [defaultNote],
     sortBy: NotesSortKey.LAST_UPDATED,
     selectedNoteId: "default-note",
+    toSync: false,
   },
   effects_UNSTABLE: [persistAtom],
 });
@@ -116,4 +117,26 @@ export const keywordSelector = selector({
       ...get(notesState),
       keyword,
     }),
+});
+
+export const noteSyncSelector = selector({
+  key: "sync-selector",
+  get: ({ get }) => get(notesState).notes,
+  set: ({ get, set }, notes) => {
+    if (notes instanceof DefaultValue) return;
+    const state = get(notesState);
+    const newNote = notes[0];
+    set(notesState, {
+      ...state,
+      notes: state.notes.map((note) =>
+        note.tempId === newNote.tempId
+          ? {
+              ...newNote,
+              tempId: undefined,
+              synced: true,
+            }
+          : note,
+      ),
+    });
+  },
 });
