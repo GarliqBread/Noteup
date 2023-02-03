@@ -117,3 +117,29 @@ export const keywordSelector = selector({
       keyword,
     }),
 });
+
+export const syncNoteSelector = selector({
+  key: "sync-note-selector",
+  get: ({ get }) => get(notesState).notes.filter((note) => note.toSync),
+  set: ({ get, set }, newNotes) => {
+    if (newNotes instanceof DefaultValue) return;
+    const state = get(notesState);
+    set(notesState, {
+      ...state,
+      notes: state.notes.map((note) => {
+        const newNote = newNotes.find(
+          (newNote) => newNote.id === note.id || newNote.tempId === note.id,
+        );
+        if (newNote?.tempId) {
+          return {
+            ...newNote,
+            tempId: undefined,
+            toSync: true,
+            synced: true,
+          };
+        }
+        return note;
+      }),
+    });
+  },
+});

@@ -6,11 +6,16 @@ import { useKey } from "@/utils/hooks/useKey";
 import { IconButton } from "@/components/Button";
 import { Close } from "@/components/Icons";
 
+import { FlexColumn } from "@/styles/layout";
+import { Label } from "@/styles/typography";
+
 import { InputContainer, StyledInput } from "./style";
 
 type Props = {
   testId?: string;
   value: string;
+  label?: string;
+  type?: string;
   placeholder?: string;
   maxLength?: number;
   clear?: boolean;
@@ -22,6 +27,8 @@ type Props = {
 export const Input = ({
   testId,
   value,
+  label,
+  type,
   placeholder,
   maxLength,
   autoFocus,
@@ -39,22 +46,26 @@ export const Input = ({
   useKey(Shortcuts.SEARCH, () => inputRef.current?.focus());
 
   return (
-    <InputContainer>
-      <StyledInput
-        data-testid={testId}
-        ref={inputRef}
-        value={value}
-        placeholder={placeholder}
-        autoFocus={autoFocus}
-        maxLength={maxLength}
-        onBlur={(e) => onBlur && onBlur(e.target.value)}
-        onChange={(e) => onChange(e.target.value)}
-      />
-      {clear && value !== "" && (
-        <IconButton className="clear-button" title="clear input" onClick={handleClear}>
-          <Close size={18} />
-        </IconButton>
-      )}
-    </InputContainer>
+    <FlexColumn>
+      {label && <Label>{label}</Label>}
+      <InputContainer>
+        <StyledInput
+          data-testid={testId}
+          ref={inputRef}
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          autoFocus={autoFocus}
+          maxLength={maxLength}
+          onBlur={(e) => onBlur && onBlur(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        {clear && value !== "" && (
+          <IconButton className="clear-button" title="clear input" onClick={handleClear}>
+            <Close size={18} />
+          </IconButton>
+        )}
+      </InputContainer>
+    </FlexColumn>
   );
 };

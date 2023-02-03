@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const H2 = styled.h2`
+  font-size: ${(props) => props.theme.fontSizes.h2};
+  color: ${(props) => props.theme.color.text};
+`;
+
 export const Label = styled.label`
   font-size: ${(props) => props.theme.fontSizes.label};
   color: ${(props) => props.theme.color.lightText};

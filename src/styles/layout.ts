@@ -5,6 +5,8 @@ import { lightTheme } from "./theme/colors";
 type FlexProps = {
   width?: string;
   height?: string;
+  maxWidth?: string;
+  maxHeight?: string;
   margin?: string;
   padding?: string;
   justifyContent?: string;
@@ -23,6 +25,7 @@ const Flex = styled.div<FlexProps>`
   position: relative;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height};
+  max-width: ${(props) => props.maxWidth || ""};
   margin: ${(props) => props.margin || "0"};
   padding: ${(props) => props.padding || "0"};
   display: flex;
@@ -33,6 +36,7 @@ const Flex = styled.div<FlexProps>`
 
 const FlexColumn = styled(Flex)<FlexProps>`
   flex-direction: column;
+  align-items: ${(props) => props.alignItems || "flex-start"};
   background-color: ${(props) => props.bg && props.theme.color[props.bg]};
 `;
 

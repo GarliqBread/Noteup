@@ -13,5 +13,9 @@ export const useDayjs = () => {
     }
   };
 
-  return { formatTo };
+  const fromNow = (date?: Date) => dayjs(date).fromNow();
+
+  const diffInSeconds = (date?: Date) => dayjs().diff(dayjs(date), "second");
+
+  return { formatTo, fromNow, diffInSeconds };
 };

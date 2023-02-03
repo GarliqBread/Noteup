@@ -41,6 +41,7 @@ export const SearchBar = ({ isListEmpty }: Props) => {
         lastUpdated: dayjs().format(),
         categoryId: selectedCategoryId || undefined,
         pinned: activeFolder === Folder.PINNED,
+        synced: false,
       },
     ]);
     setSection(Section.NOTE);

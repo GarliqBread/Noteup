@@ -11,8 +11,10 @@ import { themeSelector } from "@/recoil/settings.recoil";
 import { Folder, Shortcuts } from "@/utils/enums";
 import { downloadMarkdown } from "@/utils/exports";
 import { useKey } from "@/utils/hooks/useKey";
+import { tokenSelector } from "@/recoil/auth.recoil";
 
 export const KeyboardShortcuts = () => {
+  const token = useRecoilValue(tokenSelector);
   const setNotes = useSetRecoilState(notesSelector);
   const selectedCategoryId = useRecoilValue(selectedCategoryIdSelector);
   const [activeFolder, setActiveFolder] = useRecoilState(activeFolderSelector);
@@ -30,6 +32,8 @@ export const KeyboardShortcuts = () => {
         lastUpdated: dayjs().format(),
         categoryId: selectedCategoryId || undefined,
         pinned: activeFolder === Folder.PINNED,
+        toSync: !!token,
+        synced: false,
       },
     ]);
     setTimeout(() => setEditing(true), 100);

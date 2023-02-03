@@ -4,6 +4,7 @@ type EditorTheme = "github" | "xcode" | "duotone";
 
 export type Note = {
   id: string;
+  tempId?: string;
   text: string;
   created: string;
   lastUpdated: string;
@@ -11,6 +12,8 @@ export type Note = {
   deleted?: boolean;
   trash?: boolean;
   pinned?: boolean;
+  toSync: boolean;
+  synced: boolean;
 };
 
 export type Category = {
@@ -50,3 +53,10 @@ export type EditorState = {
 };
 
 export type SectionsState = Section;
+
+export type AuthState = {
+  token?: string;
+  refreshToken?: string;
+  username?: string;
+  apiURL: string;
+};
