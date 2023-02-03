@@ -33,6 +33,7 @@ const Flex = styled.div<FlexProps>`
 
 const FlexColumn = styled(Flex)<FlexProps>`
   flex-direction: column;
+  align-items: ${(props) => props.alignItems || "flex-start"};
   background-color: ${(props) => props.bg && props.theme.color[props.bg]};
 `;
 

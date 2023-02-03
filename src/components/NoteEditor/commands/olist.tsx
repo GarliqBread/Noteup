@@ -1,7 +1,7 @@
 import { Command } from ".";
 
 export const olist: Command = {
-  label: "Add Ordered List",
+  label: "Add ordered List",
   icon: (
     <svg viewBox="0 0 576 512" height="14" width="14">
       <path
@@ -15,8 +15,8 @@ export const olist: Command = {
     const { view } = editor;
 
     const lineInfo = view.state.doc.lineAt(view.state.selection.main.from);
-    let mark = "- ";
-    const matchMark = lineInfo.text.match(/^-/);
+    let mark = "1. ";
+    const matchMark = lineInfo.text.match(/^\1\./);
 
     if (matchMark && matchMark[0]) {
       mark = "";
