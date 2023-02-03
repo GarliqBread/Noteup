@@ -15,8 +15,8 @@ export const ulist: Command = {
     const { view } = editor;
 
     const lineInfo = view.state.doc.lineAt(view.state.selection.main.from);
-    let mark = "1. ";
-    const matchMark = lineInfo.text.match(/^\1\./);
+    let mark = "- ";
+    const matchMark = lineInfo.text.match(/^-/);
 
     if (matchMark && matchMark[0]) {
       mark = "";

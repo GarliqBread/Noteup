@@ -154,7 +154,7 @@ export const Previewer = styled(MarkdownPreview)<{ border?: boolean }>`
   }
 
   hr {
-    border: 0.5px solid ${(props) => props.theme.color.border};
+    border: 0.5px solid ${(props) => props.theme.color.gray};
   }
 
   img {
