@@ -10,12 +10,13 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "eslint src && vite build",
     "test": "jest --config jest.config.ts",
     "format": "prettier --write \"./**/*.{json,ts,tsx,js,md,scss,yaml,yml}\"",
     "lint": "eslint . --ext .js,.ts,.tsx --fix",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "tauri": "tauri"
   },
   "dependencies": {
     "@codemirror/lang-markdown": "^6.0.1",
