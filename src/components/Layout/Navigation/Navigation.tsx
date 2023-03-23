@@ -27,18 +27,18 @@ const Navigation: React.FC = () => {
 							<MdOutlineSpaceDashboard className={styles.icon} />
 						</NavLink>
 					</li>
-					<li title='Explore'>
+					<li title='Tasks'>
 						<NavLink
 							className={({ isActive }) => (isActive ? styles.active : '')}
-							to='/explore'
+							to='/tasks'
 						>
 							<MdOutlineExplore className={styles.icon} />
 						</NavLink>
 					</li>
-					<li title='Schedule'>
+					<li title='Notebooks'>
 						<NavLink
 							className={({ isActive }) => (isActive ? styles.active : '')}
-							to='/schedule'
+							to='/notebook'
 						>
 							<MdOutlineEventNote className={styles.icon} />
 						</NavLink>

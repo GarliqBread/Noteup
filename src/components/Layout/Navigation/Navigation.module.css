@@ -31,7 +31,7 @@
 }
 
 .nav .menu a.active {
-	color: #fff;
+	color: #0044c2;
 	background-color: var(--color-primary);
 }
 
