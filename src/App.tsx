@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { AppContainer } from "@/views/AppContainer";
-import { LandingPage } from "@/views/LandingPage";
+import { AppContainer } from "@/Notebook/AppContainer";
+import Layout from '@/components/Layout'
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/app" element={<AppContainer />} />
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/*" element={<LandingPage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/app" element={<AppContainer />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { NoteContainer } from "@/views/NoteContainer";
-import { SettingsModal } from "@/views/SettingsModal";
+import { NoteContainer } from "@/Notebook/NoteContainer";
+import { SettingsModal } from "@/Notebook/SettingsModal";
 
 import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
 import { MobileNav } from "@/components/MobileNav";
@@ -10,6 +10,8 @@ import { Sidebar } from "@/components/Sidebar";
 import { SplitPane } from "@/components/SplitPanel";
 
 import { Container } from "@/styles/layout";
+
+import Navigation from '@/components/Layout/Navigation'
 
 export const AppContainer = () => {
   const [showSettings, setShowSettings] = useState(false);
