@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { AppContainer } from "@/Notebook/AppContainer";
+import { Notebook } from "@/pages/Notebook/Notebook";
 import Layout from '@/components/Layout'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/app" element={<AppContainer />} />
+          <Route path="/notebook" element={<Notebook />} />
         </Routes>
       </Layout>
     </BrowserRouter>

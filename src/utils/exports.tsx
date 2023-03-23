@@ -8,7 +8,7 @@ import { RecoilRoot } from "recoil";
 
 import { Category, Note } from "@/recoil/types";
 
-import { NotePreview } from "@/Notebook/NotePreviewer";
+import { NotePreview } from "@/pages/Notebook/NotePreviewer";
 
 import { ThemeWrapper } from "@/components/ThemeWrapper";
 
