@@ -1,0 +1,10 @@
+{
+  "apps": [
+    "kanban",
+    "alias",
+    "notes",
+    "schedule",
+    "proscons"
+  ],
+  "theme": "dark"
+}
