@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
-
+import "./style.css";
 
 import { ThemeWrapper } from "@/components/ThemeWrapper";
 
