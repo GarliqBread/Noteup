@@ -12,20 +12,17 @@ import { SplitPane } from "@/components/SplitPanel";
 import { Container } from "@/styles/layout";
 
 export const Notebook = () => {
-  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <Container>
-      <MobileNav openSettings={() => setShowSettings(true)} />
       <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={200}>
-        <Sidebar showSettings={() => setShowSettings(true)} />
+        <Sidebar />
         <SplitPane split="vertical" minSize={200} maxSize={300} defaultSize={250}>
           <NoteList />
           <NoteContainer />
         </SplitPane>
       </SplitPane>
       <KeyboardShortcuts />
-      {showSettings && <SettingsModal closeModal={() => setShowSettings(false)} />}
     </Container>
   );
 };

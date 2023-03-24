@@ -1,22 +1,15 @@
-import { useState } from "react";
-
-import { NoteContainer } from "@/pages/Notebook/NoteContainer";
-import { SettingsModal } from "@/pages/Notebook/SettingsModal";
-
-import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
-import { MobileNav } from "@/components/MobileNav";
-import { NoteList } from "@/components/NoteList";
 import { Sidebar } from "@/components/Sidebar";
 import { SplitPane } from "@/components/SplitPanel";
 
 import { Container } from "@/styles/layout";
 
 const Tasks = () => {
-    const [showSettings, setShowSettings] = useState(false);
 
     return (
         <Container>
-            <div className="shadow-lg ring-1 ring-black/10 relative flex flex-col items-start p-4 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
+            <SplitPane split="vertical" minSize={0} maxSize={300} defaultSize={200}>
+            <Sidebar />
+            <div className="shadow-lg w-11/12 ring-1 ring-black/10 flex flex-col items-start p-4 m-3 bg-white rounded-lg bg-opacity-90 group hover:bg-opacity-100">
                 <button className="absolute top-0 right-0 flex items-center justify-center hidden w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
                     <svg className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
@@ -46,6 +39,7 @@ const Tasks = () => {
                     <img className="w-6 h-6 ml-auto rounded-full" src='https://randomuser.me/api/portraits/women/26.jpg' />
                 </div>
             </div>
+            </SplitPane>
         </Container>
     );
 };

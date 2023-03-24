@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import {
@@ -11,10 +11,10 @@ import {
 } from 'react-icons/md'
 
 import styles from './Navigation.module.css'
-
+import { SettingsModal } from "@/pages/Notebook/SettingsModal";
 
 const Navigation: React.FC = () => {
-
+	const [showSettings, setShowSettings] = useState(false);
 	return (
 		<nav className={styles.nav}>
 			<div className={styles.menu}>
@@ -43,26 +43,16 @@ const Navigation: React.FC = () => {
 							<MdOutlineEventNote className={styles.icon} />
 						</NavLink>
 					</li>
-					<li title='Settings'>
-						<NavLink
-							className={({ isActive }) => (isActive ? styles.active : '')}
-							to='/settings'
-						>
-							<MdOutlineSettings className={styles.icon} />
-						</NavLink>
-					</li>
 				</ul>
 
-				{/* <div className={styles.settings}>
-					<a title='Toggle Theme' onClick={onChangeTheme}>
-						{theme === 'dark' ? (
-							<MdOutlineNightsStay className={styles.icon} />
-						) : (
-							<MdOutlineLightMode className={styles.icon} />
-						)}
+				<div className={styles.settings}>
+					<a title='Settings' onClick={() => setShowSettings(true)}>
+					<MdOutlineSettings className={styles.icon} />
 					</a>
-				</div> */}
+				</div>
+				
 			</div>
+			{showSettings && <SettingsModal closeModal={() => setShowSettings(false)} />}
 		</nav>
 	)
 }

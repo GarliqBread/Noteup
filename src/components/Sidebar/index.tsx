@@ -7,18 +7,15 @@ import { sectionsSelector } from "@/recoil/sections.recoil";
 import { Folder, Section } from "@/utils/enums";
 import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
-import { Gear, Logo, Notes, Pin, Trash } from "@/components/Icons";
+import { Logo, Notes, Pin, Trash } from "@/components/Icons";
 
 import { FlexColumn } from "@/styles/layout";
 
 import { CategoryList } from "./CategoryList";
 import { Header, SidebarButton, StyledSidebar } from "./style";
 
-type Props = {
-  showSettings: () => void;
-};
 
-export const Sidebar = ({ showSettings }: Props) => {
+export const Sidebar = () => {
   const { isSmallDevice } = useWindowDimensions();
   const section = useRecoilValue(sectionsSelector);
   const [activeFolder, setActiveFolder] = useRecoilState(activeFolderSelector);
@@ -56,11 +53,6 @@ export const Sidebar = ({ showSettings }: Props) => {
               <Trash size={16} /> Trash
             </SidebarButton>
             <CategoryList />
-          </FlexColumn>
-          <FlexColumn>
-            <SidebarButton onClick={showSettings}>
-              <Gear size={16} /> Settings
-            </SidebarButton>
           </FlexColumn>
         </StyledSidebar>
       )}
