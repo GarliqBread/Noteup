@@ -52,7 +52,13 @@ export const CategoryList = () => {
             </ProjectContext>
           ))}
       </List>
-      {addingTempCategory && <SimpleForm closeForm={() => setAddingTempCategory(false)} />}
+      {
+        addingTempCategory && 
+        <SimpleForm 
+          recoilStateMethod={categoriesSelector}
+          closeForm={() => setAddingTempCategory(false)} 
+        />
+      }
     </>
   );
 };
