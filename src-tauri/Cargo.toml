@@ -1,11 +1,10 @@
 [package]
-name = "app"
-version = "0.4.2"
-description = "Markdown notes-taking app"
-authors = ["Elements"]
-license = "MIT"
-repository = "https://github.com/elementsinteractive/Noteup"
-default-run = "app"
+name = "producter"
+version = "0.0.0"
+description = "Be more productive with less"
+authors = ["Lucas"]
+license = ""
+repository = ""
 edition = "2021"
 rust-version = "1.57"
 

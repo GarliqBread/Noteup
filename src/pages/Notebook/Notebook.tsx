@@ -15,9 +15,9 @@ export const Notebook = () => {
 
   return (
     <Container>
-      <SplitPane split="vertical" minSize={150} maxSize={300} defaultSize={200}>
+      <SplitPane split="vertical" minSize={0} maxSize={300} defaultSize={200}>
         <Sidebar />
-        <SplitPane split="vertical" minSize={200} maxSize={300} defaultSize={250}>
+        <SplitPane split="vertical" minSize={0} maxSize={300} defaultSize={250}>
           <NoteList />
           <NoteContainer />
         </SplitPane>
