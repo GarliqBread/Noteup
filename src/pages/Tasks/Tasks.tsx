@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/Sidebar";
+import { SidebarTasks } from "@/components/SidebarTasks";
 import { SplitPane } from "@/components/SplitPanel";
 import { FlexColumn } from "@/styles/layout";
 import { Container } from "@/styles/layout";
@@ -8,7 +8,7 @@ const Tasks = () => {
     return (
         <Container>
             <SplitPane split="vertical" minSize={0} maxSize={300} defaultSize={200}>
-            <Sidebar />
+            <SidebarTasks />
             <FlexColumn className="w-min" width="100%" height="100%">
             <div className="shadow-lg m-3 ring-1 w-11/12 ring-black/10 flex flex-col items-start p-4 bg-white rounded-lg bg-opacity-90 group hover:bg-opacity-100">
                 <button className="absolute top-0 right-0 flex items-center justify-center hidden w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
