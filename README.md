@@ -23,7 +23,7 @@ yarn install
 ```
 
 ```properties
-yarn start
+yarn dev
 ```
 
 To run the desktop version, after installing run

@@ -9,8 +9,8 @@ import { sectionsSelector } from "@/recoil/sections.recoil";
 import { Section } from "@/utils/enums";
 import { useWindowDimensions } from "@/utils/hooks/useWindowDimensions";
 
-import { NoteEditor } from "@/views/NoteEditor";
-import { NotePreview } from "@/views/NotePreviewer";
+import { NoteEditor } from "@/pages/Notebook/NoteEditor";
+import { NotePreview } from "@/pages/Notebook/NotePreviewer";
 
 import { EditorBar } from "@/components/NoteEditor/EditorBar";
 import { EmptyEditorMessage } from "@/components/NotePreviewer/EmptyEditorMessage";

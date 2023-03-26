@@ -47,7 +47,7 @@ Description of the project files and directories.
 ├── README.md
 └── tsconfig.json              # Typescript configuration
 └── vite.config.ts             # Vite configuration
-└── yarn.lock              # Package lockfile
+└── yarn.lock                  # Package lockfile
 ```
 
 ## Scripts
@@ -57,7 +57,7 @@ An explanation of the `package.json` scripts.
 | Command       | Description                              |
 | ------------- | ---------------------------------------- |
 | `build`       | Create a production build of Noteup      |
-| `start`       | Run Noteup in a testing environment      |
+| `dev`         | Run Noteup in a testing environment      |
 | `format`      | Run prettier on all the project's files  |
 | `lint`        | Run ESlint on all the project's files    |
 | `postinstall` | Run post-install package patches         |

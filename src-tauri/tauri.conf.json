@@ -1,28 +1,84 @@
 {
-  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "",
-    "beforeDevCommand": "",
-    "devPath": "http://localhost:3000",
-    "distDir": "../build",
-    "withGlobalTauri": true
+    "beforeDevCommand": "yarn dev",
+    "beforeBuildCommand": "yarn build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
   },
   "package": {
-    "productName": "Noteup",
-    "version": null
+    "productName": "producter",
+    "version": "0.0.0"
   },
   "tauri": {
+    "systemTray": {
+      "iconAsTemplate": false,
+      "iconPath": "icons/icon.ico",
+      "menuOnLeftClick": true,
+      "title": ""
+    },
     "allowlist": {
       "all": true,
-      "dialog": {
-        "open": true,
-        "save": true
+      "clipboard": {
+        "all": false,
+        "readText": false,
+        "writeText": false
       },
-      "fs": {
-        "all": true,
-        "scope": ["$APP"]
+      "dialog": {
+        "all": false,
+        "ask": false,
+        "confirm": false,
+        "message": false,
+        "open": false,
+        "save": false
+      },
+      "globalShortcut": {
+        "all": false
+      },
+      "notification": {
+        "all": false
+      },
+      "http": {
+        "all": false,
+        "request": false,
+        "scope": []
+      },
+      "os": {
+        "all": false
+      },
+      "window": {
+        "all": false,
+        "center": false,
+        "close": false,
+        "create": false,
+        "hide": false,
+        "maximize": false,
+        "minimize": false,
+        "print": false,
+        "requestUserAttention": false,
+        "setAlwaysOnTop": false,
+        "setCursorGrab": false,
+        "setCursorIcon": false,
+        "setCursorPosition": false,
+        "setCursorVisible": false,
+        "setDecorations": false,
+        "setFocus": false,
+        "setFullscreen": false,
+        "setIcon": false,
+        "setIgnoreCursorEvents": false,
+        "setMaxSize": false,
+        "setMinSize": false,
+        "setPosition": false,
+        "setResizable": false,
+        "setSize": false,
+        "setSkipTaskbar": false,
+        "setTitle": false,
+        "show": false,
+        "startDragging": false,
+        "unmaximize": false,
+        "unminimize": false
       }
     },
+    "macOSPrivateApi": true,
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
@@ -38,7 +94,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "noteup.prod",
+      "identifier": "com.tauri.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -60,19 +116,25 @@
       "csp": null
     },
     "updater": {
-      "active": false
+      "active": true,
+      "pubkey": ""
     },
     "windows": [
       {
+        "transparent": false,
         "fullscreen": false,
+        "height": 800,
         "resizable": true,
-        "title": "Noteup",
-        "url": "/app",
-        "width": 1200,
-        "height": 1200,
-        "minWidth": 1000,
-        "minHeight": 800,
+        "title": "Productive",
+        "width": 900,
         "visible": false
+      },
+      {
+        "width": 900,
+        "height": 800,
+        "decorations": false,
+        "url": "splashscreen.html",
+        "label": "splashscreen"
       }
     ]
   }

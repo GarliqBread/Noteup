@@ -17,6 +17,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: relative;
 `;
 
 const Flex = styled.div<FlexProps>`
@@ -31,7 +32,7 @@ const Flex = styled.div<FlexProps>`
   gap: ${(props) => props.gap || 0}px;
 `;
 
-const FlexColumn = styled(Flex)<FlexProps>`
+const FlexColumn = styled(Flex) <FlexProps>`
   flex-direction: column;
   align-items: ${(props) => props.alignItems || "flex-start"};
   background-color: ${(props) => props.bg && props.theme.color[props.bg]};

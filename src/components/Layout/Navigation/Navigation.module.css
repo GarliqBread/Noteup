@@ -1,0 +1,49 @@
+.nav {
+	position: relative;
+	/*
+		The below rule is as same as these 3 following rules:
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: 50px;
+	*/
+	flex: 0 0 50px;
+	min-height: 100vh;
+	background-color: var(--foreground);
+}
+
+.nav .menu {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	width: 50px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+
+.nav .menu a {
+	display: block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	text-decoration: none;
+	color: var(--text-contrast);
+}
+
+.nav .menu a.active {
+	color: #0044c2;
+	background-color: var(--color-primary);
+}
+
+.nav .menu .icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.5em;
+}
+
+.nav .menu .settings {
+	margin-top: auto;
+	cursor: pointer;
+}
