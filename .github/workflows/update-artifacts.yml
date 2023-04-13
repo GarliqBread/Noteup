@@ -13,9 +13,9 @@ jobs:
       release_id: ${{ steps.create-release.outputs.result }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: get version
@@ -51,21 +51,50 @@ jobs:
         with:
           version: 6.0.2
       - uses: actions/checkout@v2
-      - name: setup node
-        uses: actions/setup-node@v1
+
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - name: install Rust stable
+          node-version: 18
+
+      - name: Install Rust stable
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - name: install dependencies (ubuntu only)
+
+      - name: Istall dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-      - name: install app dependencies and build it
-        run: pnpm install && pnpm build:desktop
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install app dependencies
+        run: pnpm install
+
+      - name: Build app
+        run: pnpm build:desktop
+
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
