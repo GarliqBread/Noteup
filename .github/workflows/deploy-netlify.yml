@@ -11,31 +11,34 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
         with:
-          version: 6.0.2
-      - uses: actions/checkout@v2
-      - name: "Create env file"
+          node-version: 18
+
+      - name: "create env file"
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_VITE_FRONTEND_VERSION: $(node -p "require('./package.json').version")"
           file_name: .env
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
 
-      - run: pnpm install
-      - run: pnpm build:web
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
 
-      - name: Run the tests and generate coverage report
+      - name: install app dependencies
+        run: pnpm install
+
+      - name: build app
+        run: pnpm build:web
+
+      - name: run the tests and generate coverage report
         run: pnpm test -- --coverage
 
-      - name: Codecov
+      - name: codecov
         uses: codecov/codecov-action@v2.1.0
 
-      - name: Netlify Deploy
+      - name: netlify Deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

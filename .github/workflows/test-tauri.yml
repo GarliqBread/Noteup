@@ -10,25 +10,40 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v3
+
+      - name: setup node
+        uses: actions/setup-node@v3
         with:
-          version: 6.0.2
-      - uses: actions/checkout@v2
+          node-version: 18
+
+      - uses: pnpm/action-setup@v2
+
       - name: setup node
         uses: actions/setup-node@v1
         with:
           node-version: 18
+
       - name: install Rust stable
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-      - name: install app dependencies and build it
-        run: pnpm install && pnpm build:desktop
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: install app dependencies
+        run: pnpm install
+
+      - name: build app
+        run: pnpm build:desktop
+
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
