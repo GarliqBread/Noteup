@@ -1,15 +1,14 @@
 import { render } from "@testing-library/react";
 import { RecoilRoot } from "recoil";
-
-import { EditorBar } from "@/components/NoteEditor/EditorBar";
 import { wrapWithTheme } from "@/components/ThemeWrapper";
+import { EditorBar } from "@noteup/shared/components/NoteEditor/EditorBar";
 
 describe("<EditorBar />", () => {
   it("renders the EditorBar component", () => {
     const component = render(
       wrapWithTheme(
         <RecoilRoot>
-          <EditorBar />
+          <EditorBar downloadMarkdown={() => null} downloadPdf={() => null} />
         </RecoilRoot>,
       ),
     );

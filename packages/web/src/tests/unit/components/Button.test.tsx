@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@noteup/shared/components/Button";
 import { wrapWithTheme } from "@/components/ThemeWrapper";
 
 describe("<Button />", () => {
