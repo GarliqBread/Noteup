@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 
-import { Select } from "@/components/Select";
 import { wrapWithTheme } from "@/components/ThemeWrapper";
+import { Select } from "@noteup/shared/components/Select";
 
 describe("<Select />", () => {
   it("renders the Select component", () => {

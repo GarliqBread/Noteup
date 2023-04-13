@@ -4,7 +4,7 @@ const config: Config = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   rootDir: "./",
-  roots: ["<rootDir>/src", "<rootDir>/tests/unit"],
+  roots: ["<rootDir>/src/tests/unit"],
   transform: {
     "^.+\\.tsx?$": [
       "ts-jest",
@@ -18,6 +18,7 @@ const config: Config = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   moduleNameMapper: {
     "@/(.*)$": "<rootDir>/src/$1",
+    "@noteup/shared/(.*)$": "<rootDir>/../shared/src/$1",
   },
 };
 

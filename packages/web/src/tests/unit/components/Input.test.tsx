@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
-import { Input } from "@/components/Input";
 import { wrapWithTheme } from "@/components/ThemeWrapper";
+import { Input } from "@noteup/shared/components/Input";
 
 describe("<Input />", () => {
   it("renders the Input component", () => {
