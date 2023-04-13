@@ -39,7 +39,7 @@ export const AddCategoryForm = ({ closeForm }: Props) => {
         aria-label="Category name"
         autoFocus
         maxLength={20}
-        placeholder="New category..."
+        placeholder="New category"
         value={tempName}
         onChange={setTempName}
         onBlur={resetForm}

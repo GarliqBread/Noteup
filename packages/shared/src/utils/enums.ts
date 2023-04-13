@@ -55,7 +55,7 @@ export enum LabelText {
   PINNED = "Pinned",
   MARK_AS_PINNED = "Mark as pinned",
   MOVE_TO_TRASH = "Move to trash",
-  NEW_CATEGORY = "New category...",
+  NEW_CATEGORY = "New category",
   NEW_NOTE = "New note",
   REMOVE_CATEGORY = "Remove category",
   REMOVE_FAVORITE = "Remove favorite",

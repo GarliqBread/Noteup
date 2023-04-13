@@ -159,7 +159,7 @@ export const NoteContext = ({
             <Select
               key="select"
               className="select"
-              emptyText="Move to category..."
+              emptyText="Move to category"
               options={categoryOptions}
               value={selectedNote?.categoryId || ""}
               onChange={updateCategory}

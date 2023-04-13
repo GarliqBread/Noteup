@@ -22,7 +22,7 @@ export default defineConfig({
         display: "standalone",
         theme_color: "#ffffff",
         background_color: "#ffffff",
-        start_url: "/app",
+        start_url: "/",
         icons: [
           {
             src: "/favicon.ico",
