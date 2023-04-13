@@ -1,13 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "types": ["vite/client"],
+    "target": "ESNext",
     "downlevelIteration": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,18 +17,8 @@
     "noEmit": true,
     "sourceMap": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-    }
+    "baseUrl": "./"
   },
-  "include": [
-    "src",
-    "tests"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx"]
 }

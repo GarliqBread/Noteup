@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "baseUrl": "./",
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@noteup/shared/*": ["../shared/src/*"]
+    }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./src/**/*.test.tsx"]
+}
