@@ -1,7 +1,7 @@
 {
   "name": "@noteup/root",
   "private": true,
-  "version": "0.4.3",
+  "version": "0.4.4",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "nuke": "pnpm -r nuke && pnpx rimraf node_modules",
@@ -19,7 +19,7 @@
     "start": "pnpm --filter @noteup/web start",
     "start:desktop": "pnpm --filter @noteup/desktop start",
     "build:web": "pnpm -r --filter @noteup/web run build",
-    "build:desktop": "pnpm -r --filter='./packages/desktop' run build"
+    "build:desktop": "pnpm -r --filter @noteup/desktop run build"
   },
   "repository": {
     "type": "git",
