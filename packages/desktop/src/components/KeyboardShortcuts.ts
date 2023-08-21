@@ -2,6 +2,7 @@ import { selectedCategoryIdSelector } from "@noteup/shared/recoil/categories.rec
 import { editingSelector } from "@noteup/shared/recoil/editor.recoil";
 import { activeFolderSelector } from "@noteup/shared/recoil/folder.recoil";
 import { notesSelector, selectedNoteSelector } from "@noteup/shared/recoil/notes.recoil";
+import { fullScreenSelector } from "@noteup/shared/recoil/screen.recoil";
 import { themeSelector } from "@noteup/shared/recoil/settings.recoil";
 import { Folder, Shortcuts } from "@noteup/shared/utils/enums";
 import { useKey } from "@noteup/shared/utils/hooks/useKey";
@@ -18,6 +19,7 @@ export const KeyboardShortcuts = () => {
   const [selectedNote, setSelectedNote] = useRecoilState(selectedNoteSelector);
   const [editing, setEditing] = useRecoilState(editingSelector);
   const [theme, setTheme] = useRecoilState(themeSelector);
+  const [fullScreen, setFullScreen] = useRecoilState(fullScreenSelector);
 
   const createNewNote = () => {
     setEditing(false);
@@ -52,11 +54,14 @@ export const KeyboardShortcuts = () => {
 
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
+  const toggleFullScreen = () => setFullScreen(!fullScreen);
+
   useKey(Shortcuts.NEW_NOTE, createNewNote);
   useKey(Shortcuts.DELETE_NOTE, deleteCurrentNote);
   useKey(Shortcuts.DOWNLOAD_NOTES, handleDownloadNotes);
   useKey(Shortcuts.PREVIEW, toggleEditing);
   useKey(Shortcuts.TOGGLE_THEME, toggleTheme);
+  useKey(Shortcuts.TOGGLE_FULL_SCREEN, toggleFullScreen);
 
   return null;
 };
