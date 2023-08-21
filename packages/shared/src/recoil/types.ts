@@ -50,3 +50,7 @@ export type EditorState = {
 };
 
 export type SectionsState = Section;
+
+export type ScreenState = {
+  fullScreen: boolean;
+};

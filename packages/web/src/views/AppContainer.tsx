@@ -1,16 +1,16 @@
+import { NoteList } from "@noteup/shared/components/NoteList";
+import { Sidebar } from "@noteup/shared/components/Sidebar";
+import { SplitPane } from "@noteup/shared/components/SplitPanel";
+import { Container } from "@noteup/shared/styles/layout";
 import { useState } from "react";
+
+import { downloadMarkdown, downloadPdf } from "@/utils/exports";
 
 import { NoteContainer } from "@/views/NoteContainer";
 import { SettingsModal } from "@/views/SettingsModal";
 
 import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
 import { MobileNav } from "@/components/MobileNav";
-import { NoteList } from "@noteup/shared/components/NoteList";
-import { Sidebar } from "@noteup/shared/components/Sidebar";
-import { SplitPane } from "@noteup/shared/components/SplitPanel";
-
-import { Container } from "@noteup/shared/styles/layout";
-import { downloadMarkdown, downloadPdf } from "@/utils/exports";
 
 export const AppContainer = () => {
   const [showSettings, setShowSettings] = useState(false);

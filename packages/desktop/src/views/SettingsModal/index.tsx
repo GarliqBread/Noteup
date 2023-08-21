@@ -1,10 +1,10 @@
-import { shortcutMap } from "@/utils/constants";
-
 import { IconButton } from "@noteup/shared/components/Button";
 import { Close, HardDrive, Keyboard, Sliders } from "@noteup/shared/components/Icons";
 import { Shortcut } from "@noteup/shared/components/SettingsModal/Shortcut";
 import { TabPanel } from "@noteup/shared/components/Tabs/TabPanel";
 import { Tabs } from "@noteup/shared/components/Tabs/Tabs";
+
+import { shortcutMap } from "@/utils/constants";
 
 import { DataManagementPanel } from "./panels/DataManagementPanel";
 import { PreferencesPanel } from "./panels/Preferences";

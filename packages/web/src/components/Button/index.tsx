@@ -1,6 +1,5 @@
-import { ChangeEvent, useRef } from "react";
-
 import { StyledButton } from "@noteup/shared/components/Button/style";
+import { ChangeEvent, useRef } from "react";
 
 type ButtonProps = {
   testId?: string;

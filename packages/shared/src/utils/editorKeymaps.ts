@@ -1,6 +1,7 @@
-import { EditorSelection, StateCommand, Transaction } from "@codemirror/state";
+import { EditorSelection, Transaction } from "@codemirror/state";
+import { Command, KeyBinding } from "@codemirror/view";
 
-export const insertBoldMarker: StateCommand = ({ state, dispatch }) => {
+export const insertBoldMarker: Command = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const isBoldBefore = state.sliceDoc(range.from - 2, range.from) === "**";
     const isBoldAfter = state.sliceDoc(range.to, range.to + 2) === "**";
@@ -45,7 +46,7 @@ export const insertBoldMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-export const insertItalicMarker: StateCommand = ({ state, dispatch }) => {
+export const insertItalicMarker: Command = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const isItalicBefore = state.sliceDoc(range.from - 1, range.from) === "*";
     const isItalicAfter = state.sliceDoc(range.to, range.to + 1) === "*";
@@ -90,7 +91,7 @@ export const insertItalicMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-export const insertCodeMarker: StateCommand = ({ state, dispatch }) => {
+export const insertCodeMarker: Command = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const isCodeBefore = state.sliceDoc(range.from - 1, range.from) === "`";
     const isCodeAfter = state.sliceDoc(range.to, range.to + 1) === "`";
@@ -135,7 +136,7 @@ export const insertCodeMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-export const insertLinkMarker: StateCommand = ({ state, dispatch }) => {
+export const insertLinkMarker: Command = ({ state, dispatch }) => {
   const changes = state.changeByRange((range) => {
     const changes = [
       {
@@ -164,7 +165,7 @@ export const insertLinkMarker: StateCommand = ({ state, dispatch }) => {
   return true;
 };
 
-export const customKeymap = [
+export const customKeymap: KeyBinding[] = [
   {
     key: "Ctrl-b",
     mac: "cmd-b",

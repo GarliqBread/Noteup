@@ -1,7 +1,6 @@
+import { StyledButton } from "@noteup/shared/components/Button/style";
 import { open } from "@tauri-apps/api/dialog";
 import { readBinaryFile } from "@tauri-apps/api/fs";
-
-import { StyledButton } from "@noteup/shared/components/Button/style";
 
 type ButtonProps = {
   testId?: string;

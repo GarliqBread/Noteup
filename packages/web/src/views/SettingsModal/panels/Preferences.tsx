@@ -1,5 +1,5 @@
-import { useRecoilState } from "recoil";
-
+import { Option } from "@noteup/shared/components/SettingsModal/Option";
+import { SelectOptions } from "@noteup/shared/components/SettingsModal/SelectOption";
 import {
   autoCompleteSelector,
   breakLinesSelector,
@@ -11,16 +11,13 @@ import {
   toolbarSelector,
 } from "@noteup/shared/recoil/editor.recoil";
 import { sortKeySelector, themeSelector } from "@noteup/shared/recoil/settings.recoil";
-
 import {
   notesSortOptions,
   themeEditorOptions,
   themePreviewOptions,
 } from "@noteup/shared/utils/constants";
 import { EditorThemeKey, NotesSortKey, PreviewThemeKey } from "@noteup/shared/utils/enums";
-
-import { Option } from "@noteup/shared/components/SettingsModal/Option";
-import { SelectOptions } from "@noteup/shared/components/SettingsModal/SelectOption";
+import { useRecoilState } from "recoil";
 
 export const PreferencesPanel = () => {
   const [theme, setTheme] = useRecoilState(themeSelector);

@@ -1,3 +1,11 @@
+import { NoteLink } from "@noteup/shared/components/NotePreviewer/NoteLink";
+import { previewerThemeSelector, renderHTMLSelector } from "@noteup/shared/recoil/editor.recoil";
+import { folderState } from "@noteup/shared/recoil/folder.recoil";
+import { notesSelector, selectNoteIdSelector } from "@noteup/shared/recoil/notes.recoil";
+import { themeSelector } from "@noteup/shared/recoil/settings.recoil";
+import { Note } from "@noteup/shared/recoil/types";
+import { previewThemes } from "@noteup/shared/utils/editorThemes";
+import { Folder } from "@noteup/shared/utils/enums";
 import { ReactNode, Ref, UIEvent } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -5,17 +13,6 @@ import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
-
-import { previewerThemeSelector, renderHTMLSelector } from "@noteup/shared/recoil/editor.recoil";
-import { folderState } from "@noteup/shared/recoil/folder.recoil";
-import { notesSelector, selectNoteIdSelector } from "@noteup/shared/recoil/notes.recoil";
-import { themeSelector } from "@noteup/shared/recoil/settings.recoil";
-import { Note } from "@noteup/shared/recoil/types";
-
-import { previewThemes } from "@noteup/shared/utils/editorThemes";
-import { Folder } from "@noteup/shared/utils/enums";
-
-import { NoteLink } from "@noteup/shared/components/NotePreviewer/NoteLink";
 
 import { Previewer, PreviewerWrapper } from "./style";
 

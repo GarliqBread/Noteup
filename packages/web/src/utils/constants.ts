@@ -6,4 +6,5 @@ export const shortcutMap = [
   { action: "Markdown preview", key: "P" },
   { action: "Toggle theme", key: "K" },
   { action: "Search notes", key: "F" },
+  { action: "Toggle full-screen", key: "B" },
 ];
