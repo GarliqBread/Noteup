@@ -1,6 +1,6 @@
 {
   "name": "@noteup/desktop",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "private": true,
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@noteup/shared": "workspace:0.4.4",
+    "@noteup/shared": "workspace:0.4.5",
     "@codemirror/commands": "^6.2.4",
     "@codemirror/lang-markdown": "^6.2.0",
     "@codemirror/language-data": "^6.3.1",
