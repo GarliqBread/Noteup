@@ -19,6 +19,8 @@ import {
   Eye,
   FilledPin,
   Markdown,
+  Maximize,
+  Minimize,
   Moon,
   PDF,
   Pin,
@@ -31,6 +33,8 @@ import { Popover } from "../../Popover";
 import { Flex } from "../../../styles/layout";
 
 import { TopNav, TopNavButton } from "./styled";
+import { fullScreenSelector } from "../../../recoil/screen.recoil";
+import { HideForMobile } from "../../HideForMobile";
 
 type Props = {
   note?: Note;
@@ -45,6 +49,7 @@ export const EditorBar = ({ note, downloadMarkdown, downloadPdf }: Props) => {
   const [theme, toggleTheme] = useRecoilState(themeSelector);
   const [editing, setEditing] = useRecoilState(editingSelector);
   const [split, setSplit] = useRecoilState(splitSelector);
+  const [fullScreen, toggleFullScreen] = useRecoilState(fullScreenSelector);
   const setSelectedNote = useSetRecoilState(selectNoteIdSelector);
   const setSection = useSetRecoilState(sectionsSelector);
   const successfulCopyMessage = "Note ID copied!";
@@ -146,6 +151,14 @@ export const EditorBar = ({ note, downloadMarkdown, downloadPdf }: Props) => {
         )}
       </Flex>
       <Flex height="100%" justifyContent="flex-end">
+        <HideForMobile>
+          <TopNavButton
+            title="Change theme"
+            onClick={() => toggleFullScreen((prevState) => !prevState)}
+          >
+            {fullScreen ? <Minimize /> : <Maximize />}
+          </TopNavButton>
+        </HideForMobile>
         <TopNavButton
           title="Change theme"
           onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}

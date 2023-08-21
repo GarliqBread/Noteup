@@ -1,7 +1,7 @@
+import { Dropdown } from "@noteup/shared/components/Dropdown";
 import { fireEvent, render } from "@testing-library/react";
 
 import { wrapWithTheme } from "@/components/ThemeWrapper";
-import { Dropdown } from "@noteup/shared/components/Dropdown";
 
 describe("<Dropdown />", () => {
   it("renders the Dropdown component", () => {

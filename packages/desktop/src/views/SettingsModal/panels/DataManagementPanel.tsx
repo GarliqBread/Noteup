@@ -1,15 +1,14 @@
-import { useRecoilState } from "recoil";
-
+import { Button } from "@noteup/shared/components/Button";
+import { CloudDownload, CloudUpload } from "@noteup/shared/components/Icons";
 import { categoriesSelector } from "@noteup/shared/recoil/categories.recoil";
 import { notesSelector } from "@noteup/shared/recoil/notes.recoil";
 import { Category, Note } from "@noteup/shared/recoil/types";
-
 import { LabelText } from "@noteup/shared/utils/enums";
+import { useRecoilState } from "recoil";
+
 import { backupNotes } from "@/utils/exports";
 
 import { UploadButton } from "@/components/Button";
-import { CloudDownload, CloudUpload } from "@noteup/shared/components/Icons";
-import { Button } from "@noteup/shared/components/Button";
 
 type Props = {
   closeModal: () => void;

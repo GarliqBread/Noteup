@@ -2,11 +2,7 @@ import { defaultKeymap } from "@codemirror/commands";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
 import { ViewPlugin, keymap } from "@codemirror/view";
-import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
-import { EditorView } from "codemirror";
-import { RefObject, Suspense, UIEvent, lazy, useMemo } from "react";
-import { useRecoilValue } from "recoil";
-
+import { Toolbar } from "@noteup/shared/components/NoteEditor/Toolbar";
 import {
   autoCompleteSelector,
   breakLinesSelector,
@@ -17,12 +13,13 @@ import {
 } from "@noteup/shared/recoil/editor.recoil";
 import { themeSelector } from "@noteup/shared/recoil/settings.recoil";
 import { Note } from "@noteup/shared/recoil/types";
-
 import { customKeymap } from "@noteup/shared/utils/editorKeymaps";
 import { editorThemes } from "@noteup/shared/utils/editorThemes";
 import { useWindowDimensions } from "@noteup/shared/utils/hooks/useWindowDimensions";
-
-import { Toolbar } from "@noteup/shared/components/NoteEditor/Toolbar";
+import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
+import { EditorView } from "codemirror";
+import { RefObject, Suspense, UIEvent, lazy, useMemo } from "react";
+import { useRecoilValue } from "recoil";
 
 const CodeMirror = lazy(() => import("@uiw/react-codemirror"));
 

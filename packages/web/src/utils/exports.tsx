@@ -1,10 +1,9 @@
+import { Category, Note } from "@noteup/shared/recoil/types";
 import dayjs from "dayjs";
 import { saveAs } from "file-saver";
 import { jsPDF } from "jspdf";
 import { renderToStaticMarkup } from "react-dom/server";
 import { RecoilRoot } from "recoil";
-
-import { Category, Note } from "@noteup/shared/recoil/types";
 
 import { NotePreview } from "@/views/NotePreviewer";
 

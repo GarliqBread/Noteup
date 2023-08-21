@@ -1,10 +1,9 @@
+import { toolbarSelector } from "@noteup/shared/recoil/editor.recoil";
+import { Note } from "@noteup/shared/recoil/types";
 import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { RefObject, UIEvent, useEffect, useRef } from "react";
 import SplitPane from "react-split-pane";
 import { useRecoilValue } from "recoil";
-
-import { toolbarSelector } from "@noteup/shared/recoil/editor.recoil";
-import { Note } from "@noteup/shared/recoil/types";
 
 import { NoteEditor } from "./NoteEditor";
 import { NotePreview } from "./NotePreviewer";

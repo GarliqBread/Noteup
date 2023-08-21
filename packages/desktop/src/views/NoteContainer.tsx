@@ -1,20 +1,18 @@
+import { EditorBar } from "@noteup/shared/components/NoteEditor/EditorBar";
+import { EmptyEditorMessage } from "@noteup/shared/components/NotePreviewer/EmptyEditorMessage";
+import { editingSelector, splitSelector } from "@noteup/shared/recoil/editor.recoil";
+import { selectedNoteSelector } from "@noteup/shared/recoil/notes.recoil";
+import { FlexColumn } from "@noteup/shared/styles/layout";
 import { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import { editingSelector, splitSelector } from "@noteup/shared/recoil/editor.recoil";
-import { selectedNoteSelector } from "@noteup/shared/recoil/notes.recoil";
+import { downloadMarkdown, downloadPdf } from "@/utils/exports";
 
 import { NoteEditor } from "@/views/NoteEditor";
 import { NotePreview } from "@/views/NotePreviewer";
 
-import { EditorBar } from "@noteup/shared/components/NoteEditor/EditorBar";
-import { EmptyEditorMessage } from "@noteup/shared/components/NotePreviewer/EmptyEditorMessage";
-
-import { FlexColumn } from "@noteup/shared/styles/layout";
-
 import { SplitScreenEditor } from "./SplitScreenEditor";
-import { downloadMarkdown, downloadPdf } from "@/utils/exports";
 
 export const NoteContainer = () => {
   const editorRef = useRef<ReactCodeMirrorRef>(null);

@@ -1,16 +1,13 @@
-import { useMemo } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-
+import { IconButton } from "@noteup/shared/components/Button";
+import { ArrowLeft, Gear } from "@noteup/shared/components/Icons";
 import { editingSelector } from "@noteup/shared/recoil/editor.recoil";
 import { activeFolderSelector } from "@noteup/shared/recoil/folder.recoil";
 import { sectionsSelector } from "@noteup/shared/recoil/sections.recoil";
-
 import { navHeaders } from "@noteup/shared/utils/constants";
 import { Section } from "@noteup/shared/utils/enums";
 import { useWindowDimensions } from "@noteup/shared/utils/hooks/useWindowDimensions";
-
-import { IconButton } from "@noteup/shared/components/Button";
-import { ArrowLeft, Gear } from "@noteup/shared/components/Icons";
+import { useMemo } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { Nav } from "./style";
 
