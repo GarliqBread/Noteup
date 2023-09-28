@@ -3,6 +3,7 @@ import { Portal, Root, Sub, Trigger } from "@radix-ui/react-dropdown-menu";
 import { More } from "../Icons";
 
 import { DropItem, MenuContent, MenuSubContent, MenuSubTrigger, TriggerButton } from "./style";
+import { Fragment } from "react";
 
 type Props = {
   selected?: boolean;
@@ -51,7 +52,7 @@ export const Dropdown = ({ selected, menu }: Props) => {
               {item.children}
             </DropItem>
           ) : (
-            item.children
+            <Fragment key={item.id}>{item.children}</Fragment>
           ),
         )}
       </MenuContent>
