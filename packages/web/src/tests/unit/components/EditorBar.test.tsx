@@ -14,7 +14,7 @@ describe("<EditorBar />", () => {
       ),
     );
     expect(component).toBeTruthy();
-    const themeButton = component.getByTitle("Change theme");
+    const themeButton = component.getAllByTitle("Change theme")[0];
     expect(themeButton).toBeTruthy();
   });
 });
