@@ -10,4 +10,5 @@
     }
   },
   "include": ["./src/**/*"],
+  "exclude": ["./src/**/*.test.tsx"]
 }

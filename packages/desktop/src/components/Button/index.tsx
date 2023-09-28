@@ -30,7 +30,7 @@ export const UploadButton = ({
           extensions: ["json"],
         },
       ],
-    }).then((path: string) => {
+    }).then((path) => {
       if (typeof path === "string") {
         readBinaryFile(path).then((res) => {
           const blob = new Blob([res], { type: "application/octet-stream" });

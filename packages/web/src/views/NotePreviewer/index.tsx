@@ -12,7 +12,6 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
-import remarkParse from "remark-parse";
 
 import { Previewer, PreviewerWrapper } from "./style";
 
@@ -58,7 +57,7 @@ export const NotePreview = ({ innerRef, previewNote, border, onScroll }: Props) 
       <Previewer
         className="previewer"
         border={border}
-        remarkPlugins={[remarkParse, remarkGfm, remarkBreaks]}
+        remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={renderHtml ? [rehypeRaw] : []}
         components={{
           a: ({ href, children }) => returnNoteLink(href, children),
