@@ -1,10 +1,9 @@
+import { Category, Note } from "@noteup/shared/recoil/types";
 import { save } from "@tauri-apps/api/dialog";
 import { BaseDirectory, writeBinaryFile, writeTextFile } from "@tauri-apps/api/fs";
 import { jsPDF } from "jspdf";
 import { renderToStaticMarkup } from "react-dom/server";
 import { RecoilRoot } from "recoil";
-
-import { Category, Note } from "@/recoil/types";
 
 import { NotePreview } from "@/views/NotePreviewer";
 
@@ -34,14 +33,14 @@ export const downloadPdf = async (note: Note) => {
           },
         ],
       }).then((path) =>
-        writeBinaryFile(path, doc.output("arraybuffer"), {
+        writeBinaryFile(path || "", doc.output("arraybuffer"), {
           dir: BaseDirectory.App,
         }),
       ),
   });
 };
 
-export const downloadMarkdown = (note: Note): void =>
+export const downloadMarkdown = (note: Note) =>
   save({
     filters: [
       {
@@ -50,7 +49,7 @@ export const downloadMarkdown = (note: Note): void =>
       },
     ],
   }).then((path) =>
-    writeTextFile(path, note.text, {
+    writeTextFile(path || "", note.text, {
       dir: BaseDirectory.App,
     }),
   );
@@ -64,7 +63,7 @@ export const backupNotes = (notes: Note[], categories: Category[]) =>
       },
     ],
   }).then((path) =>
-    writeTextFile(path, JSON.stringify({ notes, categories }), {
+    writeTextFile(path || "", JSON.stringify({ notes, categories }), {
       dir: BaseDirectory.App,
     }),
   );

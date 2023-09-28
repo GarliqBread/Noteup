@@ -26,7 +26,7 @@ type Props = {
   editorRef?: RefObject<ReactCodeMirrorRef>;
   note: Note;
   setNote: (value: Note) => void;
-  onScroll?: (e: UIEvent<HTMLDivElement, UIEvent>) => void;
+  onScroll?: (e: UIEvent<HTMLDivElement>) => void;
 };
 
 export const NoteEditor = ({ editorRef, note, setNote, onScroll }: Props) => {
