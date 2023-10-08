@@ -16,7 +16,7 @@
 
 ## Get started
 
-To get started just visit [noteup.dev](https://noteup.dev) or [download a build](https://github.com/elementsinteractive/Noteup/releases) or clone the repo and run the install and start scripts
+To get started just visit [noteup.dev](https://noteup.dev) or [download a build](https://github.com/GarliqBread/Noteup/releases) or clone the repo and run the install and start scripts
 
 ```properties
 yarn install
@@ -52,7 +52,7 @@ yarn tauri build
 
 ## Contributing
 
-This is an open-source project, and contributions are welcomed and appreciated. Open issues, bugs, and enhancements are all listed on the [issues](https://github.com/elements/noteup/issues) tab and labeled accordingly.
+This is an open-source project, and contributions are welcomed and appreciated. Open issues, bugs, and enhancements are all listed on the [issues](https://github.com/GarliqBread/noteup/issues) tab and labeled accordingly.
 
 View [CONTRIBUTING.md](CONTRIBUTING.md) to learn about the style guide, folder structure, scripts, and how to contribute.
 
@@ -70,7 +70,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/GarliqBread"><img src="https://avatars.githubusercontent.com/u/38473739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cláudio Silva</b></sub></a><br /><a href="https://github.com/elementsinteractive/Noteup/commits?author=GarliqBread" title="Code">💻</a> <a href="https://github.com/elementsinteractive/Noteup/commits?author=GarliqBread" title="Documentation">📖</a> <a href="#maintenance-GarliqBread" title="Maintenance">🚧</a></td>
+      <td align="center"><a href="https://github.com/GarliqBread"><img src="https://avatars.githubusercontent.com/u/38473739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cláudio Silva</b></sub></a><br /><a href="https://github.com/GarliqBread/Noteup/commits?author=GarliqBread" title="Code">💻</a> <a href="https://github.com/GarliqBread/Noteup/commits?author=GarliqBread" title="Documentation">📖</a> <a href="#maintenance-GarliqBread" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
